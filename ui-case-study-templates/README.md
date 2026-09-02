@@ -44,3 +44,25 @@ des données réelles — aucun chiffre n'a été inventé.
 ---
 
 Projet eyeon — encadrement : Formateur Ghazi. Équipe : Abdellah, Hamza, Aya, Asmaa, Yassine.
+
+## Format infographie (poster)
+
+`infographic.html` est la même étude de cas en **une seule image verticale**, dans le
+format des case studies Behance/Dribbble : hero, rôle, timeline, personas,
+problème/solution, identité visuelle, écrans, décisions, plan de mesure.
+
+Exports dans `export/` :
+
+| Fichier | Dimensions | Usage |
+|---|---|---|
+| `eyeon-case-study-infographic@2x.png` | 2400 × 16054 | Qualité maximale |
+| `eyeon-case-study-infographic.jpg` | 2400 × 16054 | Behance, Dribbble, LinkedIn |
+| `eyeon-case-study-infographic-1x.jpg` | 1200 × 8027 | Web léger |
+| `eyeon-case-study-infographic.pdf` | 1 page continue, 12,5 × 83,6 in | Envoi, impression |
+
+Pour régénérer après modification de `infographic.html` :
+
+```bash
+python3 tools/inline-assets.py infographic.html infographic.standalone.html
+node tools/export-poster.js   # PNG 2x + PDF
+```
