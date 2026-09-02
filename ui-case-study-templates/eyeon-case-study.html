@@ -1,0 +1,625 @@
+<title>eyeon Case Study Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --paper:#F4F7F4; --surface:#FFFFFF; --surface-2:#E9EFEA; --surface-3:#DFE8E1;
+  --ink:#141A18; --ink-2:#404C48; --ink-3:#6E7C77;
+  --line:#D6DFD9; --line-2:#B6C4BC;
+  --teal:#127A71; --teal-ink:#0C554F; --teal-soft:#DCEFEA;
+  --mint:#8ED9BD; --sun:#B98908; --sun-soft:#FAEFCB;
+  --shadow:0 1px 2px rgba(20,26,24,.05),0 10px 28px -16px rgba(20,26,24,.35);
+  --radius:14px;
+  --maxw:1120px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1211; --surface:#141C1A; --surface-2:#1A2422; --surface-3:#222E2B;
+    --ink:#E8EFEB; --ink-2:#B2C0BB; --ink-3:#87968F;
+    --line:#26312E; --line-2:#37443F;
+    --teal:#4FCBB8; --teal-ink:#8FE3D4; --teal-soft:#10302D;
+    --mint:#8ED9BD; --sun:#F1D179; --sun-soft:#2C2510;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px -18px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1211; --surface:#141C1A; --surface-2:#1A2422; --surface-3:#222E2B;
+  --ink:#E8EFEB; --ink-2:#B2C0BB; --ink-3:#87968F;
+  --line:#26312E; --line-2:#37443F;
+  --teal:#4FCBB8; --teal-ink:#8FE3D4; --teal-soft:#10302D;
+  --mint:#8ED9BD; --sun:#F1D179; --sun-soft:#2C2510;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px -18px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif; font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+h1,h2,h3,h4{text-wrap:balance; margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+a{color:var(--teal-ink)}
+img{display:block; max-width:100%}
+:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:4px}
+
+/* ---------- control bar ---------- */
+.bar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  padding:10px max(20px,calc((100vw - var(--maxw))/2));
+  background:var(--paper); background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.bar .brand{font-family:Archivo,sans-serif; font-weight:800; letter-spacing:-.02em; font-size:15px; display:flex; align-items:center; gap:8px}
+.bar .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--mint);border:2.5px solid var(--ink);flex:none}
+.bar .spacer{flex:1}
+.switches{display:flex; gap:8px; flex-wrap:wrap}
+.sw{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  padding:7px 12px; border:1px solid var(--line-2); border-radius:999px;
+  background:var(--surface); color:var(--ink-2); cursor:pointer; transition:.15s;
+}
+.sw:hover{border-color:var(--teal); color:var(--ink)}
+.sw[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+
+/* ---------- page frame ---------- */
+main{max-width:var(--maxw); margin:0 auto; padding:0 max(20px,4vw) 96px}
+section{padding:56px 0; border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal-ink); display:flex; align-items:baseline; gap:10px; margin-bottom:14px;
+}
+.eyebrow b{font-weight:600; color:var(--ink-3)}
+h2{font-size:clamp(26px,3.4vw,38px); font-weight:700; letter-spacing:-.025em; line-height:1.12}
+h3{font-size:19px; font-weight:700; letter-spacing:-.01em}
+h4{font-size:13px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--ink-3); font-family:"IBM Plex Mono",monospace}
+p{margin:0 0 14px}
+.lede{font-size:19px; color:var(--ink-2); max-width:66ch}
+.prose{max-width:66ch}
+.prose p:last-child{margin-bottom:0}
+
+/* ---------- cover ---------- */
+.cover{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:44px; align-items:end; padding-top:44px}
+.cover h1{font-size:clamp(44px,8vw,86px); font-weight:800; letter-spacing:-.045em; line-height:.94}
+.cover h1 em{font-style:normal; color:var(--teal)}
+.cover .sub{font-size:21px; color:var(--ink-2); max-width:34ch; margin-top:18px}
+.coverart{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:var(--surface-2)}
+.metarow{display:flex; flex-wrap:wrap; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:36px}
+.metarow div{background:var(--surface); padding:14px 16px; flex:1 1 130px}
+.metarow dt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:5px}
+.metarow dd{margin:0; font-family:Archivo,sans-serif; font-weight:600; font-size:15px; line-height:1.35}
+
+/* ---------- generic blocks ---------- */
+.grid{display:grid; gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+.card h3{margin-bottom:8px}
+.card p{font-size:15.5px; color:var(--ink-2); margin:0}
+.plain{background:transparent; border:0; padding:0}
+.stack{display:flex; flex-direction:column; gap:18px}
+.mt{margin-top:28px}
+.mt-s{margin-top:16px}
+
+/* findings list — numbered because the research produced a ranked set */
+.findings{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+.findings li{
+  display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline;
+  padding:14px 4px; border-bottom:1px solid var(--line);
+}
+.findings li:first-child{border-top:1px solid var(--line)}
+.findings .n{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--teal); font-weight:600}
+
+/* solution cards — the ideation set is a numbered inventory in the source deck */
+.ideas{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px}
+.idea{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px}
+.idea .n{font-family:Archivo,sans-serif; font-weight:800; font-size:30px; letter-spacing:-.04em; color:var(--teal); line-height:1}
+.idea p{font-size:15px; color:var(--ink-2); margin:0}
+.idea .tag{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-top:auto; padding-top:8px}
+
+/* quote */
+blockquote{
+  margin:0; padding:22px 24px; background:var(--teal-soft); border-radius:var(--radius);
+  font-size:19px; line-height:1.5; color:var(--ink);
+}
+blockquote footer{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--teal-ink); margin-top:12px}
+
+/* persona */
+.persona{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr); gap:0; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface)}
+.persona .side{background:var(--surface-2); padding:22px}
+.persona .side .avatar{width:64px; height:64px; border-radius:50%; background:var(--mint); border:3px solid var(--ink); margin-bottom:14px; position:relative}
+.persona .side .avatar::after{content:""; position:absolute; inset:20px; border-radius:50%; background:var(--surface); box-shadow:inset 0 0 0 3px var(--ink)}
+.persona .body{padding:22px; display:grid; gap:16px}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:8px 18px; font-size:15.5px}
+.kv dt{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding-top:4px}
+.kv dd{margin:0; color:var(--ink-2)}
+
+/* screens gallery */
+.shots{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
+.shot{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column}
+.shot .frame{background:var(--surface-2); padding:14px; display:flex; justify-content:center; align-items:flex-start; height:320px; overflow:hidden}
+.shot .frame img{border-radius:6px; box-shadow:0 6px 18px -10px rgba(0,0,0,.5); width:100%; height:100%; object-fit:cover; object-position:top}
+.shot.phone .frame{align-items:center}
+.shot.phone .frame img{width:auto; object-fit:contain; box-shadow:none}
+.shot figcaption{padding:16px 18px 18px; display:grid; gap:8px}
+.shot figcaption .name{font-family:Archivo,sans-serif; font-weight:700; font-size:16px}
+.shot figcaption .job{font-size:14.5px; color:var(--ink-2)}
+.shot figcaption .why{font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.5; color:var(--teal-ink); background:var(--teal-soft); padding:8px 10px; border-radius:8px}
+.slot{display:none}
+
+/* design system */
+.swatches{display:flex; flex-wrap:wrap; gap:12px}
+.sws{flex:1 1 110px}
+.sws{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface)}
+.sws .chip{height:64px}
+.sws .lbl{padding:9px 11px; font-family:"IBM Plex Mono",monospace; font-size:11px; line-height:1.5}
+.sws .lbl b{display:block; font-weight:600; color:var(--ink); font-size:11.5px}
+.sws .lbl span{color:var(--ink-3)}
+.typescale{display:grid; gap:10px; border-top:1px solid var(--line)}
+.typescale div{display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--line)}
+.typescale .m{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); white-space:nowrap}
+
+/* table */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:640px; font-size:15px}
+th,td{text-align:left; padding:13px 16px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:600; background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; font-size:13px}
+
+/* tips */
+.tip{
+  border-left:3px solid var(--sun); background:var(--sun-soft); color:var(--ink);
+  padding:12px 16px; border-radius:0 10px 10px 0; font-size:14.5px; line-height:1.55; margin:16px 0 0; max-width:74ch;
+}
+.tip b{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; display:block; margin-bottom:4px; color:var(--sun)}
+body.no-tips .tip{display:none}
+
+/* blank mode */
+.f{transition:background .15s}
+body.blank .f{
+  background:repeating-linear-gradient(-45deg,var(--surface-2),var(--surface-2) 6px,transparent 6px,transparent 12px);
+  box-shadow:inset 0 0 0 1px var(--line-2); border-radius:5px; color:var(--ink-3); font-style:italic;
+}
+body.blank .shot .frame img{display:none}
+body.blank .shot .frame{align-items:center}
+body.blank .slot{
+  display:grid; place-items:center; text-align:center; width:100%; min-height:170px; padding:18px;
+  border:1.5px dashed var(--line-2); border-radius:8px; color:var(--ink-3);
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.06em; line-height:1.7;
+}
+body.blank .coverart img{opacity:.18; filter:grayscale(1)}
+
+/* one-pager */
+.onepager{
+  background:var(--surface); border:1px solid var(--line-2); border-radius:var(--radius);
+  padding:32px; display:grid; gap:22px; box-shadow:var(--shadow);
+}
+.onepager .top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap}
+.onepager h3{font-size:27px; letter-spacing:-.03em}
+.onepager .cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:22px}
+.onepager h4{margin-bottom:7px}
+.onepager p, .onepager li{font-size:14.5px; color:var(--ink-2); margin:0}
+.onepager ul{margin:0; padding-left:18px; display:grid; gap:5px}
+
+/* checklist */
+.checks{list-style:none; margin:0; padding:0; display:grid; gap:0}
+.checks li{display:grid; grid-template-columns:auto 1fr; gap:14px; padding:12px 2px; border-bottom:1px solid var(--line); font-size:15.5px; align-items:baseline}
+.checks li::before{content:"□"; color:var(--teal); font-size:17px; line-height:1}
+.checks li b{font-family:Archivo,sans-serif}
+footer.credits{padding:40px 0 0; border-top:1px solid var(--line); color:var(--ink-3); font-size:14px}
+
+@media (max-width:820px){
+  .cover{grid-template-columns:1fr; gap:28px}
+  .g2,.shots{grid-template-columns:1fr}
+  .persona{grid-template-columns:1fr}
+  section{padding:44px 0}
+}
+@media print{
+  .bar,.tip{display:none}
+  body{background:#fff; font-size:11pt}
+  section{page-break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+
+<div class="bar">
+  <span class="brand"><span class="dot"></span>eyeon · Case Study Kit</span>
+  <span class="spacer"></span>
+  <div class="switches">
+    <button class="sw" id="tgl-blank" aria-pressed="false">Modèle vierge</button>
+    <button class="sw" id="tgl-tips" aria-pressed="true">Guide de rédaction</button>
+    <button class="sw" id="tgl-print" aria-pressed="false">Imprimer / PDF</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ======================= COVER ======================= -->
+<section class="cover" id="cover">
+  <div>
+    <div class="eyebrow">Étude de cas UI/UX <b>· Modèle 01 — couverture</b></div>
+    <h1><span class="f" data-b="Nom du projet">eyeon</span><br><em class="f" data-b="Promesse en 3–5 mots">voir clair, plus vite</em></h1>
+    <p class="sub f" data-b="Une phrase : pour qui, quel problème, quel résultat.">Une application et un site qui réunissent l'achat de lunettes et la recherche d'un cabinet d'optique, pour des utilisateurs qui perdent aujourd'hui du temps entre les deux.</p>
+    <dl class="metarow">
+      <div><dt>Rôle</dt><dd class="f" data-b="Votre rôle exact">UI/UX — recherche, wireframes, UI</dd></div>
+      <div><dt>Équipe</dt><dd class="f" data-b="Qui, combien">5 personnes</dd></div>
+      <div><dt>Durée</dt><dd class="f" data-b="X semaines">Projet école — 1 cycle</dd></div>
+      <div><dt>Méthode</dt><dd class="f" data-b="Cadre utilisé">Design Thinking (7 étapes)</dd></div>
+      <div><dt>Livrables</dt><dd class="f" data-b="Ce que vous avez produit">Maquettes web + app, prototype</dd></div>
+    </dl>
+  </div>
+  <figure class="coverart" style="margin:0">
+    <img src="assets/logo-eyeon.webp" alt="Identité visuelle eyeon : le logotype sur un dégradé turquoise et jaune." width="700" height="700">
+    <span class="slot">Visuel de couverture<br>logo, écran héros ou photo produit<br>1:1 ou 4:3</span>
+  </figure>
+  <div class="tip" style="grid-column:1/-1"><b>Guide</b>La couverture doit se lire en 5 secondes : nom, promesse, votre rôle. Ne mettez jamais le contexte académique en premier — mettez le problème utilisateur.</div>
+</section>
+
+<!-- ======================= EN BREF ======================= -->
+<section id="enbref">
+  <div class="eyebrow">En bref <b>· Modèle 02 — résumé lisible en 30 s</b></div>
+  <h2>Le projet en quatre blocs</h2>
+  <div class="grid g2 mt">
+    <div class="card"><h4>Le problème</h4><p class="f" data-b="Le problème utilisateur, pas la fonctionnalité manquante.">Choisir une monture en ligne et trouver un opticien proche sont deux parcours séparés, longs et peu fiables.</p></div>
+    <div class="card"><h4>La solution</h4><p class="f" data-b="La réponse de design, en une phrase.">Une plateforme unique : essai virtuel + recommandation selon la forme du visage, et une carte des cabinets avec avis et prise de rendez-vous.</p></div>
+    <div class="card"><h4>Mon rôle</h4><p class="f" data-b="Ce que VOUS avez fait, verbes d'action.">Entretiens utilisateurs, synthèse des irritants, arborescence, wireframes puis UI des écrans web et mobile.</p></div>
+    <div class="card"><h4>Résultat visé</h4><p class="f" data-b="L'effet attendu + comment il se mesure.">Réduire le nombre d'étapes entre « je cherche des lunettes » et « j'ai un rendez-vous » — mesuré par le taux de rendez-vous pris depuis la carte.</p></div>
+  </div>
+  <div class="tip"><b>Guide</b>Un recruteur lit ces quatre cases et décide s'il continue. Écrivez-les en dernier, quand tout le reste est rédigé.</div>
+</section>
+
+<!-- ======================= 01 CONTEXTE ======================= -->
+<section id="contexte">
+  <div class="eyebrow">01 — Contexte <b>· Modèle 03 — cadrage</b></div>
+  <h2>Pourquoi ce projet existe</h2>
+  <div class="grid g2 mt" style="align-items:start">
+    <div class="prose">
+      <p class="f" data-b="2–3 phrases de contexte : le marché, l'usage actuel, ce qui a déclenché le projet.">L'achat de lunettes en ligne progresse, mais reste une décision qu'on n'aime pas prendre sans essayer. En parallèle, trouver un cabinet d'optique ouvert, proche et bien noté relève encore du bouche-à-oreille.</p>
+      <p class="f" data-b="Ce que vous aviez au départ : brief, contraintes, périmètre.">Nous partions d'un brief large — « une plateforme dédiée à l'ophtalmologie » — sans utilisateurs identifiés ni périmètre fixé. Le premier travail a donc été de réduire ce brief à deux parcours défendables.</p>
+    </div>
+    <div class="card" style="background:var(--surface-2)">
+      <h4>Le défi</h4>
+      <p class="f" data-b="Formulez le défi comme une question, pas comme une tâche." style="font-size:18px; color:var(--ink); font-family:Archivo,sans-serif; font-weight:600; line-height:1.35">Comment rendre l'achat de lunettes et l'accès à un opticien assez simples pour qu'on ne renonce pas en route ?</p>
+      <div class="mt-s"><h4>Hors périmètre</h4><p class="f" data-b="Ce que vous n'avez volontairement pas traité.">Le paiement, la gestion de stock, l'espace professionnel des opticiens.</p></div>
+    </div>
+  </div>
+  <div class="tip"><b>Guide</b>Nommer explicitement ce qui est hors périmètre est le signal le plus rapide de maturité produit dans un portfolio. Une ligne suffit.</div>
+</section>
+
+<!-- ======================= 02 IMMERSION ======================= -->
+<section id="immersion">
+  <div class="eyebrow">02 — Immersion <b>· Modèle 04 — recherche</b></div>
+  <h2>Ce que les utilisateurs nous ont dit</h2>
+  <p class="lede mt-s f" data-b="Que cherchiez-vous à comprendre ? Une seule question de recherche.">Question de recherche : quelles difficultés rencontrent les gens quand ils achètent des lunettes et cherchent un cabinet ?</p>
+
+  <div class="grid g3 mt">
+    <div class="card"><h4>Entretiens</h4><p class="f" data-b="Méthode 1 — avec qui, combien, ce que vous cherchiez.">Discussions avec des clients potentiels pour faire remonter les frustrations et les besoins réels.</p></div>
+    <div class="card"><h4>Questionnaire</h4><p class="f" data-b="Méthode 2 — échantillon, format, sujet.">Collecte quantitative sur les préférences d'achat et les critères de choix d'une monture.</p></div>
+    <div class="card"><h4>Observation</h4><p class="f" data-b="Méthode 3 — quoi, où.">Analyse des parcours d'achat sur les sites d'optique concurrents.</p></div>
+  </div>
+
+  <h3 class="mt" style="margin-bottom:12px">Les quatre irritants qui reviennent</h3>
+  <ol class="findings">
+    <li><span class="n">01</span><span class="f" data-b="Irritant 1 — formulé du point de vue de l'utilisateur.">La plupart des boutiques en ligne sont complexes et difficiles à utiliser.</span></li>
+    <li><span class="n">02</span><span class="f" data-b="Irritant 2.">Choisir une monture adaptée à sa morphologie, et la bonne taille, reste un vrai blocage.</span></li>
+    <li><span class="n">03</span><span class="f" data-b="Irritant 3.">Les utilisateurs ne savent pas où trouver les cabinets d'optique près de chez eux.</span></li>
+    <li><span class="n">04</span><span class="f" data-b="Irritant 4.">Personne n'a envie d'attendre son tour sans savoir combien de temps.</span></li>
+  </ol>
+
+  <blockquote class="mt">
+    <span class="f" data-b="Un verbatim d'entretien, mot pour mot. C'est la preuve que la recherche a eu lieu.">« J'ai commandé deux fois, j'ai renvoyé deux fois. Maintenant je préfère perdre une matinée en magasin. »</span>
+    <footer class="f" data-b="Profil — âge, ville, contexte">Participante, Casablanca</footer>
+  </blockquote>
+  <div class="tip"><b>Guide</b>Un verbatim vaut dix pourcentages inventés. Si vous n'avez pas de citation exacte, écrivez « reformulé » plutôt que d'en fabriquer une.</div>
+</section>
+
+<!-- ======================= 03 ANALYSE ======================= -->
+<section id="analyse">
+  <div class="eyebrow">03 — Analyse <b>· Modèle 05 — problème → besoin → opportunité</b></div>
+  <h2>Du constat à l'opportunité</h2>
+  <div class="grid g3 mt">
+    <div class="card"><h4>Problème</h4><p class="f" data-b="Le problème central, une phrase.">Les utilisateurs ont du mal à choisir une monture adaptée et à trouver un opticien.</p></div>
+    <div class="card"><h4>Besoins</h4><p class="f" data-b="Les besoins non satisfaits qui en découlent.">Essai virtuel fidèle, personnalisation, conseil selon la forme du visage, et une carte pour localiser les cabinets.</p></div>
+    <div class="card" style="background:var(--teal-soft); border-color:var(--teal)"><h4 style="color:var(--teal-ink)">Opportunité</h4><p class="f" data-b="Ce que personne ne fait aujourd'hui et que vous pouvez faire." style="color:var(--ink)">Réunir essai virtuel, personnalisation et carte des cabinets — horaires, avis, prise de rendez-vous — dans un seul produit.</p></div>
+  </div>
+
+  <h3 class="mt" style="margin-bottom:14px">Persona</h3>
+  <div class="persona">
+    <div class="side">
+      <div class="avatar" aria-hidden="true"></div>
+      <div style="font-family:Archivo,sans-serif; font-weight:700; font-size:19px" class="f" data-b="Prénom + âge">Salma, 29 ans</div>
+      <div style="color:var(--ink-3); font-size:14.5px" class="f" data-b="Métier, ville">Chargée de clientèle, Casablanca</div>
+      <div class="tip" style="margin-top:14px"><b>Guide</b>Un persona = un comportement observé, pas une fiche d'état civil.</div>
+    </div>
+    <div class="body">
+      <dl class="kv">
+        <dt>Objectif</dt><dd class="f" data-b="Ce qu'elle veut accomplir.">Renouveler ses lunettes sans y passer un samedi entier.</dd>
+        <dt>Freins</dt><dd class="f" data-b="Ce qui la bloque aujourd'hui.">Ne se fie pas aux photos produit ; ne sait pas quelle forme lui va ; ignore quels cabinets sont ouverts.</dd>
+        <dt>Contexte</dt><dd class="f" data-b="Quand et où elle utiliserait le produit.">Sur mobile, le soir, entre deux tâches.</dd>
+        <dt>Critère de succès</dt><dd class="f" data-b="À quoi elle voit que ça a marché.">Une monture commandée et un rendez-vous posé dans la même session.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="mt">
+    <h4>Point de vue &amp; « Comment pourrions-nous… »</h4>
+    <p class="mt-s f" data-b="Point de vue : [utilisateur] a besoin de [besoin] parce que [insight]." style="font-size:19px; font-family:Archivo,sans-serif; font-weight:600; max-width:60ch; line-height:1.35">Salma a besoin d'être sûre du rendu d'une monture <em>avant</em> de commander, parce que le doute lui coûte plus cher qu'un déplacement.</p>
+    <div class="grid g3 mt-s">
+      <div class="card plain" style="border:1px dashed var(--line-2); padding:14px"><p class="f" data-b="CPN 1 — comment pourrions-nous… ?">Comment pourrions-nous rendre l'essai virtuel assez crédible pour décider ?</p></div>
+      <div class="card plain" style="border:1px dashed var(--line-2); padding:14px"><p class="f" data-b="CPN 2">Comment pourrions-nous guider le choix sans imposer un questionnaire ?</p></div>
+      <div class="card plain" style="border:1px dashed var(--line-2); padding:14px"><p class="f" data-b="CPN 3">Comment pourrions-nous rendre visible la disponibilité réelle d'un cabinet ?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 04 IDEATION ======================= -->
+<section id="ideation">
+  <div class="eyebrow">04 — Idéation <b>· Modèle 06 — solutions retenues</b></div>
+  <h2>Six pistes, gardées après tri impact / effort</h2>
+  <p class="lede mt-s f" data-b="Comment avez-vous trié ? Brainstorming, carte mentale, matrice impact-effort…">Brainstorming, carte mentale puis matrice impact-effort : les six idées ci-dessous sont celles qui restaient une fois le tri fait.</p>
+  <div class="ideas mt">
+    <div class="idea"><span class="n">1</span><p class="f" data-b="Solution 1">Carte interactive des cabinets, avec avis, notes et photos, pour choisir puis réserver une consultation.</p><span class="tag f" data-b="Impact / effort">Impact fort · effort moyen</span></div>
+    <div class="idea"><span class="n">2</span><p class="f" data-b="Solution 2">Personnalisation avancée de la monture : forme, couleur, taille.</p><span class="tag f" data-b="Impact / effort">Impact moyen · effort moyen</span></div>
+    <div class="idea"><span class="n">3</span><p class="f" data-b="Solution 3">Application et site au design simple et direct pour l'achat et l'accès aux services optiques.</p><span class="tag f" data-b="Impact / effort">Impact fort · effort faible</span></div>
+    <div class="idea"><span class="n">4</span><p class="f" data-b="Solution 4">Recommandation par analyse de la forme du visage.</p><span class="tag f" data-b="Impact / effort">Impact fort · effort élevé</span></div>
+    <div class="idea"><span class="n">5</span><p class="f" data-b="Solution 5">Essai virtuel en réalité augmentée avant l'achat.</p><span class="tag f" data-b="Impact / effort">Impact fort · effort élevé</span></div>
+    <div class="idea"><span class="n">6</span><p class="f" data-b="Solution 6">Programme de fidélité et réductions pour les utilisateurs réguliers.</p><span class="tag f" data-b="Impact / effort">Impact faible · effort faible</span></div>
+  </div>
+  <div class="tip"><b>Guide</b>Ajoutez toujours l'idée que vous avez <em>écartée</em> et pourquoi : c'est ce qui distingue une sélection d'une liste de souhaits.</div>
+</section>
+
+<!-- ======================= 05 PROTOTYPE ======================= -->
+<section id="prototype">
+  <div class="eyebrow">05 — Prototype <b>· Modèle 07 — galerie d'écrans</b></div>
+  <h2>Les écrans, et la décision derrière chacun</h2>
+  <p class="lede mt-s f" data-b="Ce que le prototype devait permettre de tester.">Le prototype devait répondre à une seule question : est-ce qu'on peut passer de la recherche d'une monture à un rendez-vous sans quitter le produit ?</p>
+
+  <div class="shots mt">
+    <figure class="shot tall">
+      <div class="frame"><img src="assets/web-home.webp" alt="Page d'accueil eyeon : bannière, offre de services, montures les mieux notées et avis clients."><span class="slot">Écran 01<br>accueil / point d'entrée</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Accueil</span>
+        <span class="job f" data-b="Le job à faire de cet écran.">Faire comprendre en un écran que le produit fait deux choses : vendre des montures et donner accès à un opticien.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : les deux entrées sont montrées côte à côte, avant tout catalogue — la recherche montrait que les gens arrivent avec l'une ou l'autre intention.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="frame"><img src="assets/web-clinics-map.webp" alt="Recherche de cabinets : carte de Casablanca avec repères et liste de praticiens notés."><span class="slot">Écran 02<br>recherche / liste</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Carte des cabinets</span>
+        <span class="job f" data-b="Le job à faire.">Trouver un opticien proche, ouvert, et suffisamment bien noté pour être choisi.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : carte et liste visibles ensemble, filtres au-dessus — répond à l'irritant nº3 (« je ne sais pas où ils sont »).</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="frame"><img src="assets/web-clinic-detail.webp" alt="Fiche d'un cabinet : photos, coordonnées, horaires, avis clients et bouton de réservation."><span class="slot">Écran 03<br>détail / décision</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Fiche cabinet</span>
+        <span class="job f" data-b="Le job à faire.">Donner assez d'éléments — horaires, avis, moyens de paiement — pour réserver sans appeler.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : le bouton de réservation reste visible en haut de fiche, les avis servent de preuve, pas de contenu principal.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <div class="frame"><img src="assets/web-tryon.webp" alt="Essai virtuel : l'utilisateur porte une monture en direct, avec les recommandations « Best for you »."><span class="slot">Écran 04<br>moment clé du produit</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Essai virtuel &amp; recommandation</span>
+        <span class="job f" data-b="Le job à faire.">Lever le doute sur le rendu avant l'achat — l'irritant nº2, celui qui fait renoncer.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : la caméra occupe la zone principale et les montures recommandées défilent dessous, pour rester dans l'essai plutôt que dans le catalogue.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot tall">
+      <div class="frame"><img src="assets/web-store.webp" alt="Catalogue de montures avec filtres par forme, couleur et prix."><span class="slot">Écran 05<br>catalogue</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Boutique</span>
+        <span class="job f" data-b="Le job à faire.">Parcourir les montures avec des filtres qui parlent la langue de l'utilisateur (forme, couleur, prix).</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : filtres persistants à gauche, grille dense — l'irritant nº1 portait sur la complexité, pas sur le nombre de produits.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot tall">
+      <div class="frame"><img src="assets/web-product.webp" alt="Fiche produit d'une monture : galerie, prix, note, avis et produits similaires."><span class="slot">Écran 06<br>fiche produit</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Fiche monture</span>
+        <span class="job f" data-b="Le job à faire.">Confirmer le choix : matière, taille, avis, alternatives proches.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : la taille est traitée comme une information de premier plan, pas comme une variante cachée dans un menu.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot phone">
+      <div class="frame"><img src="assets/app-map.webp" alt="Application mobile : carte des cabinets avec temps de trajet et distance."><span class="slot">Écran 07<br>mobile</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Mobile — carte</span>
+        <span class="job f" data-b="Le job à faire.">Trouver le cabinet le plus proche, en déplacement.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : temps de trajet et distance avant la note — en mobilité, la proximité prime.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot phone">
+      <div class="frame"><img src="assets/app-doctor.webp" alt="Application mobile : profil d'un praticien avec notes, avis et bouton de rendez-vous."><span class="slot">Écran 08<br>mobile</span></div>
+      <figcaption>
+        <span class="name f" data-b="Nom de l'écran">Mobile — profil praticien</span>
+        <span class="job f" data-b="Le job à faire.">Réserver en trois taps depuis la carte.</span>
+        <span class="why f" data-b="Décision de design + raison.">Décision : « Rendez-vous » est le seul bouton plein de l'écran — tout le reste est secondaire.</span>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="tip"><b>Guide</b>Une capture sans légende ne prouve rien. Le format « écran → job à faire → décision » est ce qui transforme une galerie en étude de cas.</div>
+</section>
+
+<!-- ======================= DESIGN SYSTEM ======================= -->
+<section id="systeme">
+  <div class="eyebrow">Système <b>· Modèle 08 — fondations UI</b></div>
+  <h2>Couleurs, typographie, composants</h2>
+  <div class="grid g2 mt" style="align-items:start; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)">
+    <figure class="shot" style="margin:0">
+      <div class="frame"><img src="assets/brandboard.webp" alt="Planche d'identité eyeon : logotype, déclinaisons, palette turquoise et typographie."><span class="slot">Planche d'identité</span></div>
+      <figcaption><span class="job f" data-b="Ce que la planche fixe.">Planche d'identité : logotype, déclinaisons, palette et typographie fixés avant les écrans.</span></figcaption>
+    </figure>
+    <div>
+      <h4>Palette</h4>
+      <div class="swatches mt-s">
+        <div class="sws"><div class="chip" style="background:#1AA69B"></div><div class="lbl"><b class="f" data-b="Rôle">Primaire</b><span>#1AA69B</span></div></div>
+        <div class="sws"><div class="chip" style="background:#8ED9BD"></div><div class="lbl"><b class="f" data-b="Rôle">Accent</b><span>#8ED9BD</span></div></div>
+        <div class="sws"><div class="chip" style="background:#F2CE5B"></div><div class="lbl"><b class="f" data-b="Rôle">Signal</b><span>#F2CE5B</span></div></div>
+        <div class="sws"><div class="chip" style="background:#201E21"></div><div class="lbl"><b class="f" data-b="Rôle">Encre</b><span>#201E21</span></div></div>
+        <div class="sws"><div class="chip" style="background:#E9E9E9"></div><div class="lbl"><b class="f" data-b="Rôle">Fond</b><span>#E9E9E9</span></div></div>
+      </div>
+      <h4 class="mt">Échelle typographique</h4>
+      <div class="typescale mt-s">
+        <div><span class="m">Titre · 40/700</span><span class="sans" style="font-size:26px; font-weight:700; letter-spacing:-.02em">Trouvez la bonne monture</span></div>
+        <div><span class="m">Section · 20/700</span><span class="sans" style="font-size:18px; font-weight:700">Cabinets près de vous</span></div>
+        <div><span class="m">Corps · 16/400</span><span style="font-size:15px">Horaires, avis et prise de rendez-vous.</span></div>
+        <div><span class="m">Étiquette · 12/500</span><span class="mono" style="font-size:12px; letter-spacing:.08em; text-transform:uppercase">Ouvert · 8 min</span></div>
+      </div>
+      <div class="tip"><b>Guide</b>Documentez seulement ce que vous avez réellement utilisé dans les écrans. Une palette de 12 nuances jamais employée se voit tout de suite.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 06 IMPLEMENTATION ======================= -->
+<section id="mesure">
+  <div class="eyebrow">06 — Implémentation &amp; mesure <b>· Modèle 09 — plan de mesure</b></div>
+  <h2>Comment on saura que ça marche</h2>
+  <div class="grid g3 mt">
+    <div class="card"><h4>Lancement bêta</h4><p class="f" data-b="Comment vous testez avant l'ouverture.">Déploiement auprès d'un groupe restreint avant la mise en ligne globale.</p></div>
+    <div class="card"><h4>Suivi</h4><p class="f" data-b="Outils et données suivies.">Suivi des parcours et des abandons via les outils d'analyse d'usage.</p></div>
+    <div class="card"><h4>Itération</h4><p class="f" data-b="Boucle de retour utilisateur.">Système de retour utilisateur intégré, pour corriger l'essai virtuel et les options de personnalisation en continu.</p></div>
+  </div>
+
+  <div class="tablewrap mt">
+    <table>
+      <thead><tr><th>Indicateur</th><th>Ce qu'il révèle</th><th>Base de départ</th><th>Cible</th></tr></thead>
+      <tbody>
+        <tr><td class="f" data-b="Indicateur 1">Rendez-vous pris depuis la carte</td><td class="f" data-b="Pourquoi il compte">Si les deux parcours se rejoignent vraiment</td><td class="num">à mesurer</td><td class="num">à définir</td></tr>
+        <tr><td class="f" data-b="Indicateur 2">Taux d'abandon sur la fiche produit</td><td class="f" data-b="Pourquoi il compte">Si le doute sur la taille persiste</td><td class="num">à mesurer</td><td class="num">à définir</td></tr>
+        <tr><td class="f" data-b="Indicateur 3">Essais virtuels par session</td><td class="f" data-b="Pourquoi il compte">Si la fonction est trouvée, et pas seulement livrée</td><td class="num">à mesurer</td><td class="num">à définir</td></tr>
+        <tr><td class="f" data-b="Indicateur 4">Retours produit après achat</td><td class="f" data-b="Pourquoi il compte">Le coût réel d'un mauvais choix de monture</td><td class="num">à mesurer</td><td class="num">à définir</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip"><b>Guide</b>Les colonnes sont volontairement vides : le projet n'a pas encore de chiffres mesurés. Remplissez-les avec vos données réelles — n'inventez jamais un pourcentage dans un portfolio, c'est la première chose qu'un jury vérifie.</div>
+</section>
+
+<!-- ======================= 07 CONCLUSION ======================= -->
+<section id="conclusion">
+  <div class="eyebrow">07 — Conclusion <b>· Modèle 10 — apprentissages</b></div>
+  <h2>Ce que je retiens</h2>
+  <div class="grid g3 mt">
+    <div class="card"><h4>Ce qui a marché</h4><p class="f" data-b="Une décision qui s'est révélée juste.">Réduire un brief très large à deux parcours : tout le reste du projet est devenu décidable.</p></div>
+    <div class="card"><h4>Ce que je referais autrement</h4><p class="f" data-b="Soyez précise, c'est la partie la plus lue.">Tester les wireframes avant de passer à l'UI : plusieurs écrans ont été finalisés avant d'être confrontés à un utilisateur.</p></div>
+    <div class="card"><h4>La suite</h4><p class="f" data-b="Prochaine étape concrète.">Un test d'utilisabilité de l'essai virtuel sur 5 personnes, puis mesure de la première colonne du tableau.</p></div>
+  </div>
+  <div class="prose mt">
+    <p class="f" data-b="Clôture : ce que le projet démontre de votre façon de travailler.">Le projet montre surtout comment une méthode — comprendre, cadrer, produire, mesurer — transforme un sujet flou en un produit qu'on peut discuter écran par écran.</p>
+  </div>
+</section>
+
+<!-- ======================= ONE PAGER ======================= -->
+<section id="onepager">
+  <div class="eyebrow">Format court <b>· Modèle 11 — une page, pour candidature ou jury</b></div>
+  <h2>La même étude, en une page</h2>
+  <p class="lede mt-s">À utiliser en PDF joint à une candidature, ou en support d'un entretien de 5 minutes. Bouton « Imprimer / PDF » en haut de page.</p>
+  <div class="onepager mt">
+    <div class="top">
+      <div>
+        <h3 class="f" data-b="Projet — promesse">eyeon — voir clair, plus vite</h3>
+        <p class="f" data-b="Une phrase de positionnement." style="margin-top:6px">Acheter ses lunettes et trouver son opticien au même endroit.</p>
+      </div>
+      <div class="mono" style="font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); text-align:right; line-height:1.9">
+        <div class="f" data-b="Rôle">UI/UX Design</div>
+        <div class="f" data-b="Année · durée">Design Thinking · 7 étapes</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Problème</h4><p class="f" data-b="1 phrase">Deux parcours séparés, longs, et un doute permanent sur le rendu d'une monture.</p></div>
+      <div><h4>Recherche</h4><p class="f" data-b="Méthodes + ce qui en ressort">Entretiens, questionnaire, observation concurrentielle → 4 irritants récurrents.</p></div>
+      <div><h4>Solution</h4><p class="f" data-b="1 phrase">Essai virtuel + recommandation par forme du visage + carte des cabinets avec réservation.</p></div>
+      <div><h4>Mesure</h4><p class="f" data-b="Indicateur principal">Rendez-vous pris depuis la carte, abandons sur fiche produit.</p></div>
+    </div>
+    <div>
+      <h4>Écrans clés</h4>
+      <ul class="mt-s">
+        <li class="f" data-b="Écran 1 — ce qu'il résout">Carte des cabinets — répond à « je ne sais pas où ils sont ».</li>
+        <li class="f" data-b="Écran 2 — ce qu'il résout">Essai virtuel — répond à « je ne sais pas ce que ça donne sur moi ».</li>
+        <li class="f" data-b="Écran 3 — ce qu'il résout">Fiche cabinet — répond à « je ne sais pas s'ils sont ouverts ».</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MODE D'EMPLOI ======================= -->
+<section id="emploi">
+  <div class="eyebrow">Mode d'emploi <b>· réutiliser ces modèles</b></div>
+  <h2>Comment vous en servir</h2>
+  <div class="grid g2 mt" style="align-items:start">
+    <div>
+      <h4>Trois façons de l'utiliser</h4>
+      <ul class="checks mt-s">
+        <li><span><b>Modèle vierge.</b> Le bouton en haut vide tous les textes et laisse les consignes : c'est votre point de départ pour un autre projet.</span></li>
+        <li><span><b>Exemple rempli.</b> État par défaut : le projet eyeon sert de référence de rédaction, section par section.</span></li>
+        <li><span><b>Une page.</b> Le modèle 11 s'imprime seul en PDF pour une candidature.</span></li>
+      </ul>
+      <h4 class="mt">Avant de publier</h4>
+      <ul class="checks mt-s">
+        <li><span>Chaque écran a une légende « job à faire » et une décision de design.</span></li>
+        <li><span>Aucun chiffre non mesuré ne figure comme un résultat.</span></li>
+        <li><span>Votre rôle personnel est distinct du travail de l'équipe.</span></li>
+        <li><span>Une idée écartée est expliquée.</span></li>
+        <li><span>Le texte se lit sans connaître le sujet.</span></li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--surface-2)">
+      <h4>Les 11 modèles</h4>
+      <ol class="mono mt-s" style="font-size:13px; line-height:2; padding-left:20px; color:var(--ink-2)">
+        <li>Couverture</li><li>Résumé en quatre blocs</li><li>Cadrage &amp; hors périmètre</li><li>Recherche &amp; irritants</li>
+        <li>Problème → besoin → opportunité (+ persona, point de vue, CPN)</li><li>Solutions retenues</li>
+        <li>Galerie d'écrans</li><li>Fondations UI</li><li>Plan de mesure</li><li>Apprentissages</li><li>Une page</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer class="credits">
+  <p><strong class="sans">eyeon</strong> — étude de cas Design Thinking. Encadrement : Formateur Ghazi. Équipe : Abdellah, Hamza, Aya, Asmaa, Yassine.<br>
+  Captures d'écran et identité issues de la présentation du projet. Modèles préparés pour être réutilisés sur d'autres projets.</p>
+</footer>
+</main>
+
+<script>
+(function(){
+  var blank=false, tips=true;
+  var fills=[].slice.call(document.querySelectorAll('.f[data-b]'));
+  fills.forEach(function(el){ el.dataset.filled = el.innerHTML; });
+
+  var bBtn=document.getElementById('tgl-blank');
+  var tBtn=document.getElementById('tgl-tips');
+  var pBtn=document.getElementById('tgl-print');
+
+  function apply(){
+    document.body.classList.toggle('blank', blank);
+    fills.forEach(function(el){
+      el.innerHTML = blank ? el.dataset.b : el.dataset.filled;
+    });
+    bBtn.setAttribute('aria-pressed', String(blank));
+    bBtn.textContent = blank ? 'Exemple rempli' : 'Modèle vierge';
+  }
+  bBtn.addEventListener('click', function(){ blank=!blank; apply(); });
+  tBtn.addEventListener('click', function(){
+    tips=!tips;
+    document.body.classList.toggle('no-tips', !tips);
+    tBtn.setAttribute('aria-pressed', String(tips));
+  });
+  pBtn.addEventListener('click', function(){ window.print(); });
+})();
+</script>
