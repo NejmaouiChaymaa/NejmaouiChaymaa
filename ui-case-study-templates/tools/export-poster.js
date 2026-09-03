@@ -1,4 +1,5 @@
-// Renders infographic.html to a full-height PNG (2x) and a single-page PDF.
+// Renders infographic.standalone.html to a full-height PNG (2x) and a single-page PDF.
+// Build that file first: inline-assets.py then inline-fonts.py (see README).
 // Requires playwright: NODE_PATH=$(npm root -g) node tools/export-poster.js
 const { chromium } = require('playwright');
 const path = require('path');
@@ -9,7 +10,8 @@ const OUT = path.join(ROOT, 'export');
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 1200 }, deviceScaleFactor: 2 });
-  await page.goto('file://' + path.join(ROOT, 'infographic.html'));
+  // render the self-contained build: it carries the embedded typeface
+  await page.goto('file://' + path.join(ROOT, 'infographic.standalone.html'));
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(1500);
 

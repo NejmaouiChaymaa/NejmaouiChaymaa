@@ -55,14 +55,26 @@ Exports dans `export/` :
 
 | Fichier | Dimensions | Usage |
 |---|---|---|
-| `eyeon-case-study-infographic@2x.png` | 2400 × 16054 | Qualité maximale |
-| `eyeon-case-study-infographic.jpg` | 2400 × 16054 | Behance, Dribbble, LinkedIn |
-| `eyeon-case-study-infographic-1x.jpg` | 1200 × 8027 | Web léger |
-| `eyeon-case-study-infographic.pdf` | 1 page continue, 12,5 × 83,6 in | Envoi, impression |
+| `eyeon-case-study-infographic.html` | — | **Fichier HTML final**, autonome |
+| `eyeon-case-study-infographic@2x.png` | 2400 × 20948 | Qualité maximale |
+| `eyeon-case-study-infographic.jpg` | 2400 × 20948 | Behance, Dribbble, LinkedIn |
+| `eyeon-case-study-infographic-1x.jpg` | 1200 × 10474 | Web léger |
+| `eyeon-case-study-infographic.pdf` | 1 page continue, 12,5 × 87 in | Envoi, impression |
+
+`export/eyeon-case-study-infographic.html` est le **fichier HTML final** : un seul
+fichier, images et police embarquées, aucune dépendance réseau. Il s'ouvre par
+double-clic dans n'importe quel navigateur, y compris hors ligne.
 
 Pour régénérer après modification de `infographic.html` :
 
 ```bash
-python3 tools/inline-assets.py infographic.html infographic.standalone.html
-node tools/export-poster.js   # PNG 2x + PDF
+python3 tools/inline-assets.py infographic.html /tmp/step1.html
+python3 tools/inline-fonts.py  /tmp/step1.html  infographic.standalone.html
+cp infographic.standalone.html export/eyeon-case-study-infographic.html
+NODE_PATH=$(npm root -g) node tools/export-poster.js   # PNG 2x + PDF
 ```
+
+L'ordre compte : `inline-fonts.py` embarque la police Poppins en base64. Sans
+cette étape, le poster s'affiche en Arial partout où Google Fonts est
+inaccessible — et les exports PNG/PDF sont générés depuis ce fichier, donc ils
+hériteraient de la mauvaise police.
