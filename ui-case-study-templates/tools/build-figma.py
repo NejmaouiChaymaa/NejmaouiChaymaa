@@ -10,7 +10,10 @@ anything Figma itself cannot express has to go before the import:
   * ::before / ::after decorations                  -> real elements, so they
                                                        arrive as their own layers
 
-    python3 tools/build-figma.py infographic.html figma/eyeon-poster-figma.html
+    python3 tools/build-figma.py infographic.html figma/eyeon-poster-figma.html [overrides.css]
+
+The optional third argument is a CSS file appended to the page: each poster
+needs its own hero geometry once the perspective is flattened.
 """
 import re
 import sys
@@ -29,8 +32,9 @@ FIGMA_OVERRIDES = """
 """
 
 
-def main(src, dst):
+def main(src, dst, overrides=None):
     s = open(src, encoding="utf-8").read()
+    css = open(overrides, encoding="utf-8").read() if overrides else FIGMA_OVERRIDES
 
     # images: point at the PNG pack, keep the Google Fonts link so the plugin
     # maps the family to Figma's own Poppins instead of an embedded blob
@@ -69,7 +73,7 @@ def main(src, dst):
 
     # flattening the perspective removes the foreshortening, so the hero
     # devices need their own geometry in this build
-    s = s.replace("</style>", FIGMA_OVERRIDES + "\n</style>", 1)
+    s = s.replace("</style>", css + "\n</style>", 1)
 
     # the page-fit scaler is meaningless in an import: keep the poster at 1200
     s = s.replace("<script>", "<script>/* scaler kept: harmless in Figma import */\n", 1)
@@ -79,4 +83,4 @@ def main(src, dst):
 
 
 if __name__ == "__main__":
-    main(*(sys.argv[1:3] or ["infographic.html", "figma/eyeon-poster-figma.html"]))
+    main(*(sys.argv[1:4] or ["infographic.html", "figma/eyeon-poster-figma.html"]))

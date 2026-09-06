@@ -1,0 +1,653 @@
+<meta charset="utf-8">
+<title>Mon Artisan Case Study Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Archivo+Black&display=swap">
+<style>
+:root{
+  --red:#A82024; --red-deep:#7E1219; --red-soft:#F3DDDE;
+  --navy:#384152; --navy-deep:#252C39; --navy-soft:#DDE1E8;
+  --cream:#EDE9E2; --paper:#F7F5F2; --white:#FFFFFF;
+  --ink:#1E232B; --ink-2:#4A515C; --grey:#8A8F98;
+  --line:#DFDAD4;
+  --radius:14px;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{background:#E4E0DA}
+body{font-family:Archivo,"Helvetica Neue",Arial,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased}
+img{display:block; max-width:100%}
+#scaler{transform-origin:top left}
+.poster{width:1200px; background:var(--paper); overflow:hidden; position:relative}
+
+/* ---------- shared ---------- */
+.sec{padding:76px 80px; position:relative}
+.sec.tight{padding-top:54px}
+.display{font-family:"Archivo Black",Archivo,sans-serif; font-weight:400; letter-spacing:-.01em}
+.eyebrow{font-size:11.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:14px}
+.sec.dark .eyebrow, .sec.cream .eyebrow{color:var(--red)}
+.sec.dark .eyebrow{color:#E7A9A4}
+h2{font-family:"Archivo Black",Archivo,sans-serif; font-weight:400; font-size:44px; line-height:1.04; letter-spacing:-.02em; text-transform:uppercase}
+h3{font-size:21px; font-weight:700; letter-spacing:-.01em}
+h4{font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--grey)}
+p{font-size:15px; line-height:1.65; color:var(--ink-2); font-weight:400}
+.lead{font-size:17px; line-height:1.6; max-width:62ch}
+.rule{height:4px; width:56px; background:var(--red); margin:18px 0 26px}
+.sec.dark{background:var(--navy); color:var(--white)}
+.sec.dark h2,.sec.dark h3{color:var(--white)}
+.sec.dark p{color:#C3CAD5}
+.sec.dark .rule{background:#E7A9A4}
+.sec.cream{background:var(--cream)}
+.sec.red{background:var(--red); color:#fff}
+.sec.red h2,.sec.red h3{color:#fff}
+.sec.red p{color:#F6DCDD}
+.sec.red .rule{background:#fff}
+.row{display:flex; gap:26px}
+.mt36{margin-top:36px} .mt28{margin-top:28px} .mt20{margin-top:20px}
+.grid{display:grid; gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+.card h3{margin-bottom:8px}
+.card p{font-size:14.5px}
+
+/* ---------- hero ---------- */
+.hero{background:var(--paper); padding:44px 80px 0; position:relative; overflow:hidden}
+.hero .wash{position:absolute; right:-160px; top:-220px; width:900px; height:900px; border-radius:50%;
+  background:radial-gradient(circle at 40% 45%, #F7E4E2, #FBF1EF 55%, rgba(251,241,239,0) 72%)}
+.hero .band{position:absolute; left:0; right:0; top:0; height:6px; background:var(--red)}
+.hero-inner{position:relative; display:flex; gap:16px; align-items:flex-start; z-index:2}
+.hero-left{width:508px; flex:none; padding-top:14px}
+.hero .logo{width:196px; margin-bottom:26px}
+.hero h1{font-family:"Archivo Black",Archivo,sans-serif; font-weight:400; font-size:56px; line-height:1.02;
+  letter-spacing:-.025em; text-transform:uppercase}
+.hero h1 span{color:var(--red)}
+.badge{display:inline-block; background:var(--white); border:1px solid var(--line); border-radius:999px;
+  padding:8px 16px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--grey)}
+.hero .sub{font-size:17px; line-height:1.6; margin-top:20px; max-width:46ch; color:var(--ink-2)}
+.features{margin-top:26px; display:grid; gap:10px}
+.features div{display:flex; align-items:center; gap:12px; font-size:15px; font-weight:500}
+.features i{width:8px; height:8px; border-radius:2px; background:var(--red); flex:none; transform:rotate(45deg)}
+
+.stage{position:relative; flex:1; height:648px; }
+.plate{position:absolute; }
+.plate img{width:100%; display:block}
+.pl-web{width:436px; top:34px; right:48px; transform:rotate(3deg);
+  filter:drop-shadow(-32px 38px 42px rgba(40,20,20,.34))}
+.laptop .lid{background:#20242B; border-radius:16px 16px 6px 6px; padding:13px 13px 16px; position:relative}
+.laptop .cam{position:absolute; top:6px; left:50%; transform:translateX(-50%);
+  width:5px; height:5px; border-radius:50%; background:#464D57}
+.laptop .screen{border-radius:6px; overflow:hidden; background:#fff; height:271px; position:relative}
+.laptop .bar{height:22px; background:#F2EFEC; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:5px; padding:0 9px}
+.laptop .bar i{width:6px; height:6px; border-radius:50%; background:#D6D0CA; display:block}
+.laptop .bar i:first-child{background:#A82024}
+.laptop .bar i:nth-child(2){background:#E4B33F}
+.laptop .bar i:nth-child(3){background:#5C9E77}
+.laptop .bar u{flex:1; margin-left:8px; height:11px; border-radius:6px; background:#E5E0DA; text-decoration:none;
+  font-size:7px; font-weight:600; color:#8A8F98; display:flex; align-items:center; padding-left:8px}
+.laptop .screen img{width:100%; height:calc(100% - 22px); object-fit:cover; object-position:top}
+.laptop .base{height:13px; margin:0 -26px; border-radius:0 0 12px 12px;
+  background:linear-gradient(#C8C2BB,#9A948D 55%,#77726C); position:relative}
+.laptop .hinge{position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:74px; height:5px; border-radius:0 0 6px 6px; background:#77726C}
+.winframe{background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  box-shadow:-22px 26px 42px -22px rgba(40,20,20,.45)}
+.winframe .wb{height:18px; background:#F2EFEC; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:4px; padding:0 8px}
+.winframe .wb i{width:5px; height:5px; border-radius:50%; background:#D6D0CA}
+.pl-w1{width:238px; top:262px; right:306px; transform:rotate(-4deg)}
+.pl-w2{width:224px; top:344px; right:52px; transform:rotate(3deg)}
+.chip{position:absolute; z-index:6; background:#fff; border-radius:12px; padding:10px 14px;
+  box-shadow:0 18px 32px -16px rgba(40,20,20,.42); display:flex; align-items:center; gap:10px}
+.chip .ic{width:30px; height:30px; border-radius:8px; display:grid; place-items:center; flex:none; font-size:13px; font-weight:700}
+.chip b{font-size:13px; font-weight:700; display:block; line-height:1.2; white-space:nowrap}
+.chip small{font-size:11px; color:var(--grey); font-weight:500; white-space:nowrap}
+.chip-note{top:196px; right:112px}
+.chip-note .ic{background:#FBEFD2; color:#B3860E}
+.chip-dist{top:492px; right:290px}
+.chip-dist .ic{background:var(--red-soft); color:var(--red)}
+.chip-book{top:66px; right:436px; background:var(--red)}
+.chip-book b{color:#fff}
+.chip-book .ic{background:rgba(255,255,255,.22); color:#fff}
+.hero-strip{position:relative; z-index:5; background:var(--paper); margin-top:24px; display:flex; gap:40px;
+  border-top:1px solid var(--line); padding:22px 0 30px}
+.hero-strip span{display:block}
+.hero-strip .n{font-family:"Archivo Black",Archivo,sans-serif; font-size:30px; color:var(--red); letter-spacing:-.02em}
+.hero-strip .l{font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--grey); margin-top:3px}
+
+/* ---------- numbered cards ---------- */
+.trio .num{font-family:"Archivo Black",Archivo,sans-serif; font-size:13px; color:var(--red); letter-spacing:.08em}
+.role{background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:22px}
+.role .k{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:8px;
+  background:#E7A9A4; color:var(--navy-deep); font-weight:700; font-size:14px; margin-bottom:14px}
+.role h3{font-size:18px; margin-bottom:7px}
+.role p{font-size:14px}
+
+/* ---------- planning ---------- */
+.gantt{margin-top:34px}
+.weeks{display:grid; grid-template-columns:repeat(7,1fr); border-top:1px solid var(--line)}
+.weeks span{font-size:11px; font-weight:600; color:var(--grey); text-align:center; padding:10px 0; border-right:1px dashed #DED8D1}
+.weeks span:first-child{border-left:1px dashed #DED8D1}
+.weeks b{display:block; font-size:9.5px; font-weight:500; color:#A9A49D; margin-top:2px}
+.bars{display:grid; gap:11px; padding:18px 0 4px}
+.bar{height:42px; border-radius:8px; display:flex; align-items:center; padding:0 16px; color:#fff; font-size:14px; font-weight:600}
+.tasks{display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-top:22px; border-top:1px solid var(--line); padding-top:18px}
+.tasks ul{list-style:none; display:grid; gap:7px}
+.tasks li{font-size:11.5px; color:var(--ink-2); display:flex; gap:6px; line-height:1.4}
+.tasks li::before{content:""; width:5px; height:5px; border-radius:1px; background:var(--red); flex:none; margin-top:5px; transform:rotate(45deg)}
+.tasks h4{margin-bottom:10px; font-size:11px; color:var(--ink)}
+
+/* ---------- benchmark ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:#fff; margin-top:28px}
+table{border-collapse:collapse; width:100%; font-size:13.5px}
+th,td{text-align:left; padding:14px 16px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.5}
+th{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--grey); font-weight:700; background:var(--cream)}
+tr:last-child td{border-bottom:0}
+td.plat{font-weight:700; color:var(--ink); white-space:nowrap}
+td.opp{color:var(--red); font-weight:500}
+
+/* ---------- personas ---------- */
+.persona{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden}
+.persona .top{background:var(--navy); color:#fff; padding:20px 22px; display:flex; align-items:center; gap:14px}
+.persona .top .who{font-family:"Archivo Black",Archivo,sans-serif; font-size:19px; letter-spacing:-.01em}
+.persona .top .rl{font-size:12.5px; color:#B9C1CD; margin-top:2px}
+.persona .top .av{width:52px; height:52px; border-radius:50%; background:#E7A9A4; flex:none; overflow:hidden}
+.persona .top .av img{width:100%; height:100%; object-fit:cover}
+.persona .body{padding:20px 22px; display:grid; gap:16px}
+.persona h4{margin-bottom:8px}
+.persona ul{list-style:none; display:grid; gap:6px}
+.persona li{font-size:13.5px; color:var(--ink-2); line-height:1.5; display:flex; gap:8px}
+.persona li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--red); flex:none; margin-top:7px}
+.quote{background:var(--cream); border-radius:10px; padding:14px 16px; font-size:14.5px; font-style:italic; color:var(--ink)}
+
+/* ---------- problem / solution ---------- */
+.ps{display:grid; grid-template-columns:repeat(2,1fr); gap:56px; margin-top:32px}
+.ps ul{list-style:none; display:grid; gap:12px}
+.ps li{display:flex; gap:12px; font-size:14.5px; line-height:1.5}
+.ps li i{width:8px; height:8px; flex:none; margin-top:6px; transform:rotate(45deg)}
+.ps .p li i{background:#E7A9A4}
+.ps .s li i{background:#fff}
+.ps h2 u{text-decoration:none; border-bottom:5px solid #fff; padding-bottom:3px}
+
+/* ---------- identity ---------- */
+.panel{background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px}
+.lockup{border-radius:12px; height:128px; display:flex; align-items:center; justify-content:center; padding:20px; margin-top:12px}
+.lockup img{max-height:76px; width:auto}
+.lockup.cream{background:var(--cream)}
+.lockup.navy{background:var(--navy)}
+.lockup.red{background:var(--red)}
+.swatch{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px}
+.sws{flex:1 1 110px; border:1px solid var(--line); border-radius:10px; overflow:hidden}
+.sws .chip2{height:70px}
+.sws b{display:block; font-size:11.5px; font-weight:700; padding:9px 10px 2px}
+.sws small{display:block; font-size:10.5px; color:var(--grey); padding:0 10px 10px}
+.typespec .aa{font-family:"Archivo Black",Archivo,sans-serif; font-size:70px; line-height:1; letter-spacing:-.03em; text-transform:uppercase}
+.typespec .alpha{font-size:15px; font-weight:600; line-height:1.55; margin-top:8px; color:#2E343D}
+.typespec .meta{font-size:12px; color:var(--grey); margin-top:12px}
+.scaleitem{display:flex; align-items:baseline; gap:18px; padding:11px 0; border-bottom:1px solid var(--line)}
+.scaleitem .lbl{font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--grey); width:110px; flex:none}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.chips span{font-size:12px; font-weight:500; color:#2E343D; background:var(--cream); border-radius:999px; padding:7px 13px}
+
+/* ---------- screens ---------- */
+.shots{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin-top:32px}
+.shot{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:14px; overflow:hidden}
+.shot .imgbox{height:300px; overflow:hidden; background:#fff; display:flex; align-items:flex-start; justify-content:center}
+.shot .imgbox img{width:100%; height:100%; object-fit:cover; object-position:top}
+.shot .cap{padding:15px 17px 17px; display:grid; gap:7px}
+.shot .cap b{font-size:15px; font-weight:700; color:#fff}
+.shot .cap span{font-size:13px; color:#C3CAD5; line-height:1.5}
+.shot .cap .why{font-size:12px; color:#F0D2D0; background:rgba(232,169,164,.14); border-radius:8px; padding:8px 10px; line-height:1.5}
+
+/* ---------- flow band ---------- */
+.flow{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:32px}
+.step{display:grid; gap:12px}
+.step .n{font-family:"Archivo Black",Archivo,sans-serif; font-size:12px; color:var(--red); letter-spacing:.1em}
+.step .win{border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; height:172px}
+.step .win img{width:100%; height:100%; object-fit:cover; object-position:top}
+.step b{font-size:14.5px; font-weight:700}
+.step p{font-size:12.5px; line-height:1.5}
+.zoomrow{display:flex; align-items:center; gap:18px; margin-top:30px; padding-top:24px; border-top:1px solid var(--line)}
+.zoomwin{width:230px; height:130px; border-radius:12px; overflow:hidden; flex:none; position:relative;
+  border:3px solid var(--red); box-shadow:0 16px 28px -14px rgba(40,20,20,.5); background:#fff}
+.zoomwin img{position:absolute; max-width:none; width:470px}
+.zoomwin::after{content:"1,5×"; position:absolute; right:7px; bottom:6px; font-size:9.5px; font-weight:700;
+  letter-spacing:.08em; color:#fff; background:var(--red); padding:2px 6px; border-radius:5px}
+.zoomrow>span{font-size:13.5px; color:var(--ink-2); line-height:1.55}
+
+/* ---------- artefacts ---------- */
+.arte{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:30px}
+.arte figure{margin:0; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+.arte .box{height:196px; overflow:hidden; background:var(--cream); display:flex; align-items:center; justify-content:center}
+.arte .box img{width:100%; height:100%; object-fit:cover; object-position:top}
+.arte figcaption{padding:12px 14px 14px; font-size:12.5px; color:var(--ink-2); line-height:1.45}
+.arte figcaption b{display:block; font-size:13.5px; color:var(--ink); font-weight:700; margin-bottom:3px}
+
+/* ---------- decisions & metrics ---------- */
+.dec{margin-top:28px; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.dec .hd,.dec .rw{display:grid; grid-template-columns:32px 1fr 1fr; gap:20px; padding:15px 22px}
+.dec .hd{background:var(--cream); font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--grey)}
+.dec .rw{border-top:1px solid var(--line); font-size:13.5px; line-height:1.5; color:var(--ink-2)}
+.dec .rw b{font-weight:700; color:var(--ink)}
+.dec .rw .n{color:var(--red); font-weight:700; font-size:12.5px}
+.metric{background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px}
+.metric .q{font-size:14.5px; font-weight:700; line-height:1.35; margin-bottom:8px}
+.metric p{font-size:12.5px}
+.metric .tag{margin-top:12px; display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--red); background:var(--red-soft); padding:5px 10px; border-radius:5px}
+
+/* ---------- footer ---------- */
+.foot{background:var(--navy-deep); color:#fff; padding:42px 80px}
+.foot .row{align-items:center; justify-content:space-between}
+.foot img{width:170px; background:#fff; border-radius:10px; padding:8px}
+.foot p{color:#98A0AD; font-size:12.5px; line-height:1.7}
+.foot .cr{text-align:right}
+.foot .cr b{color:#fff; font-weight:700}
+@media print{ body{background:#fff} }
+
+/* ---- Figma build only: flat 2D hero geometry ---- */
+.stage{height:640px}
+.pl-web{width:392px; top:44px; right:34px}
+.laptop .screen{height:229px}
+.pl-w1{width:214px; top:268px; right:280px}
+.pl-w2{width:202px; top:340px; right:44px}
+.chip-book{top:72px; right:404px}
+.chip-note{top:196px; right:104px}
+.chip-dist{top:474px; right:268px}
+
+</style>
+
+<div id="scaler"><div class="poster">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="band"></div>
+  <div class="wash"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <img class="logo" src="assets/logo.png" alt="Logotype Mon Artisan">
+      <h1>Un artisan<br>fiable, en<br><span>quelques clics.</span></h1>
+      <div style="margin-top:18px"><span class="badge">Étude de cas · UX / UI Design</span></div>
+      <p class="sub">Une plateforme qui connecte les particuliers à des artisans qualifiés — plombiers, électriciens, nettoyeurs, menuisiers — pour des interventions rapides et de confiance.</p>
+      <div class="features">
+        <div><i></i>Recherche par métier et par localisation</div>
+        <div><i></i>Profils vérifiés, avis et notes</div>
+        <div><i></i>Réservation d'un créneau en ligne</div>
+        <div><i></i>Contact direct : chat ou appel</div>
+        <div><i></i>Espace artisan : publier ses services</div>
+        <div><i></i>Notifications de nouvelles demandes</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="plate pl-web laptop">
+        <div class="lid"><span class="cam"></span>
+          <div class="screen">
+            <div class="bar"><i></i><i></i><i></i><u>monartisan.ma</u></div>
+            <img src="assets/web-hero.png" alt="Page d'accueil Mon Artisan">
+          </div>
+        </div>
+        <div class="base"><span class="hinge"></span></div>
+      </div>
+      <div class="plate pl-w1 winframe">
+        <div class="wb"><i></i><i></i><i></i></div>
+        <img src="assets/web-recherche.png" alt="Recherche d'artisans disponibles">
+      </div>
+      <div class="plate pl-w2 winframe">
+        <div class="wb"><i></i><i></i><i></i></div>
+        <img src="assets/web-profil.png" alt="Profil d'un artisan">
+      </div>
+      <div class="chip chip-book"><span class="ic">→</span><span><b>Réserver un service</b></span></div>
+      <div class="chip chip-note"><span class="ic">★</span><span><b>4,9 / 5</b><small>Ahmed Benjelloun · Plombier</small></span></div>
+      <div class="chip chip-dist"><span class="ic">◎</span><span><b>1,2 km · 127 avis</b><small>Artisan le plus proche</small></span></div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div><span class="n">7</span><span class="l">Semaines de projet</span></div>
+    <div><span class="n">2</span><span class="l">Personas · client &amp; artisan</span></div>
+    <div><span class="n">4</span><span class="l">Concurrents analysés</span></div>
+    <div><span class="n">7</span><span class="l">Écrans conçus</span></div>
+    <div><span class="n">1</span><span class="l">Prototype cliquable</span></div>
+  </div>
+</header>
+
+<!-- ============ BRIEF ============ -->
+<section class="sec">
+  <div class="eyebrow">01 — Le brief</div>
+  <h2>Le point de départ</h2>
+  <div class="rule"></div>
+  <p class="lead">Trouver un artisan disponible et fiable passe encore par Google, les Pages Jaunes ou le bouche-à-oreille. Le brief : concevoir une plateforme qui rende cette recherche rapide, lisible et rassurante — pour le client comme pour l'artisan.</p>
+  <div class="grid g3 trio mt36">
+    <div class="card"><div class="num">01</div><h3>Contexte</h3><p>Public visé : particuliers de 25 à 60 ans, en milieu urbain, avec un besoin ponctuel de dépannage ou de petits travaux. Aujourd'hui ils cherchent sur Google, par bouche-à-oreille, ou sur des plateformes généralistes.</p></div>
+    <div class="card"><div class="num">02</div><h3>Objectif</h3><p>Une plateforme fiable et intuitive pour trouver, contacter et réserver un artisan facilement — et, côté artisan, gagner en visibilité sans dépendre du bouche-à-oreille.</p></div>
+    <div class="card"><div class="num">03</div><h3>Ce que couvre l'étude</h3><p>Benchmark, questionnaire, personas et empathy maps, parcours utilisateur, architecture, user flow, sketchs, wireframes, maquettes haute fidélité et prototype.</p></div>
+  </div>
+</section>
+
+<!-- ============ ROLE ============ -->
+<section class="sec dark">
+  <div class="eyebrow">02 — Rôle</div>
+  <h2>Mes responsabilités</h2>
+  <div class="rule"></div>
+  <p class="lead">Projet mené de bout en bout, du brief au prototype cliquable.</p>
+  <div class="grid g2 mt36">
+    <div class="role"><div class="k">01</div><h3>Recherche &amp; benchmark</h3><p>Analyse de quatre plateformes concurrentes, questionnaire utilisateur, synthèse des habitudes et des attentes.</p></div>
+    <div class="role"><div class="k">02</div><h3>Conception UX</h3><p>Deux personas et leurs empathy maps, storyboard, moodboard, parcours utilisateur pour chaque profil.</p></div>
+    <div class="role"><div class="k">03</div><h3>Architecture &amp; navigation</h3><p>Structure initiale puis finale (sitemap), user flow par fonctionnalité, sketchs papier puis wireframes sur Figma.</p></div>
+    <div class="role"><div class="k">04</div><h3>UI &amp; prototype</h3><p>Design system — typographies, couleurs, icônes —, maquettes haute fidélité et prototype cliquable.</p></div>
+  </div>
+</section>
+
+<!-- ============ PLANNING ============ -->
+<section class="sec">
+  <div class="eyebrow">03 — Planning</div>
+  <h2>Sept semaines, sept livrables</h2>
+  <div class="rule"></div>
+  <p class="lead">Du 15 septembre au 2 novembre. Chaque semaine se termine par un livrable qui conditionne la suivante.</p>
+  <div class="gantt">
+    <div class="weeks">
+      <span>S1<b>15–21 sept</b></span><span>S2<b>22–28 sept</b></span><span>S3<b>29 sept–5 oct</b></span>
+      <span>S4<b>6–12 oct</b></span><span>S5<b>13–19 oct</b></span><span>S6<b>20–26 oct</b></span><span>S7<b>28 oct–2 nov</b></span>
+    </div>
+    <div class="bars">
+      <div class="bar" style="background:#7E1219; width:15%; margin-left:0%">Découverte &amp; objectifs</div>
+      <div class="bar" style="background:#A82024; width:15%; margin-left:14.3%">Idéation &amp; recherche</div>
+      <div class="bar" style="background:#BC4A4C; width:15%; margin-left:28.6%">Conception UX</div>
+      <div class="bar" style="background:#384152; width:15%; margin-left:42.9%">Architecture &amp; navigation</div>
+      <div class="bar" style="background:#4E5768; width:15%; margin-left:57.2%">Sketchs &amp; wireframes</div>
+      <div class="bar" style="background:#6B7486; width:15%; margin-left:71.5%">Design system</div>
+      <div class="bar" style="background:#8A93A4; width:14%; margin-left:85.8%; color:#1E232B">Maquettes &amp; prototype</div>
+    </div>
+    <div class="tasks">
+      <div><h4>S1</h4><ul><li>Lecture du brief</li><li>Utilisateurs et besoins</li><li>Fonctionnalités clés</li><li>Périmètre technique</li><li>Benchmark</li></ul></div>
+      <div><h4>S2</h4><ul><li>Forces / faiblesses</li><li>Questionnaire</li><li>Analyse des retours</li><li>Personas</li><li>Empathy maps</li></ul></div>
+      <div><h4>S3</h4><ul><li>Storyboard</li><li>Moodboard</li><li>Parcours utilisateur</li><li>Sitemap</li><li>User flow</li></ul></div>
+      <div><h4>S4</h4><ul><li>Sketchs des écrans</li><li>Ajustements</li><li>Préparation wireframes</li><li>Wireframes Figma</li></ul></div>
+      <div><h4>S5</h4><ul><li>Cohérence &amp; navigation</li><li>Feedback</li><li>Maquettes haute fidélité</li></ul></div>
+      <div><h4>S6</h4><ul><li>Dossier UX/UI</li><li>Design system</li><li>Typos, couleurs, icônes</li></ul></div>
+      <div><h4>S7</h4><ul><li>Prototypage</li><li>Tests utilisateurs</li><li>Clôture du projet</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENCHMARK ============ -->
+<section class="sec cream">
+  <div class="eyebrow">04 — Recherche</div>
+  <h2>Ce que font déjà les autres</h2>
+  <div class="rule"></div>
+  <p class="lead">Quatre plateformes analysées, au Maroc et à l'international. Chaque faiblesse observée est devenue une opportunité de positionnement.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Plateforme</th><th>Points forts</th><th>Points faibles</th><th>Opportunité pour Mon Artisan</th></tr></thead>
+      <tbody>
+        <tr><td class="plat">HomeServe</td><td>Interface moderne et intuitive, intervention sous 2 h, couverture nationale</td><td>Service très orienté dépannage, peu de personnalisation visuelle</td><td class="opp">Créer une ambiance plus chaleureuse et incarnée</td></tr>
+        <tr><td class="plat">MesTravaux</td><td>Large choix de métiers, mise en relation directe</td><td>Peu d'identité visuelle, pas d'application mobile dédiée</td><td class="opp">Prévoir une app mobile à navigation fluide</td></tr>
+        <tr><td class="plat">Cherche-Chantier</td><td>Réception de devis sans publier d'annonce, artisans qualifiés</td><td>Axé sur les gros travaux, peu adapté aux petits besoins quotidiens</td><td class="opp">Se positionner sur les petits services du quotidien</td></tr>
+        <tr><td class="plat">Khedamni <span style="color:var(--grey); font-weight:400">(Maroc)</span></td><td>Interface en arabe, catégories claires, présence locale</td><td>Design classique, peu d'éléments visuels attractifs</td><td class="opp">Icônes lisibles, couleurs franches, navigation simplifiée</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid g3 mt28">
+    <div class="card"><h4>Questionnaire</h4><p>Habitudes de recherche, attentes et outils utilisés aujourd'hui — pour valider le besoin avant de dessiner.</p></div>
+    <div class="card"><h4>Profil utilisateur</h4><p>Particuliers de 25 à 60 ans, urbains, avec un besoin rapide d'artisan pour un dépannage ou de petits travaux.</p></div>
+    <div class="card"><h4>Comportement actuel</h4><p>Recherche via Google ou bouche-à-oreille, plateformes généralistes type AlloVoisin ou Frizbiz, Pages Jaunes.</p></div>
+  </div>
+</section>
+
+<!-- ============ PERSONAS ============ -->
+<section class="sec tight">
+  <div class="eyebrow">05 — Utilisateurs</div>
+  <h2>Deux faces du même produit</h2>
+  <div class="rule"></div>
+  <p class="lead">Mon Artisan sert deux publics dont les besoins s'opposent : celui qui cherche, et celui qui veut être trouvé.</p>
+  <div class="grid g2 mt36">
+    <div class="persona">
+      <div class="top">
+        <div class="av"><img src="assets/avatar-sara.png" alt="Portrait de Sara El Idrissi"></div>
+        <div><div class="who">Sara El Idrissi</div><div class="rl">29 ans · Architecte d'intérieur · Côté client</div></div>
+      </div>
+      <div class="body">
+        <div><h4>Objectifs</h4><ul>
+          <li>Trouver rapidement un artisan compétent (peinture, électricité, bois)</li>
+          <li>Gagner du temps sans passer des heures à comparer</li>
+          <li>Voir les avis et les notes avant de contacter</li>
+        </ul></div>
+        <div><h4>Problèmes</h4><ul>
+          <li>Mauvaises expériences passées avec des artisans non professionnels</li>
+          <li>Difficulté à trouver quelqu'un de disponible rapidement</li>
+          <li>Manque de transparence sur les prix et la qualité du travail</li>
+        </ul></div>
+        <div class="quote">« J'ai besoin d'un artisan sérieux et disponible, pas de pertes de temps. »</div>
+      </div>
+    </div>
+    <div class="persona">
+      <div class="top">
+        <div class="av"><img src="assets/avatar-ahmed.png" alt="Portrait d'Ahmed Bennani"></div>
+        <div><div class="who">Ahmed Bennani</div><div class="rl">38 ans · Plombier indépendant · Côté artisan</div></div>
+      </div>
+      <div class="body">
+        <div><h4>Objectifs</h4><ul>
+          <li>Trouver plus de clients sans dépendre du bouche-à-oreille</li>
+          <li>Gérer ses rendez-vous et éviter les appels inutiles</li>
+          <li>Mettre en avant ses compétences et ses avis positifs</li>
+        </ul></div>
+        <div><h4>Problèmes</h4><ul>
+          <li>Manque de visibilité en ligne</li>
+          <li>Difficulté à se démarquer des autres artisans</li>
+          <li>Perte de temps à chercher des clients manuellement</li>
+        </ul></div>
+        <div class="quote">« J'ai le savoir-faire, mais j'ai besoin d'un outil pour me faire connaître. »</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section class="sec red">
+  <div class="eyebrow" style="color:#F6DCDD">06 — Cadrage</div>
+  <div class="ps">
+    <div class="p">
+      <h2><u>Problème</u></h2>
+      <p class="lead" style="margin-top:18px">Ce qui bloque aujourd'hui, des deux côtés.</p>
+      <ul class="mt28">
+        <li><i></i>Aucune garantie sur le sérieux de l'artisan qu'on appelle</li>
+        <li><i></i>Disponibilité inconnue avant d'avoir téléphoné</li>
+        <li><i></i>Ni prix ni qualité visibles à l'avance</li>
+        <li><i></i>Les plateformes existantes visent les gros chantiers</li>
+        <li><i></i>Côté artisan : aucune visibilité en ligne</li>
+        <li><i></i>Côté artisan : du temps perdu à chercher des clients</li>
+      </ul>
+    </div>
+    <div class="s">
+      <h2><u>Solution</u></h2>
+      <p class="lead" style="margin-top:18px">Ce que la plateforme met en face.</p>
+      <ul class="mt28">
+        <li><i></i>Profils vérifiés, avec note moyenne et avis récents</li>
+        <li><i></i>Recherche filtrée par métier, distance et disponibilité</li>
+        <li><i></i>Spécialités et nombre d'interventions affichés sur le profil</li>
+        <li><i></i>Réservation d'un créneau directement dans l'app</li>
+        <li><i></i>Espace artisan pour publier profil et services</li>
+        <li><i></i>Notification à chaque nouvelle demande reçue</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UX ARTEFACTS ============ -->
+<section class="sec">
+  <div class="eyebrow">07 — Conception</div>
+  <h2>Du parcours à la structure</h2>
+  <div class="rule"></div>
+  <p class="lead">Chaque écran découle d'un artefact : ce qui a été compris, puis organisé, avant d'être dessiné.</p>
+  <div class="arte">
+    <figure><div class="box"><img src="assets/empathie-sara.png" alt="Empathy map de Sara"></div>
+      <figcaption><b>Empathy maps</b>Ce que chaque persona pense, ressent, entend et dit — avant de parler de fonctionnalités.</figcaption></figure>
+    <figure><div class="box"><img src="assets/parcours-sara.png" alt="Parcours utilisateur"></div>
+      <figcaption><b>Parcours utilisateur</b>Étapes, objectifs, besoins et émotions, du déclenchement à la fidélisation.</figcaption></figure>
+    <figure><div class="box"><img src="assets/mindmap.png" alt="Mind mapping"></div>
+      <figcaption><b>Mind mapping</b>Mission, services, valeur et supports regroupés autour d'une seule promesse.</figcaption></figure>
+    <figure><div class="box"><img src="assets/structure.png" alt="Structure finale"></div>
+      <figcaption><b>Structure finale</b>Le sitemap retenu après la première structure, plus court d'un niveau.</figcaption></figure>
+    <figure><div class="box"><img src="assets/userflow.png" alt="User flow"></div>
+      <figcaption><b>User flow</b>Un flux par fonctionnalité : recherche, profil, contact, réservation.</figcaption></figure>
+    <figure><div class="box"><img src="assets/sketch.png" alt="Sketchs papier"></div>
+      <figcaption><b>Sketchs &amp; wireframes</b>Sketchs papier des écrans principaux, puis wireframes basse fidélité sur Figma.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ IDENTITY ============ -->
+<section class="sec cream">
+  <div class="eyebrow">08 — Système visuel</div>
+  <h2>Identité</h2>
+  <div class="rule"></div>
+  <div class="grid g2 mt36" style="align-items:start">
+    <div class="panel">
+      <h4>Logotype &amp; fonds admis</h4>
+      <div class="lockup cream"><img src="assets/logo.png" alt="Logotype Mon Artisan sur fond crème"></div>
+      <div class="row" style="gap:12px; margin-top:12px">
+        <div style="flex:1"><div class="lockup navy" style="height:104px; margin-top:0"><img src="assets/logo.png" alt="Logotype sur fond navy" style="max-height:60px"></div></div>
+        <div style="flex:1"><div class="lockup red" style="height:104px; margin-top:0"><img src="assets/logo.png" alt="Logotype sur fond rouge" style="max-height:60px"></div></div>
+      </div>
+      <p style="font-size:12.5px; color:var(--grey); margin-top:12px">Le logotype est fourni sur pastille claire : sur fond rouge ou navy, il conserve sa pastille plutôt que d'être détouré.</p>
+      <h4 style="margin-top:22px">Palette</h4>
+      <div class="swatch">
+        <div class="sws"><div class="chip2" style="background:#A82024"></div><b>Rouge</b><small>#A82024</small></div>
+        <div class="sws"><div class="chip2" style="background:#384152"></div><b>Navy</b><small>#384152</small></div>
+        <div class="sws"><div class="chip2" style="background:#EDE9E2"></div><b>Crème</b><small>#EDE9E2</small></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <h4>Typographie</h4>
+        <div class="typespec">
+          <div class="aa">Aa</div>
+          <div class="alpha">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>1 2 3 4 5 6 7 8 9 0 &nbsp; . ? ! / : ; ( ) @ # %</div>
+          <div class="meta">Police d'origine du projet : <b>Intro Rust</b> (display). Ce poster utilise <b>Archivo Black</b> comme équivalent libre, pour rester reproductible.</div>
+        </div>
+        <div class="mt20">
+          <div class="scaleitem"><span class="lbl">Titre 44 · Black</span><span class="display" style="font-size:22px; text-transform:uppercase">Trouvez l'artisan parfait</span></div>
+          <div class="scaleitem"><span class="lbl">Section 21 · 700</span><span style="font-size:17px; font-weight:700">Artisans disponibles</span></div>
+          <div class="scaleitem"><span class="lbl">Corps 15 · 400</span><span style="font-size:15px">Profils vérifiés, avis et réservation en ligne.</span></div>
+          <div class="scaleitem" style="border-bottom:0"><span class="lbl">Étiquette 12 · 700</span><span style="font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase">1,2 km · 127 avis</span></div>
+        </div>
+      </div>
+      <div class="panel mt20">
+        <h4>Composants récurrents</h4>
+        <div class="chips">
+          <span>Bouton plein rouge</span><span>Bouton contour navy</span><span>Carte artisan</span>
+          <span>Filtre métier</span><span>Notation étoiles</span><span>Badge spécialité</span>
+          <span>Calendrier de créneaux</span><span>Champ de recherche</span><span>État de confirmation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel mt20">
+    <h4>Moodboard</h4>
+    <img src="assets/moodboard.png" alt="Moodboard Mon Artisan" style="border-radius:10px; margin-top:12px; width:100%; height:236px; object-fit:cover; object-position:center 44%">
+  </div>
+</section>
+
+<!-- ============ SCREENS ============ -->
+<section class="sec dark">
+  <div class="eyebrow">09 — Maquettes</div>
+  <h2>Les écrans</h2>
+  <div class="rule"></div>
+  <p class="lead">Sept écrans haute fidélité, côté client et côté artisan.</p>
+  <div class="shots">
+    <div class="shot"><div class="imgbox"><img src="assets/web-hero.png" alt="Accueil"></div>
+      <div class="cap"><b>Accueil</b><span>Une promesse, deux portes d'entrée.</span>
+        <span class="why">Décision : « Je cherche un artisan » et « Je suis un artisan » côte à côte — les deux publics sont adressés dès le premier écran.</span></div></div>
+    <div class="shot"><div class="imgbox"><img src="assets/web-landing.png" alt="Page d'accueil complète"></div>
+      <div class="cap"><b>Services &amp; réassurance</b><span>Métiers populaires, profils vérifiés, avis clients.</span>
+        <span class="why">Décision : la réassurance (profils vérifiés, service assuré, support) arrive avant les avis — c'est le doute nº1 relevé en recherche.</span></div></div>
+    <div class="shot"><div class="imgbox"><img src="assets/web-recherche.png" alt="Recherche d'artisans"></div>
+      <div class="cap"><b>Recherche</b><span>Filtres par métier, artisans disponibles listés avec distance et note.</span>
+        <span class="why">Décision : distance, nombre d'avis et note sur la même ligne — les trois critères de choix, sans clic supplémentaire.</span></div></div>
+    <div class="shot"><div class="imgbox"><img src="assets/web-profil.png" alt="Profil artisan"></div>
+      <div class="cap"><b>Profil artisan</b><span>À propos, interventions, note moyenne, spécialités, avis récents.</span>
+        <span class="why">Décision : « Réserver un service » est le seul bouton plein ; les spécialités sont des badges, pas un paragraphe.</span></div></div>
+    <div class="shot"><div class="imgbox"><img src="assets/web-demande.png" alt="Demande de service"></div>
+      <div class="cap"><b>Demande de service</b><span>Choix de la date dans un calendrier, puis détail de l'intervention.</span>
+        <span class="why">Décision : la date d'abord — c'est la question qui décide de tout le reste.</span></div></div>
+    <div class="shot"><div class="imgbox"><img src="assets/web-services.png" alt="Espace artisan"></div>
+      <div class="cap"><b>Espace artisan — mes services</b><span>Créer et gérer les services proposés aux clients.</span>
+        <span class="why">Décision : côté artisan, l'écran d'accueil est un formulaire d'ajout, pas un tableau de bord — publier vite est l'objectif nº1.</span></div></div>
+  </div>
+</section>
+
+<!-- ============ RESERVATION FLOW ============ -->
+<section class="sec">
+  <div class="eyebrow">09b — Parcours clé</div>
+  <h2>Réserver, en quatre écrans</h2>
+  <div class="rule"></div>
+  <p class="lead">Du besoin exprimé à la confirmation : le parcours que le prototype devait valider.</p>
+  <div class="flow">
+    <div class="step"><span class="n">01</span><div class="win"><img src="assets/web-recherche.png" alt="Recherche"></div>
+      <b>Chercher</b><p>Filtrer par métier, comparer distance, note et nombre d'avis.</p></div>
+    <div class="step"><span class="n">02</span><div class="win"><img src="assets/web-profil.png" alt="Profil"></div>
+      <b>Vérifier</b><p>Lire les spécialités, le nombre d'interventions et les avis récents.</p></div>
+    <div class="step"><span class="n">03</span><div class="win"><img src="assets/web-demande.png" alt="Demande"></div>
+      <b>Demander</b><p>Choisir une date, décrire l'intervention en quelques étapes.</p></div>
+    <div class="step"><span class="n">04</span><div class="win"><img src="assets/web-succes.png" alt="Confirmation"></div>
+      <b>Confirmer</b><p>Confirmation immédiate, et l'artisan reçoit la demande.</p></div>
+  </div>
+  <div class="zoomrow">
+    <div class="zoomwin"><img src="assets/web-recherche.png" alt="Détail : une carte artisan" style="margin-left:-22px; margin-top:-104px"><span class="mag">1,3×</span></div>
+    <span><b>Le détail qui porte la décision :</b> sur chaque carte artisan, le métier, la distance, le nombre d'avis et la note tiennent sur une seule ligne — c'est ce bloc qui permet de choisir sans ouvrir cinq profils. « Voir profil » et l'appel direct restent en secondaire.</span>
+  </div>
+</section>
+
+<!-- ============ DECISIONS ============ -->
+<section class="sec cream">
+  <div class="eyebrow">10 — Décisions</div>
+  <h2>Besoin → réponse de design</h2>
+  <div class="rule"></div>
+  <div class="dec">
+    <div class="hd"><span>#</span><span>Ce que disent les utilisateurs</span><span>Ce que fait le produit</span></div>
+    <div class="rw"><span class="n">01</span><span><b>« J'ai déjà eu de mauvaises expériences. »</b></span><span>Profils vérifiés, note moyenne et avis récents affichés avant tout contact.</span></div>
+    <div class="rw"><span class="n">02</span><span><b>« Je ne sais pas qui est disponible. »</b></span><span>Liste des artisans disponibles, avec distance et créneaux réservables en ligne.</span></div>
+    <div class="rw"><span class="n">03</span><span><b>« Je n'ai pas le temps de comparer. »</b></span><span>Métier, distance, avis et note sur une seule ligne de carte.</span></div>
+    <div class="rw"><span class="n">04</span><span><b>« Je perds du temps au téléphone. »</b></span><span>Demande de service datée en ligne, confirmation immédiate, appel gardé en secondaire.</span></div>
+    <div class="rw"><span class="n">05</span><span><b>Artisan : « Je manque de visibilité. »</b></span><span>Espace dédié pour publier profil et services, et notification à chaque demande.</span></div>
+  </div>
+</section>
+
+<!-- ============ MEASURE ============ -->
+<section class="sec tight" style="padding-bottom:66px">
+  <div class="eyebrow">11 — Mesure</div>
+  <h2>Comment on saura que ça marche</h2>
+  <div class="rule"></div>
+  <p class="lead">Le produit n'a pas encore été mis en ligne : ces quatre indicateurs sont le plan de mesure prévu, pas des résultats. Les chiffres visibles dans les maquettes sont du contenu d'exemple.</p>
+  <div class="grid g4 mt28">
+    <div class="metric"><div class="q">Demandes envoyées par visite</div><p>Le parcours mène-t-il vraiment jusqu'à la réservation ?</p><span class="tag">À mesurer</span></div>
+    <div class="metric"><div class="q">Abandons sur la page de recherche</div><p>Les filtres suffisent-ils à faire un choix ?</p><span class="tag">À mesurer</span></div>
+    <div class="metric"><div class="q">Délai de réponse des artisans</div><p>La notification déclenche-t-elle une action ?</p><span class="tag">À mesurer</span></div>
+    <div class="metric"><div class="q">Profils artisans complétés</div><p>L'espace artisan est-il assez simple pour être rempli ?</p><span class="tag">À mesurer</span></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="row">
+    <div>
+      <img src="assets/logo.png" alt="Mon Artisan">
+      <p style="margin-top:12px">Étude de cas UX/UI — benchmark, personas, architecture,<br>maquettes haute fidélité et prototype cliquable.</p>
+    </div>
+    <div class="cr">
+      <p><b>Réalisé par</b><br>Asmaa Nejmaoui</p>
+      <p style="margin-top:10px"><b>Encadré par</b><br>M. Ounssy</p>
+    </div>
+  </div>
+</footer>
+
+</div></div>
+<script>/* scaler kept: harmless in Figma import */
+
+(function(){
+  var s=document.getElementById('scaler');
+  function fit(){
+    var k=Math.min(1, document.documentElement.clientWidth/1200);
+    s.style.transform='scale('+k+')';
+    document.body.style.height=(s.firstElementChild.offsetHeight*k)+'px';
+  }
+  fit(); window.addEventListener('resize',fit);
+})();
+</script>

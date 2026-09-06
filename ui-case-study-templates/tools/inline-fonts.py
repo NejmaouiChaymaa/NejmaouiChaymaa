@@ -10,8 +10,6 @@ import re
 import sys
 import urllib.request
 
-CSS_URL = ("https://fonts.googleapis.com/css2?"
-           "family=Poppins:wght@300;400;500;600;700;800&display=swap")
 UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 KEEP = ("latin",)  # subsets the poster actually uses
@@ -22,8 +20,8 @@ def fetch(url):
         urllib.request.Request(url, headers={"User-Agent": UA})).read()
 
 
-def build_css():
-    css = fetch(CSS_URL).decode("utf-8")
+def build_css(css_url):
+    css = fetch(css_url).decode("utf-8")
     blocks = re.findall(r"(/\* (\S+) \*/\s*)?(@font-face \{.*?\})", css, re.S)
     out = []
     for _, subset, block in blocks:
@@ -38,7 +36,11 @@ def build_css():
 
 def main(src, dst):
     html = open(src, encoding="utf-8").read()
-    faces = build_css()
+    # take the font request from the page itself, so this works for any poster
+    m = re.search(r'<link rel="stylesheet" href="(https://fonts\.googleapis\.com/[^"]+)"', html)
+    if not m:
+        raise SystemExit("no Google Fonts stylesheet link found in " + src)
+    faces = build_css(m.group(1).replace("&amp;", "&"))
     # drop the preconnect/stylesheet links, inject the embedded faces instead
     html = re.sub(r'<link rel="preconnect"[^>]*>\s*', "", html)
     html = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis[^>]*>',
