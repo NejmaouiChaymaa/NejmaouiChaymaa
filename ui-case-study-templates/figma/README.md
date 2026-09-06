@@ -1,0 +1,58 @@
+# Importer le poster dans Figma
+
+`eyeon-poster-figma.html` est une version du poster préparée pour l'import : elle
+donne des calques Figma modifiables, pas une image plate.
+
+## La méthode (5 minutes)
+
+1. Dans Figma, ouvrir **Ressources → Plugins** et installer **html.to.design**
+   (éditeur : ‹div›RIOTS). L'import de fichiers est inclus dans l'offre gratuite.
+2. Télécharger ce dossier **entier** (`eyeon-poster-figma.html` + `assets/`) et le
+   garder tel quel : le HTML pointe vers les images du sous-dossier.
+3. Lancer le plugin, onglet **File**, puis déposer `eyeon-poster-figma.html`.
+   Si le plugin n'accepte qu'un seul fichier, déposer un **.zip** du dossier.
+4. Choisir la largeur **1200 px** (Desktop) et lancer l'import.
+5. Le poster arrive comme une frame de 1200 × ~10 500 px, avec ses textes,
+   ses formes et ses images en calques séparés.
+
+## Ce qui change dans cette version
+
+Figma ne sait pas faire certaines choses du HTML ; elles ont été converties
+en amont pour éviter un import cassé :
+
+| HTML d'origine | Version Figma |
+|---|---|
+| Perspective 3D du hero (`rotateY` / `rotateX`) | rotation 2D simple — Figma ne gère pas la 3D |
+| Images `.webp` | `.png` — Figma n'importe pas le webp |
+| `aspect-ratio`, `filter: drop-shadow` | hauteurs fixes, `box-shadow` |
+| Décors en `::before` / `::after` (encoche, caméra, pupille) | vrais éléments, donc vrais calques |
+
+Le hero est donc légèrement différent de la version publiée : les appareils sont
+posés à plat au lieu d'être en perspective. C'est le prix d'un hero modifiable.
+
+## À vérifier juste après l'import
+
+- **Police** : installer *Poppins* (gratuite, Google Fonts) avant l'import, sinon
+  Figma substitue et les blocs de texte se décalent.
+- **Groupes d'appareils** : regrouper chaque téléphone avec son écran, et le
+  portable avec le sien, avant de les déplacer.
+- **Textes** : les paragraphes arrivent souvent en largeur fixe — passer en
+  *Auto width* / *Auto height* si vous comptez réécrire.
+- **Hero de secours** : si la composition du hero arrive abîmée, supprimez-la et
+  posez `hero-band@2x.png` à la place, puis retravaillez par-dessus.
+
+## Après l'import
+
+`TOKENS.md` liste les couleurs, la typographie et les espacements exacts.
+Les recréer en Styles (ou Variables) Figma prend 10 minutes et rend le poster
+re-stylable en un clic pour le projet suivant.
+
+## Remplacer les captures d'écran
+
+Les fichiers de `assets/` sont des exports du projet. Pour un autre projet :
+garder les mêmes noms, ou sélectionner l'image dans Figma et remplacer le
+remplissage (le cadre, l'ombre et l'encoche restent).
+
+> Les deux captures mobiles d'origine sont en basse résolution (220 × 478 et
+> 264 × 574) et ont été agrandies. Si vous avez les écrans d'origine dans Figma,
+> réutilisez-les directement — le rendu sera bien meilleur.

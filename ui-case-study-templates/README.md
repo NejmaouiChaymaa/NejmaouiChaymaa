@@ -78,3 +78,23 @@ L'ordre compte : `inline-fonts.py` embarque la police Poppins en base64. Sans
 cette étape, le poster s'affiche en Arial partout où Google Fonts est
 inaccessible — et les exports PNG/PDF sont générés depuis ce fichier, donc ils
 hériteraient de la mauvaise police.
+
+## Éditer le poster dans Figma
+
+Le dossier `figma/` contient une version préparée pour l'import Figma via le
+plugin **html.to.design** (onglet *File*, offre gratuite) :
+
+| Fichier | Rôle |
+|---|---|
+| `figma/eyeon-poster-figma.html` | poster en calques modifiables — 3D aplatie en 2D, images PNG |
+| `figma/assets/*.png` | toutes les captures et déclinaisons de logo (Figma n'importe pas le webp) |
+| `figma/hero-band@2x.png` | le hero en image, si l'import de la composition échoue |
+| `figma/TOKENS.md` | couleurs, typographie, espacements à recréer en Styles Figma |
+| `figma/README.md` | la marche à suivre, et ce qu'il faut vérifier après l'import |
+| `export/eyeon-poster-figma.zip` | le tout, prêt à déposer dans le plugin |
+
+Régénérer après modification de `infographic.html` :
+
+```bash
+python3 tools/build-figma.py infographic.html figma/eyeon-poster-figma.html
+```
