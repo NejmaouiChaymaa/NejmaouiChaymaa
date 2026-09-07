@@ -1,0 +1,7 @@
+
+/* ---- Figma build only ----
+   Ce poster n'utilise aucune transformation 3D : rien à aplatir.
+   Seuls les fonds photographiques ont besoin d'une hauteur fixe, car
+   l'import gère mal les images de fond en object-fit plein cadre. */
+.cover{height:620px}
+.cover img.bg{height:620px}

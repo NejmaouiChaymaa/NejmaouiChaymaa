@@ -1,0 +1,395 @@
+<meta charset="utf-8">
+<title>OJO Nature Case Study Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --forest:#3A5A40; --olive:#525B48; --mist:#AABEC6; --bark:#805A44;
+  --forest-deep:#263B2A; --paper:#F3F2EC; --paper-2:#E8E7DE; --white:#FFFFFF;
+  --ink:#1A1F1B; --ink-2:#4C544D; --ink-3:#7C837C; --line:#D9D8CE;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{background:#DEDDD4}
+body{font-family:Karla,"Helvetica Neue",Arial,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased}
+img{display:block; max-width:100%}
+#scaler{transform-origin:top left}
+.poster{width:1200px; background:var(--paper); overflow:hidden; position:relative}
+
+.serif{font-family:"Instrument Serif",Georgia,serif; font-weight:400; letter-spacing:.004em}
+h2{font-family:"Instrument Serif",Georgia,serif; font-weight:400; font-size:52px; line-height:1.06; letter-spacing:-.01em}
+h3{font-size:17px; font-weight:700; letter-spacing:-.005em}
+p{font-size:15px; line-height:1.7; color:var(--ink-2); font-weight:400}
+.lead{font-size:18px; line-height:1.65; color:var(--ink-2)}
+.label{font-size:10.5px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--olive)}
+.num{font-family:"Instrument Serif",Georgia,serif; font-size:15px; color:var(--bark); letter-spacing:.1em}
+
+/* the recurring device: a left column that holds only the section marker */
+.sec{display:grid; grid-template-columns:150px 1fr; gap:44px; padding:72px 80px}
+.sec .mark{padding-top:8px}
+.sec .mark .rule{width:1px; height:56px; background:var(--line); margin:14px 0 0 1px}
+.sec.dark{background:var(--forest-deep); color:#EDEFE9}
+.sec.dark h2,.sec.dark h3{color:#F4F6F0}
+.sec.dark p{color:#BDC7BC}
+.sec.dark .label{color:var(--mist)}
+.sec.dark .num{color:var(--mist)}
+.sec.dark .mark .rule{background:rgba(255,255,255,.22)}
+.sec.tinted{background:var(--paper-2)}
+.mt28{margin-top:28px} .mt20{margin-top:20px} .mt40{margin-top:40px}
+
+/* ---------- cover ---------- */
+.cover{position:relative; height:620px; overflow:hidden; background:var(--forest-deep)}
+.cover img.bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.cover .veil{position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,24,16,.62) 0%, rgba(14,24,16,.30) 42%, rgba(14,24,16,.78) 100%)}
+.cover .inner{position:relative; height:100%; padding:56px 80px; display:flex; flex-direction:column; justify-content:space-between; color:#fff}
+.cover .top{display:flex; justify-content:space-between; align-items:flex-start}
+.cover .wm{font-family:"Instrument Serif",serif; font-size:26px; letter-spacing:.08em}
+.cover .wm b{font-weight:400; font-style:italic}
+.cover .kicker{font-size:10.5px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:#D5DED2; text-align:right; line-height:2}
+.cover h1{font-family:"Instrument Serif",serif; font-weight:400; font-size:94px; line-height:.98; letter-spacing:-.02em; max-width:15ch}
+.cover h1 i{font-style:italic; color:#CFE0D2}
+.cover .sub{font-size:17px; line-height:1.6; color:#E2E7DE; max-width:52ch; margin-top:22px}
+.cover .meta{display:flex; gap:38px; margin-top:34px; border-top:1px solid rgba(255,255,255,.25); padding-top:20px}
+.cover .meta div{font-size:12.5px; color:#D5DED2}
+.cover .meta b{display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#9FB5A4; margin-bottom:5px}
+.cover .leaf{position:absolute; right:-40px; bottom:-90px; width:300px; opacity:.9; transform:rotate(-18deg)}
+
+/* ---------- promise strip ---------- */
+.promises{background:var(--forest); color:#fff; padding:26px 80px; display:flex; gap:30px; align-items:center; justify-content:space-between}
+.promises span{font-family:"Instrument Serif",serif; font-size:19px; letter-spacing:.01em}
+.promises i{width:5px; height:5px; border-radius:50%; background:var(--mist); flex:none; display:block}
+
+/* ---------- survey chart ---------- */
+.chart{margin-top:30px; display:grid; gap:16px; max-width:640px}
+.crow{display:grid; grid-template-columns:1fr auto; gap:14px; align-items:center}
+.ctrack{height:12px; background:rgba(255,255,255,.13); border-radius:0 4px 4px 0; position:relative}
+.cbar{height:12px; background:var(--mist); border-radius:0 4px 4px 0}
+.clabel{font-size:14px; color:#D8E0D6; margin-bottom:7px; display:block}
+.cval{font-family:"Instrument Serif",serif; font-size:26px; color:#fff; min-width:64px; text-align:right; font-variant-numeric:tabular-nums}
+.caxis{display:flex; justify-content:space-between; font-size:10.5px; color:#8C9A8E; letter-spacing:.1em; border-top:1px solid rgba(255,255,255,.16); padding-top:7px; max-width:640px; margin-top:6px}
+.qbox{border-left:2px solid var(--mist); padding:4px 0 4px 20px; margin-top:34px; max-width:60ch}
+.qbox p{font-family:"Instrument Serif",serif; font-size:23px; line-height:1.42; color:#F4F6F0}
+
+/* ---------- benchmark ---------- */
+.bench{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:32px; border-top:1px solid var(--line)}
+.bench div{padding:22px 20px 20px; border-right:1px solid var(--line)}
+.bench div:last-child{border-right:0}
+.bench .nm{font-family:"Instrument Serif",serif; font-size:22px; margin-bottom:4px}
+.bench .pos{font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--bark); margin-bottom:14px; line-height:1.5}
+.bench dt{font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-bottom:5px}
+.bench dd{font-size:13px; line-height:1.55; color:var(--ink-2); margin:0 0 14px}
+.bench dd:last-child{margin-bottom:0}
+
+/* ---------- journey ---------- */
+.stages{display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:32px}
+.stage{padding:0 18px 0 0}
+.stage:last-child{padding-right:0}
+.stage .st{font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--forest); padding-bottom:10px; border-bottom:2px solid var(--forest); margin-bottom:14px}
+.stage h4{font-size:14px; font-weight:700; margin-bottom:6px}
+.stage p{font-size:12.5px; line-height:1.55}
+.stage .pain{font-size:12.5px; line-height:1.55; color:var(--bark); margin-top:10px}
+.stage .pain b{display:block; font-size:9.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-bottom:3px}
+
+/* ---------- gallery ---------- */
+.gal{display:grid; grid-template-columns:repeat(6,1fr); gap:16px; margin-top:34px}
+.gal figure{margin:0; background:#fff; border:1px solid var(--line); overflow:hidden}
+.gal .im{overflow:hidden; background:#0E1410}
+.gal img{width:100%; display:block}
+.gal figcaption{padding:13px 15px 15px}
+.gal figcaption{background:#fff}
+.gal figcaption b{display:block; font-size:13.5px; font-weight:700; margin-bottom:4px; color:var(--ink)}
+.gal figcaption span{font-size:12.5px; color:var(--ink-2); line-height:1.5}
+.wide{grid-column:span 3} .third{grid-column:span 2} .half{grid-column:span 3}
+.gal .im.h220{height:220px} .gal .im.h260{height:260px}
+.gal .im img{height:100%; object-fit:cover; object-position:top}
+
+/* ---------- detail ---------- */
+.detail{display:grid; grid-template-columns:300px 1fr; gap:32px; align-items:center; margin-top:34px;
+  background:var(--white); border:1px solid var(--line); padding:26px}
+.detail .z{width:300px; height:190px; overflow:hidden; position:relative; border:2px solid var(--forest)}
+.detail .z img{position:absolute; max-width:none; width:700px}
+.detail h3{font-family:"Instrument Serif",serif; font-weight:400; font-size:26px; margin-bottom:10px}
+
+/* ---------- identity ---------- */
+.idrow{display:grid; grid-template-columns:1.15fr 1fr; gap:26px; margin-top:32px; align-items:start}
+.swatches{display:flex; gap:0; margin-top:18px; border:1px solid var(--line)}
+.swatches div{flex:1; padding:0}
+.swatches .c{height:86px}
+.swatches b{display:block; font-size:11px; font-weight:600; padding:9px 10px 2px}
+.swatches small{display:block; font-size:10px; color:var(--ink-3); padding:0 10px 10px; letter-spacing:.04em}
+.typerow{margin-top:26px; border-top:1px solid var(--line); padding-top:18px}
+.typerow .big{font-family:"Instrument Serif",serif; font-size:62px; line-height:1}
+.typerow .meta{font-size:12px; color:var(--ink-3); margin-top:10px; line-height:1.6}
+.artefacts{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px}
+.artefacts figure{margin:0}
+.artefacts .b{height:150px; overflow:hidden; border:1px solid var(--line); background:#fff}
+.artefacts .b img{width:100%; height:100%; object-fit:cover; object-position:top}
+.artefacts figcaption{font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45}
+
+/* ---------- close ---------- */
+.close{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:30px}
+.close div{border-top:2px solid var(--forest); padding-top:14px}
+.close h4{font-size:13px; font-weight:700; margin-bottom:6px}
+.close p{font-size:13.5px}
+.foot{background:var(--forest-deep); color:#EDEFE9; padding:40px 80px; display:flex; justify-content:space-between; align-items:flex-end}
+.foot .wm{font-family:"Instrument Serif",serif; font-size:24px; letter-spacing:.08em}
+.foot p{font-size:12.5px; color:#9FB5A4; margin-top:10px; line-height:1.7}
+.foot .cr{text-align:right; font-size:12.5px; color:#9FB5A4; line-height:1.9}
+.foot .cr b{color:#fff; font-weight:600}
+@media print{ body{background:#fff} }
+</style>
+
+<div id="scaler"><div class="poster">
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <img class="bg" src="assets/photo-cover.webp" alt="Paysage de montagne au lever du jour">
+  <div class="veil"></div>
+  <img class="leaf" src="assets/leaf.webp" alt="">
+  <div class="inner">
+    <div class="top">
+      <div class="wm">OJO <b>Nature</b></div>
+      <div class="kicker">Étude de cas UX/UI<br>ISAG OFPPT · 2025</div>
+    </div>
+    <div>
+      <h1>La nature à travers <i>vos yeux</i>.</h1>
+      <p class="sub">Une plateforme de photographie nature qui réunit ce que les autres séparent : l'inspiration, l'apprentissage technique et une communauté qui donne du retour.</p>
+      <div class="meta">
+        <div><b>Réalisé par</b>Asmaa Nejmaoui</div>
+        <div><b>Encadré par</b>M. Ounssy</div>
+        <div><b>Périmètre</b>Site web responsive</div>
+        <div><b>Livrables</b>Recherche → prototype</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="promises">
+  <span>Explorer</span><i></i>
+  <span>Apprendre</span><i></i>
+  <span>Partager</span><i></i>
+  <span>Progresser</span><i></i>
+  <span class="serif" style="font-style:italic">La nature à travers vos yeux</span>
+</div>
+
+<!-- ============ 01 PROJET ============ -->
+<section class="sec">
+  <div class="mark"><div class="num">01</div><div class="label" style="margin-top:8px">Le projet</div><div class="rule"></div></div>
+  <div>
+    <h2>Inspirer et faire<br>progresser, au même<br>endroit.</h2>
+    <div class="mt28" style="display:grid; grid-template-columns:1fr 1fr; gap:34px; max-width:860px">
+      <p>OJO Nature est une plateforme en ligne dédiée à la photographie de nature : des galeries qui donnent envie de sortir, et des conseils, techniques et astuces pour les amateurs qui veulent progresser.</p>
+      <p>Le pari du projet : ces deux besoins ne sont pas séparés. On cherche une belle image, puis on veut savoir <em>comment</em> elle a été prise. Aucune plateforme observée ne tient les deux bouts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 TERRAIN (survey) ============ -->
+<section class="sec dark">
+  <div class="mark"><div class="num">02</div><div class="label" style="margin-top:8px">Le terrain</div><div class="rule"></div></div>
+  <div>
+    <h2>Ce que disent les<br>photographes.</h2>
+    <p class="lead mt20" style="max-width:56ch">Questionnaire en ligne auprès de photographes nature, complété par l'analyse de forums spécialisés et l'observation des hashtags Instagram.</p>
+
+    <div class="chart">
+      <div><span class="clabel">Recherchent de l'inspiration visuelle</span>
+        <div class="crow"><div class="ctrack"><div class="cbar" style="width:78%"></div></div><div class="cval">78 %</div></div></div>
+      <div><span class="clabel">Consultent via mobile</span>
+        <div class="crow"><div class="ctrack"><div class="cbar" style="width:70%"></div></div><div class="cval">70 %</div></div></div>
+      <div><span class="clabel">Souhaitent progresser techniquement</span>
+        <div class="crow"><div class="ctrack"><div class="cbar" style="width:65%"></div></div><div class="cval">65 %</div></div></div>
+      <div><span class="clabel">Veulent une interaction communautaire</span>
+        <div class="crow"><div class="ctrack"><div class="cbar" style="width:54%"></div></div><div class="cval">54 %</div></div></div>
+    </div>
+    <div class="caxis"><span>0 %</span><span>50 %</span><span>100 % DES RÉPONDANTS</span></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:34px; max-width:860px">
+      <div>
+        <div class="label">Insights clés</div>
+        <p class="mt20" style="font-size:14px">— Manque de retour personnalisé sur les photos<br>— Besoin d'inspiration ciblée, avec les réglages techniques<br>— Envie d'une communauté bienveillante et active<br>— Usage majoritairement sur smartphone</p>
+      </div>
+      <div>
+        <div class="label">Préférence de format</div>
+        <p class="mt20" style="font-size:14px">Formats courts et visuels : la démonstration l'emporte sur l'article long. Le mobile impose des séquences brèves, consultables entre deux moments.</p>
+      </div>
+    </div>
+
+    <div class="qbox">
+      <div class="label" style="margin-bottom:10px">La problématique</div>
+      <p>Comment concevoir une plateforme de photographie nature qui permette d'apprendre facilement, de s'inspirer et d'interagir avec une communauté — à travers une expérience fluide, intuitive et adaptée au mobile ?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 BENCHMARK ============ -->
+<section class="sec">
+  <div class="mark"><div class="num">03</div><div class="label" style="margin-top:8px">Le paysage</div><div class="rule"></div></div>
+  <div>
+    <h2>Quatre références,<br>quatre manques.</h2>
+    <p class="lead mt20" style="max-width:58ch">Chacune excelle sur un axe et abandonne les autres. L'espace laissé libre est exactement celui du projet.</p>
+    <div class="bench">
+      <div>
+        <div class="nm">Nature TTL</div>
+        <div class="pos">Éducation &amp; inspiration nature</div>
+        <dl><dt>Forces</dt><dd>Articles éducatifs, tutos vidéo, vraie spécialisation nature</dd>
+        <dt>Faiblesses</dt><dd>Interface datée, peu de personnalisation utilisateur</dd></dl>
+      </div>
+      <div>
+        <div class="nm">500px</div>
+        <div class="pos">Réseau social photo</div>
+        <dl><dt>Forces</dt><dd>Communauté active, qualité des photos, système de notation</dd>
+        <dt>Faiblesses</dt><dd>Moins axé nature, contenu très varié</dd></dl>
+      </div>
+      <div>
+        <div class="nm">Nat Geo</div>
+        <div class="pos">Inspiration &amp; reportage</div>
+        <dl><dt>Forces</dt><dd>Qualité photo exceptionnelle, articles riches</dd>
+        <dt>Faiblesses</dt><dd>Pas interactif, orienté consommation de contenu</dd></dl>
+      </div>
+      <div>
+        <div class="nm">Unsplash</div>
+        <div class="pos">Banque d'images libre</div>
+        <dl><dt>Forces</dt><dd>Design moderne, navigation simple, large collection nature</dd>
+        <dt>Faiblesses</dt><dd>Peu d'engagement, aucun contenu éducatif</dd></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 PARCOURS ============ -->
+<section class="sec tinted">
+  <div class="mark"><div class="num">04</div><div class="label" style="margin-top:8px">Le parcours</div><div class="rule"></div></div>
+  <div>
+    <h2>Cody, de la découverte<br>à la fidélité.</h2>
+    <p class="lead mt20" style="max-width:58ch">Photographe amateur. Sa journey map a servi de fil : à chaque étape, un point de friction, et la réponse qu'il appelle.</p>
+    <div class="stages">
+      <div class="stage">
+        <div class="st">Awareness</div>
+        <h4>Il découvre</h4><p>Via un forum photo ou un hashtag Instagram.</p>
+        <div class="pain"><b>Friction</b>Peu de plateformes francophones dédiées à la photo nature.</div>
+      </div>
+      <div class="stage">
+        <div class="st">Considération</div>
+        <h4>Il compare</h4><p>Il explore les galeries, lit les conseils, compare avec 500px et NatGeo.</p>
+        <div class="pain"><b>Friction</b>Belles galeries, mais peu d'infos sur les auteurs et la fiabilité des conseils.</div>
+      </div>
+      <div class="stage">
+        <div class="st">Décision</div>
+        <h4>Il s'inscrit</h4><p>Newsletter puis compte, pour sauvegarder ses photos préférées.</p>
+        <div class="pain"><b>Friction</b>Hésitation à payer le premium sans essai ; upload perçu comme complexe.</div>
+      </div>
+      <div class="stage">
+        <div class="st">Service</div>
+        <h4>Il publie</h4><p>Il poste dans la communauté et participe à un défi photo.</p>
+        <div class="pain"><b>Friction</b>Peu de retours constructifs ; défis mal calibrés à son niveau.</div>
+      </div>
+      <div class="stage">
+        <div class="st">Fidélité</div>
+        <h4>Il revient</h4><p>Abonnement premium, masterclasses, parrainage d'un ami.</p>
+        <div class="pain"><b>Friction</b>Masterclasses trop espacées, aucune reconnaissance des membres actifs.</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:32px; border-top:1px solid var(--line); padding-top:22px">
+      <p style="font-size:13.5px"><b style="color:var(--ink)">Réponse 1 —</b> une fiche technique sous chaque photo : réglages, matériel, conditions.</p>
+      <p style="font-size:13.5px"><b style="color:var(--ink)">Réponse 2 —</b> des mentors et des défis filtrés par niveau, pour que le retour existe.</p>
+      <p style="font-size:13.5px"><b style="color:var(--ink)">Réponse 3 —</b> un essai premium et un calendrier de masterclasses annoncé à l'avance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 ECRANS ============ -->
+<section class="sec dark">
+  <div class="mark"><div class="num">05</div><div class="label" style="margin-top:8px">Les écrans</div><div class="rule"></div></div>
+  <div>
+    <h2>Le produit.</h2>
+    <p class="lead mt20" style="max-width:58ch">Interface sombre : sur un site de photographie, le fond disparaît et l'image reste. Les écrans sont présentés sans cadre d'appareil, comme des tirages.</p>
+    <div class="gal">
+      <figure class="half"><div class="im h260"><img src="assets/screen-home-dark.webp" alt="Page d'accueil OJO Nature"></div>
+        <figcaption><b>Accueil</b><span>Une image plein cadre, une seule action : « Start Exploring ». La recherche vient après, pas avant.</span></figcaption></figure>
+      <figure class="half"><div class="im h260"><img src="assets/screen-galerie.webp" alt="Galerie filtrée"></div>
+        <figcaption><b>Galerie</b><span>Filtres par saison, catégorie, note et couleur dominante — chercher une lumière, pas un mot-clé.</span></figcaption></figure>
+      <figure class="half"><div class="im h220"><img src="assets/screen-photo.webp" alt="Fiche photo avec réglages"></div>
+        <figcaption><b>Fiche photo</b><span>Titre, auteur, réglages, puis commentaires et photos liées : la réponse directe au besoin nº1.</span></figcaption></figure>
+      <figure class="half"><div class="im h220"><img src="assets/screen-communaute.webp" alt="Communauté et commentaires"></div>
+        <figcaption><b>Communauté</b><span>Les photographes d'abord, leurs échanges ensuite — le retour construit est mis en scène.</span></figcaption></figure>
+    </div>
+
+    <div class="detail" style="background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18)">
+      <div class="z"><img src="assets/screen-photo.webp" alt="Détail des réglages sous une photo" style="margin-left:-130px; margin-top:-135px"></div>
+      <div>
+        <h3 style="color:#F4F6F0">La ligne qui change tout</h3>
+        <p style="color:#BDC7BC">Sous chaque photo : auteur, année, boîtier, focale, ouverture, vitesse. La recherche disait « besoin d'inspiration ciblée <em>avec</em> les réglages techniques » — c'est cette ligne qui transforme une galerie en support d'apprentissage, et elle ne coûte qu'un bandeau de texte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 IDENTITE ============ -->
+<section class="sec">
+  <div class="mark"><div class="num">06</div><div class="label" style="margin-top:8px">L'identité</div><div class="rule"></div></div>
+  <div>
+    <h2>Un diaphragme,<br>quatre couleurs<br>de terrain.</h2>
+    <div class="idrow">
+      <div>
+        <img src="assets/logo-duo.webp" alt="Logotype OJO Nature, versions claire et sombre" style="width:100%; border:1px solid var(--line)">
+        <div class="swatches">
+          <div><div class="c" style="background:#525B48"></div><b>Olive</b><small>#525B48</small></div>
+          <div><div class="c" style="background:#3A5A40"></div><b>Forêt</b><small>#3A5A40</small></div>
+          <div><div class="c" style="background:#AABEC6"></div><b>Brume</b><small>#AABEC6</small></div>
+          <div><div class="c" style="background:#805A44"></div><b>Écorce</b><small>#805A44</small></div>
+        </div>
+        <div class="typerow">
+          <div class="big">Aa — 123</div>
+          <div class="meta">Police du projet : <b>Canva Sans</b>. Ce poster utilise <b>Instrument Serif</b> et <b>Karla</b>, deux polices libres, pour rester reproductible partout.</div>
+        </div>
+      </div>
+      <div>
+        <img src="assets/moodboard.webp" alt="Moodboard OJO Nature" style="border:1px solid var(--line); width:100%; height:330px; object-fit:cover; object-position:center 28%">
+        <div class="artefacts">
+          <figure><div class="b"><img src="assets/mindmap.webp" alt="Mind map"></div><figcaption>Mind map — mission, offre, cible</figcaption></figure>
+          <figure><div class="b"><img src="assets/userflow.webp" alt="User flow"></div><figcaption>User flow — un flux par intention</figcaption></figure>
+          <figure><div class="b"><img src="assets/journey.webp" alt="Journey map de Cody"></div><figcaption>Journey map — les cinq étapes</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 SUITE ============ -->
+<section class="sec tinted">
+  <div class="mark"><div class="num">07</div><div class="label" style="margin-top:8px">La suite</div><div class="rule"></div></div>
+  <div>
+    <h2>Ce qu'il reste<br>à prouver.</h2>
+    <p class="lead mt20" style="max-width:60ch">Le prototype existe, les tests utilisateurs sont la dernière étape du planning. Ces trois indicateurs restent donc à mesurer — aucun chiffre de résultat n'est avancé ici.</p>
+    <div class="close">
+      <div><h4>Les fiches techniques sont-elles lues ?</h4><p>Temps passé sur la fiche photo et taux de dépliement des réglages : la promesse d'apprentissage tient à ce geste.</p></div>
+      <div><h4>La communauté répond-elle ?</h4><p>Part des photos publiées qui reçoivent au moins un commentaire construit dans les 48 h.</p></div>
+      <div><h4>Le mobile suit-il ?</h4><p>70 % des répondants consultent sur smartphone : c'est là que la galerie doit rester fluide.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div>
+    <div class="wm">OJO <span class="serif" style="font-style:italic">Nature</span></div>
+    <p>Étude de cas UX/UI — questionnaire, benchmark, journey map,<br>architecture, wireframes, maquettes et prototype Figma.</p>
+  </div>
+  <div class="cr">
+    <b>Réalisé par</b> Asmaa Nejmaoui<br>
+    <b>Encadré par</b> M. Ounssy<br>
+    <b>École</b> ISAG OFPPT · 2025
+  </div>
+</footer>
+
+</div></div>
+<script>
+(function(){
+  var s=document.getElementById('scaler');
+  function fit(){
+    var k=Math.min(1, document.documentElement.clientWidth/1200);
+    s.style.transform='scale('+k+')';
+    document.body.style.height=(s.firstElementChild.offsetHeight*k)+'px';
+  }
+  fit(); window.addEventListener('resize',fit);
+})();
+</script>
