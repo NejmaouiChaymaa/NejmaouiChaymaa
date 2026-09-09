@@ -1,0 +1,7 @@
+
+/* ---- Figma build only ----
+   Ce poster n'utilise aucune transformation 3D. Seules les images en
+   object-fit plein cadre et les masques circulaires ont besoin de tailles
+   fixes, que l'import reproduit mal autrement. */
+.cover .motifband{height:38px}
+.plate.big{width:230px}
