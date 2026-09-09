@@ -31,31 +31,49 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 .sec.deep h2,.sec.deep h3{color:#FDFBF4}
 .sec.deep p{color:#C9CFC1}
 .sec.deep .chapter{color:var(--saffron)}
-.head{text-align:center; max-width:66ch; margin:0 auto 40px}
-.head h2{margin-top:12px}
-.head p{margin-top:16px}
-.zrule{height:26px; margin:18px auto 0; width:250px; opacity:.95}
-.zrule img{width:100%; height:100%; object-fit:cover; object-position:center}
+.zband{height:14px; overflow:hidden}
+.zband img{width:100%; height:100%; object-fit:cover}
 .mt24{margin-top:24px} .mt32{margin-top:32px}
 
-/* ---------- cover ---------- */
-.cover{background:var(--green); color:#FDFBF4; padding:56px 84px 0; position:relative; overflow:hidden}
-.cover .motifband{position:absolute; top:0; left:0; right:0; height:38px; opacity:.5}
-.cover .motifband img{width:100%; height:100%; object-fit:cover}
-.cover .inner{position:relative; display:grid; grid-template-columns:1fr 372px; gap:44px; align-items:center; padding:44px 0 52px}
-.cover .tag{width:112px; margin-bottom:26px}
-.cover h1{font-family:"Playfair Display",serif; font-weight:500; font-size:80px; line-height:1.02; letter-spacing:-.015em}
-.cover h1 em{font-style:italic; color:var(--saffron)}
-.cover .base{font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:var(--saffron); margin-top:18px}
-.cover .sub{font-size:17px; line-height:1.65; color:#CFD6C7; max-width:48ch; margin-top:22px; font-weight:300}
-.cover .arname{font-size:56px; color:rgba(253,181,21,.9); line-height:1; margin-bottom:10px}
-.plates{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.plate{border-radius:50%; overflow:hidden; aspect-ratio:1; border:3px solid rgba(253,181,21,.55)}
-.plate img{width:100%; height:100%; object-fit:cover}
-.plate.big{grid-column:span 2; border-radius:50%; width:230px; margin:0 auto}
-.cover .meta{border-top:1px solid rgba(253,251,244,.2); padding:20px 0 26px; display:flex; gap:40px; position:relative}
-.cover .meta div{font-size:12.5px; color:#CFD6C7; font-weight:300}
-.cover .meta b{display:block; font-size:9.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--saffron); margin-bottom:5px}
+/* ---------- cover: a zellige wall with a ceramic sign on it ---------- */
+.cover{position:relative; background:var(--green); padding:0}
+.mosaic{display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:196px; gap:3px; background:var(--cream); padding:3px}
+.tile{position:relative; overflow:hidden}
+.tile img{width:100%; height:100%; object-fit:cover; display:block}
+.tile.o{background:var(--orange)} .tile.g{background:var(--green)}
+.tile.y{background:var(--saffron)} .tile.c{background:var(--cream-2)}
+.tile.z{background:var(--green)}
+.tile.z img{object-fit:cover; opacity:.9}
+.tile.ar{display:grid; place-items:center; background:var(--orange)}
+.tile.ar span{font-family:"Aref Ruqaa",serif; font-size:62px; color:#FCF9F0; line-height:1}
+.tile.word{display:grid; place-items:center; background:var(--cream-2); padding:24px}
+.tile.word img{width:100%; height:auto; object-fit:contain}
+.sign{position:absolute; left:74px; top:74px; width:596px; background:var(--cream); padding:44px 46px 40px;
+  box-shadow:0 0 0 7px var(--cream), 0 0 0 9px var(--orange), 0 30px 60px -26px rgba(20,30,18,.55)}
+.sign .tg{margin-bottom:22px}
+.sign .arname{font-family:"Aref Ruqaa",serif; font-size:40px; color:var(--orange); line-height:1; margin-bottom:8px}
+.sign h1{font-family:"Playfair Display",serif; font-weight:500; font-size:60px; line-height:1.04; letter-spacing:-.02em; color:var(--ink)}
+.sign h1 em{font-style:italic; color:var(--orange)}
+.sign .base{font-size:11.5px; letter-spacing:.46em; text-transform:uppercase; color:var(--green-soft); margin-top:16px}
+.sign .sub{font-size:15px; line-height:1.65; color:var(--ink-2); margin-top:18px; font-weight:300}
+.metabar{background:var(--green); color:#F3EFE3; padding:22px 84px; display:flex; gap:44px; align-items:center;
+  border-top:5px solid var(--saffron)}
+.metabar div{font-size:12.5px; color:#CFD6C7; font-weight:300}
+.metabar b{display:block; font-size:9.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--saffron); margin-bottom:5px}
+
+/* ---------- chapter heads: an outlined numeral in the margin ---------- */
+.chead{display:grid; grid-template-columns:132px 1fr; gap:30px; align-items:start; margin-bottom:38px}
+.chead .bignum{font-family:"Playfair Display",serif; font-size:104px; line-height:.8; color:transparent;
+  -webkit-text-stroke:1.4px var(--orange); letter-spacing:-.03em}
+.chead .chapter{margin-bottom:10px}
+.chead h2{max-width:19ch}
+.chead p{margin-top:16px; max-width:62ch}
+.sec.deep .chead .bignum{-webkit-text-stroke-color:var(--saffron)}
+.sec.deep .chapter{color:var(--saffron)}
+
+/* ---------- arch: the shape used for every portrait ---------- */
+.arch{border-radius:999px 999px 12px 12px; overflow:hidden; border:3px solid var(--saffron)}
+.arch img{width:100%; height:100%; object-fit:cover; display:block}
 
 /* ---------- two-sided problem ---------- */
 .sides{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); background:var(--white)}
@@ -83,7 +101,7 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 .duo{display:grid; grid-template-columns:1fr 1fr; gap:22px}
 .pcard{background:var(--white); border:1px solid var(--line)}
 .pcard .ph{display:flex; align-items:center; gap:20px; padding:24px 26px 0}
-.pcard .ph .av{width:108px; height:108px; border-radius:50%; overflow:hidden; flex:none; border:3px solid var(--saffron)}
+.pcard .ph .av{width:104px; height:126px; border-radius:999px 999px 10px 10px; overflow:hidden; flex:none; border:3px solid var(--saffron)}
 .pcard .ph .av img{width:100%; height:100%; object-fit:cover}
 .pcard .body{padding-top:18px}
 .pcard .body{padding:24px 26px 26px}
@@ -158,36 +176,54 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ COVER ============ -->
 <header class="cover">
-  <div class="motifband"><img src="assets/motif.webp" alt=""></div>
-  <div class="inner">
-    <div>
-      <img class="tag" src="assets/logo-tagine.webp" alt="Logotype DADA — tagine stylisé">
-      <div class="arname ar">دادة</div>
-      <h1>Le goût de la<br>maison, <em>en ligne</em>.</h1>
-      <div class="base">Taste of Home</div>
-      <p class="sub">Une plateforme qui permet aux femmes marocaines de vendre leurs plats faits maison depuis chez elles — et aux clients de retrouver une cuisine de confiance.</p>
-    </div>
-    <div class="plates">
-      <div class="plate big"><img src="assets/plate-1.webp" alt="Cuisinière préparant un plat"></div>
-      <div class="plate"><img src="assets/plate-2.webp" alt="Épices marocaines"></div>
-      <div class="plate"><img src="assets/plate-3.webp" alt="Préparation traditionnelle"></div>
-    </div>
+  <div class="mosaic">
+    <div class="tile"><img src="assets/tile-b.webp" alt="Préparation du thé dans une cour"></div>
+    <div class="tile o"></div>
+    <div class="tile z"><img src="assets/motif.webp" alt=""></div>
+    <div class="tile"><img src="assets/plate-2.webp" alt="Épices marocaines"></div>
+    <div class="tile y"></div>
+    <div class="tile"><img src="assets/tile-c.webp" alt="Marché aux épices"></div>
+
+    <div class="tile g"></div>
+    <div class="tile"><img src="assets/plate-1.webp" alt="Cuisinière préparant un plat"></div>
+    <div class="tile c"></div>
+    <div class="tile"><img src="assets/tile-pack.webp" alt="Packaging DADA"></div>
+    <div class="tile g"></div>
+    <div class="tile ar"><span>دادة</span></div>
+
+    <div class="tile z"><img src="assets/motif.webp" alt=""></div>
+    <div class="tile y"></div>
+    <div class="tile"><img src="assets/plate-3.webp" alt="Préparation traditionnelle"></div>
+    <div class="tile o"></div>
+    <div class="tile word"><img src="assets/logo-lockup.webp" alt="DADA — Taste of Home"></div>
+    <div class="tile"><img src="assets/tile-b.webp" alt="" style="object-position:70% 40%"></div>
   </div>
-  <div class="meta">
-    <div><b>Étude de cas</b>Digital Design · Option UI</div>
-    <div><b>Équipe</b>Aya Karim · Asmaa Nejmaoui · Nissrine Amine · Hamza Zaydoune</div>
-    <div><b>Encadré par</b>M. Ounsy</div>
-    <div><b>Année</b>2025 / 2026</div>
+
+  <div class="sign">
+    <img class="tg" src="assets/logo-lockup.webp" alt="Logotype DADA" style="width:190px">
+    <div class="arname">دادة</div>
+    <h1>Le goût de la<br>maison, <em>en ligne</em>.</h1>
+    <div class="base">Taste of Home</div>
+    <p class="sub">Une plateforme qui permet aux femmes marocaines de vendre leurs plats faits maison depuis chez elles — et aux clients de retrouver une cuisine de confiance.</p>
   </div>
 </header>
 
+<div class="metabar">
+  <div><b>Étude de cas</b>Digital Design · Option UI</div>
+  <div><b>Équipe</b>Aya Karim · Asmaa Nejmaoui · Nissrine Amine · Hamza Zaydoune</div>
+  <div><b>Encadré par</b>M. Ounsy</div>
+  <div><b>Année</b>2025 / 2026</div>
+</div>
+
 <!-- ============ 01 BRIEF ============ -->
 <section class="sec">
-  <div class="head">
-    <div class="chapter">Chapitre 01 — Le brief</div>
-    <h2>Un savoir-faire sans<br>vitrine, une demande<br>sans adresse.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Le projet part d'un déséquilibre : d'un côté un savoir-faire culinaire transmis mais invisible, de l'autre des clients qui cherchent du fait maison sans canal fiable pour y accéder.</p>
+  <div class="chead">
+    <span class="bignum">01</span>
+    <div>
+      <div class="chapter">Le brief</div>
+      <h2>Un savoir-faire sans<br>vitrine, une demande<br>sans adresse.</h2>
+      <p>Le projet part d'un déséquilibre : d'un côté un savoir-faire culinaire transmis mais invisible, de l'autre des clients qui cherchent du fait maison sans canal fiable pour y accéder.</p>
+    </div>
   </div>
   <div class="sides">
     <div class="side">
@@ -219,11 +255,13 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 02 TERRAIN ============ -->
 <section class="sec deep">
-  <div class="head">
-    <div class="chapter">Chapitre 02 — Le terrain</div>
-    <h2>Ce que le questionnaire<br>a fait remonter.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Dix questions posées à des consommateurs sur leurs habitudes de commande, leur rapport au fait maison et leurs freins. Cinq réponses ont cadré le produit.</p>
+  <div class="chead">
+    <span class="bignum">02</span>
+    <div>
+      <div class="chapter">Le terrain</div>
+      <h2>Ce que le questionnaire<br>a fait remonter.</h2>
+      <p>Dix questions posées à des consommateurs sur leurs habitudes de commande, leur rapport au fait maison et leurs freins. Cinq réponses ont cadré le produit.</p>
+    </div>
   </div>
   <div class="chart">
     <div class="crow"><span class="lb">Veulent être livrés en moins de 30 minutes</span>
@@ -242,11 +280,13 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 03 PROFILS ============ -->
 <section class="sec alt">
-  <div class="head">
-    <div class="chapter">Chapitre 03 — Les profils</div>
-    <h2>Deux personnes, deux<br>peurs opposées.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Elle a peur de ne pas y arriver. Lui a peur de mal tomber. Toute l'interface se construit sur ces deux craintes.</p>
+  <div class="chead">
+    <span class="bignum">03</span>
+    <div>
+      <div class="chapter">Les profils</div>
+      <h2>Deux personnes, deux<br>peurs opposées.</h2>
+      <p>Elle a peur de ne pas y arriver. Lui a peur de mal tomber. Toute l'interface se construit sur ces deux craintes.</p>
+    </div>
   </div>
   <div class="duo">
     <div class="pcard">
@@ -304,11 +344,13 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 04 SOLUTION ============ -->
 <section class="sec">
-  <div class="head">
-    <div class="chapter">Chapitre 04 — La solution</div>
-    <h2>Cinq fonctions, une<br>seule promesse : la<br>confiance.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Chaque fonctionnalité répond à une peur nommée plus haut — côté cuisinière ou côté client.</p>
+  <div class="chead">
+    <span class="bignum">04</span>
+    <div>
+      <div class="chapter">La solution</div>
+      <h2>Cinq fonctions, une seule<br>promesse : la confiance.</h2>
+      <p>Chaque fonctionnalité répond à une peur nommée plus haut — côté cuisinière ou côté client.</p>
+    </div>
   </div>
   <div class="feats">
     <div class="feat"><div class="n">01</div><h3>Profil cuisinière</h3><p>Photo, spécialités, tarifs, disponibilités, bio et avis clients : la vitrine qui manquait.</p></div>
@@ -326,10 +368,12 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 05 IDENTITE ============ -->
 <section class="sec alt">
-  <div class="head">
-    <div class="chapter">Chapitre 05 — L'identité</div>
-    <h2>Un tagine, trois couleurs,<br>trois alphabets.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
+  <div class="chead">
+    <span class="bignum">05</span>
+    <div>
+      <div class="chapter">L'identité</div>
+      <h2>Un tagine, trois couleurs,<br>trois alphabets.</h2>
+    </div>
   </div>
   <div class="idgrid">
     <div>
@@ -371,11 +415,13 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 06 PRODUIT ============ -->
 <section class="sec">
-  <div class="head">
-    <div class="chapter">Chapitre 06 — Le produit</div>
-    <h2>L'application et le site.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Une app pour les deux côtés du marché, et un site qui sert de vitrine. Vert et orange se répartissent les rôles : le vert accueille, l'orange déclenche l'action.</p>
+  <div class="chead">
+    <span class="bignum">06</span>
+    <div>
+      <div class="chapter">Le produit</div>
+      <h2>L'application et le site.</h2>
+      <p>Une app pour les deux côtés du marché, et un site qui sert de vitrine. Vert et orange se répartissent les rôles : le vert accueille, l'orange déclenche l'action.</p>
+    </div>
   </div>
   <div class="showcase">
     <figure class="frame">
@@ -398,11 +444,13 @@ p{font-size:15px; line-height:1.72; color:var(--ink-2); font-weight:300}
 
 <!-- ============ 07 SUITE ============ -->
 <section class="sec alt" style="padding-bottom:64px">
-  <div class="head">
-    <div class="chapter">Chapitre 07 — La suite</div>
-    <h2>Ce qu'il reste à prouver.</h2>
-    <div class="zrule"><img src="assets/motif.webp" alt=""></div>
-    <p>Les pourcentages ci-dessus viennent du questionnaire, pas de l'usage : la plateforme n'est pas encore en ligne. Trois indicateurs diront si la promesse tient.</p>
+  <div class="chead">
+    <span class="bignum">07</span>
+    <div>
+      <div class="chapter">La suite</div>
+      <h2>Ce qu'il reste à prouver.</h2>
+      <p>Les pourcentages ci-dessus viennent du questionnaire, pas de l'usage : la plateforme n'est pas encore en ligne. Trois indicateurs diront si la promesse tient.</p>
+    </div>
   </div>
   <div class="close">
     <div><h4>Les cuisinières vont-elles jusqu'au bout&nbsp;?</h4><p>Part des profils commencés qui sont publiés avec au moins un plat. C'est là que la peur de la technologie se mesure.</p></div>

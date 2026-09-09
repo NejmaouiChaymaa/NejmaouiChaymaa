@@ -1,7 +1,7 @@
 
 /* ---- Figma build only ----
-   Ce poster n'utilise aucune transformation 3D. Seules les images en
-   object-fit plein cadre et les masques circulaires ont besoin de tailles
-   fixes, que l'import reproduit mal autrement. */
-.cover .motifband{height:38px}
-.plate.big{width:230px}
+   Aucune 3D dans ce poster. On fixe les tailles que l'import reproduit mal :
+   la grille de zellige de la couverture et les masques en arche. */
+.mosaic{grid-auto-rows:196px}
+.tile img{height:196px}
+.sign{width:596px}

@@ -11,9 +11,13 @@ encadré par M. Ounsy.
 
 Format court comme le poster OJO Nature, mais son propre univers :
 
+- **Couverture en mur de zellige** : une grille de 18 tuiles jointoyées — photos, aplats
+  de marque, motif du projet, packaging et le nom en arabe — sur laquelle est posée une
+  **plaque en céramique** (cadre double orange) qui porte le titre
+- **Numéros de chapitre en contour** : chiffres Playfair de 104 px, tracés et non pleins,
+  posés dans la marge de gauche
+- **Arches** : les portraits sont masqués en arche marocaine, pas en cercle
 - **Fond crème, vert profond, orange et safran** — les couleurs de la charte
-- **Titres de chapitre centrés**, suivis d'un filet en **zellige** repris du motif du projet
-- **Cercles** : portraits et photos de couverture masqués en rond, cerclés de jaune
 - **Playfair Display + Roboto + Aref Ruqaa** : les trois polices réelles de la charte,
   toutes libres — c'est le seul des quatre posters sans substitution typographique
 - Le nom en arabe, **دادة**, et son sens sont traités comme un élément de marque
