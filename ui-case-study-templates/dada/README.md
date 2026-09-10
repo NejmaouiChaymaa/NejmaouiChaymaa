@@ -9,17 +9,21 @@ encadré par M. Ounsy.
 
 ## La direction
 
-Minimal et typographique. Le contenu porte la page, la mise en forme s'efface :
+La mise en page porte l'idée du projet : **DADA est une place de marché à deux
+côtés**, donc le poster est coupé en deux dans le sens de la hauteur.
 
-- **Fond blanc partout**, aucune section colorée, aucun encadré, aucune ombre
-- **Une seule police**, Roboto, en trois graisses (300 / 400 / 500)
-- **Filets d'un pixel** pour séparer, jamais de bloc de couleur
-- **Marges larges** et texte indenté sous chaque titre de section
-- **Couleur réservée au sens** : l'orange de la charte n'apparaît que sur les
-  numéros de section, les signes % et le filet des citations
-- **Chiffres du questionnaire** posés à plat, sans graphique : cinq nombres et
-  leur légende
-- Portraits en noir et blanc, images sans cadre
+- **Couverture partagée** : moitié verte « Elle cuisine », moitié orange
+  « Il commande », et la carte blanche du titre posée à cheval sur les deux
+- **Une couture** court dans toute la page : fond vert très clair à gauche,
+  orange très clair à droite, filet d'un pixel au milieu
+- **Le problème, les personas** : chacun sur son côté, jamais mélangés
+- **« Ce qui les relie »** est le cœur du poster : les cinq fonctionnalités sont
+  des cartes blanches posées **exactement sur la couture**, avec la peur qu'elles
+  résolvent à gauche (elle) et à droite (lui), reliées par un filet
+- Le reste — questionnaire, produit, identité — repasse en pleine largeur :
+  c'est ce qui appartient aux deux
+
+Blanc, deux teintes très pâles, filets d'un pixel. Aucune ombre, aucun arrondi.
 
 ## Fichiers
 
