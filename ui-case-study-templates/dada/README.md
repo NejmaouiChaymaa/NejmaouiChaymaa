@@ -12,8 +12,9 @@ encadré par M. Ounsy.
 La mise en page porte l'idée du projet : **DADA est une place de marché à deux
 côtés**, donc le poster est coupé en deux dans le sens de la hauteur.
 
-- **Couverture partagée** : moitié verte « Elle cuisine », moitié orange
-  « Il commande », et la carte blanche du titre posée à cheval sur les deux
+- **Ouverture** dans la composition du poster eyeon : bloc de titre à gauche
+  (nom arabe, titre, badge, sous-titre, liste de fonctionnalités), écrans à
+  droite avec trois étiquettes flottantes, puis une bande de chiffres clés
 - **Une couture** court dans toute la page : fond vert très clair à gauche,
   orange très clair à droite, filet d'un pixel au milieu
 - **Le problème, les personas** : chacun sur son côté, jamais mélangés

@@ -25,24 +25,35 @@ b,strong{font-weight:500; color:var(--ink)}
 .eyebrow{font-size:10.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase}
 .eyebrow.her{color:var(--green)} .eyebrow.his{color:var(--orange)}
 
-/* ============ hero ============ */
-.hero{position:relative; height:640px; display:grid; grid-template-columns:1fr 1fr}
-.hero .half{position:relative; overflow:hidden; display:flex; align-items:flex-end}
-.hero .half img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-.hero .half .veil{position:absolute; inset:0}
-.hero .l .veil{background:linear-gradient(180deg, rgba(31,61,43,.62), rgba(31,61,43,.94))}
-.hero .r .veil{background:linear-gradient(180deg, rgba(232,106,31,.58), rgba(178,72,15,.94))}
-.hero .half .txt{position:relative; padding:0 0 46px 0; width:100%; text-align:center; color:#fff}
-.hero .half .txt .k{font-size:10.5px; font-weight:500; letter-spacing:.28em; text-transform:uppercase; opacity:.8}
-.hero .half .txt .w{font-family:"Playfair Display",serif; font-size:46px; line-height:1.1; margin-top:8px}
-.hero .card{position:absolute; left:50%; top:56px; transform:translateX(-50%); width:520px; background:#fff;
-  padding:44px 44px 36px; text-align:center; z-index:3}
-.hero .card .ar{font-size:30px; color:var(--orange); line-height:1; margin-bottom:14px}
-.hero .card img{width:132px; margin:0 auto 22px}
-.hero .card h1{font-family:"Playfair Display",serif; font-weight:400; font-size:40px; line-height:1.18; letter-spacing:-.01em}
-.hero .card h1 em{font-style:italic; color:var(--orange)}
-.hero .card p{font-size:14.5px; margin-top:16px}
-.hero .card .base{font-size:10.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--light); margin-top:20px; border-top:1px solid var(--rule); padding-top:16px}
+/* ============ hero : bloc de titre à gauche, écrans à droite ============ */
+.hero{position:relative; padding:40px 90px 0; overflow:hidden}
+.hero .wash{position:absolute; right:-220px; top:-260px; width:940px; height:940px; border-radius:50%;
+  background:radial-gradient(circle at 42% 46%, #FCEBDC, #FDF6EF 56%, rgba(253,246,239,0) 74%)}
+.hero .top{position:relative; display:flex; justify-content:space-between; align-items:center; margin-bottom:34px}
+.hero .top img{width:118px}
+.hero .top span{font-size:10.5px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--light)}
+.hero .in{position:relative; display:grid; grid-template-columns:520px 1fr; gap:30px; align-items:center}
+.hero .ar{font-size:30px; color:var(--orange); line-height:1; margin-bottom:14px}
+.hero h1{font-family:"Playfair Display",serif; font-weight:600; font-size:58px; line-height:1.08; letter-spacing:-.015em}
+.hero h1 em{font-style:italic; font-weight:400; color:var(--orange)}
+.badge{display:inline-block; border:1px solid var(--rule); border-radius:999px; padding:7px 16px; margin-top:20px;
+  font-size:10.5px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--grey)}
+.hero .sub{font-size:16.5px; line-height:1.65; margin-top:20px; max-width:46ch}
+.feat{margin-top:26px; display:grid; gap:10px}
+.feat div{display:flex; align-items:center; gap:12px; font-size:15px; font-weight:400; color:var(--ink)}
+.feat i{width:7px; height:7px; background:var(--orange); flex:none; transform:rotate(45deg)}
+.stagewrap{position:relative}
+.stagewrap > img{width:100%}
+.chip{position:absolute; background:#fff; border:1px solid var(--rule); padding:9px 14px; display:flex; align-items:center; gap:10px}
+.chip b{font-size:13px; font-weight:500; white-space:nowrap; color:var(--ink)}
+.chip small{display:block; font-size:11px; color:var(--light); white-space:nowrap}
+.chip .ic{width:26px; height:26px; display:grid; place-items:center; font-size:12px; font-weight:500; flex:none}
+.chip-a{top:6%; left:-5%} .chip-a .ic{background:#FDF2E9; color:var(--orange)}
+.chip-b{top:44%; right:-3%} .chip-b .ic{background:#EFF3EF; color:var(--green)}
+.chip-c{bottom:8%; left:6%} .chip-c .ic{background:#FEF6DC; color:#B07C06}
+.figstrip{display:flex; gap:52px; padding:26px 90px 30px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-top:24px}
+.figstrip .n3{font-family:"Playfair Display",serif; font-size:34px; line-height:1; color:var(--orange)}
+.figstrip .l3{font-size:10.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--light); margin-top:7px}
 
 .meta{display:grid; grid-template-columns:repeat(4,1fr); gap:30px; padding:22px 90px; border-bottom:1px solid var(--rule)}
 .meta div{font-size:12.5px; color:var(--grey)}
@@ -126,26 +137,44 @@ figcaption b{color:var(--grey); font-weight:500}
 
 <div id="scaler"><div class="poster">
 
-<!-- ============ HERO : deux côtés, un pont ============ -->
+<!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="half l">
-    <img src="assets/plate-1.png" alt="Cuisinière préparant un plat">
-    <div class="veil"></div>
-    <div class="txt"><div class="k">Côté cuisinière</div><div class="w pf">Elle cuisine</div></div>
-  </div>
-  <div class="half r">
-    <img src="assets/tile-c.png" alt="Marché aux épices">
-    <div class="veil"></div>
-    <div class="txt"><div class="k">Côté client</div><div class="w pf">Il commande</div></div>
-  </div>
-  <div class="card">
+  <div class="wash"></div>
+  <div class="top">
     <img src="assets/logo-lockup.png" alt="DADA — Taste of Home">
-    <div class="ar">دادة</div>
-    <h1>Le goût de la maison,<br><em>en ligne</em></h1>
-    <p>Une plateforme qui relie les femmes qui cuisinent chez elles aux clients qui cherchent du fait maison.</p>
-    <div class="base">Étude de cas UX / UI · 2025–2026</div>
+    <span>Étude de cas UX / UI · 2025–2026</span>
+  </div>
+  <div class="in">
+    <div>
+      <div class="ar">دادة</div>
+      <h1>Le goût de la<br>maison, <em>en ligne</em></h1>
+      <div><span class="badge">Étude de cas · UX / UI Design</span></div>
+      <p class="sub">Une plateforme qui permet aux femmes marocaines de vendre leurs plats faits maison depuis chez elles — et aux clients de retrouver une cuisine de confiance.</p>
+      <div class="feat">
+        <div><i></i>Profil de cuisinière avec spécialités et avis</div>
+        <div><i></i>Catalogue de plats et disponibilités en temps réel</div>
+        <div><i></i>Commande en ligne, livraison ou retrait</div>
+        <div><i></i>Paiement sécurisé des deux côtés</div>
+        <div><i></i>Notes et commentaires vérifiés</div>
+        <div><i></i>Interface bilingue français / arabe</div>
+      </div>
+    </div>
+    <div class="stagewrap">
+      <img src="assets/mockup-app.png" alt="Écrans de l'application DADA">
+      <div class="chip chip-a"><span class="ic">◍</span><span><b>Profil cuisinière</b><small>Spécialités, tarifs, avis</small></span></div>
+      <div class="chip chip-b"><span class="ic">✓</span><span><b>Paiement sécurisé</b><small>En ligne ou à la livraison</small></span></div>
+      <div class="chip chip-c"><span class="ic">★</span><span><b>Avis vérifiés</b><small>Des deux côtés</small></span></div>
+    </div>
   </div>
 </header>
+
+<div class="figstrip">
+  <div><div class="n3">5</div><div class="l3">Fonctionnalités clés</div></div>
+  <div><div class="n3">2</div><div class="l3">Profils utilisateurs</div></div>
+  <div><div class="n3">10</div><div class="l3">Questions posées</div></div>
+  <div><div class="n3">2</div><div class="l3">Plateformes · app &amp; site</div></div>
+  <div><div class="n3">3</div><div class="l3">Couleurs de charte</div></div>
+</div>
 
 <div class="meta">
   <div><b>Projet</b>DADA — Taste of Home</div>
