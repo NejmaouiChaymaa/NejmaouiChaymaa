@@ -2,469 +2,320 @@
 <title>DADA Case Study Poster</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400&family=Roboto:wght@300;400;500&display=swap">
 <style>
 :root{
-  --orange:#E86A1F; --green:#1F3D2B; --green-2:#2E5A3E; --saffron:#FDB515;
-  --cream:#FCF9F0; --white:#FFFFFF; --ink:#22271F; --ink-2:#4F5449; --ink-3:#8B8F84;
-  --line:#DCD8CC;
+  --ink:#1A1C1A; --grey:#6E7269; --light:#A5A89F; --rule:#E4E4DF;
+  --orange:#E86A1F; --green:#1F3D2B; --saffron:#FDB515;
 }
 *{box-sizing:border-box; margin:0; padding:0}
-html,body{background:#E9E5DA}
-body{font-family:Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased}
+html,body{background:#EDEDE9}
+body{font-family:Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased;
+  font-weight:300; font-size:15px; line-height:1.75}
 img{display:block; max-width:100%}
 #scaler{transform-origin:top left}
-.poster{width:1200px; background:var(--white); position:relative; overflow:hidden}
+.poster{width:1200px; background:#fff; position:relative}
 
-.pf{font-family:"Playfair Display",Georgia,serif}
-.ar{font-family:"Aref Ruqaa",Georgia,serif}
-p{font-size:14.5px; line-height:1.7; color:var(--ink-2); font-weight:300}
+.wrap{padding:0 90px}
+p{color:var(--grey); font-weight:300}
 b,strong{font-weight:500; color:var(--ink)}
+.ar{font-family:"Aref Ruqaa",Georgia,serif}
 
-/* ---------- the slide furniture, carried across the whole poster ---------- */
-.zband{height:26px; overflow:hidden}
-.zband img{width:100%; height:100%; object-fit:cover}
-.sheet{padding:44px 72px 0}
-.masthead{display:flex; justify-content:space-between; align-items:center; margin-bottom:30px}
-.masthead img{width:112px}
-.masthead span{font-family:"Playfair Display",serif; font-size:11.5px; letter-spacing:.22em; color:var(--ink-3); text-transform:uppercase}
-h2{font-family:"Playfair Display",Georgia,serif; font-weight:700; font-size:38px; letter-spacing:.005em;
-  text-transform:uppercase; color:var(--green); line-height:1.15}
-h2.o{color:var(--orange)}
-.intro{max-width:82ch; margin-top:14px}
-.foot-rule{display:flex; align-items:flex-end; justify-content:space-between; border-top:1px solid var(--green);
-  margin-top:42px; padding-top:7px}
-.foot-rule .ch{font-family:"Playfair Display",serif; font-size:12.5px; color:var(--ink-2)}
-.foot-rule .pg{font-family:"Playfair Display",serif; font-size:15px; color:var(--ink); position:relative; padding-top:7px}
-.foot-rule .pg::before{content:""; position:absolute; top:0; right:0; width:40px; height:3px; background:var(--green)}
-.sec{padding-bottom:34px}
-.sec.tint{background:var(--cream)}
+/* one section device: a hairline, a number, a title. nothing else. */
+.sec{padding:78px 0 0}
+.sec > .hd{border-top:1px solid var(--ink); padding-top:22px; display:grid; grid-template-columns:96px 1fr; gap:32px; align-items:start}
+.sec > .hd .no{font-size:13px; font-weight:500; color:var(--orange); letter-spacing:.04em; padding-top:6px}
+.sec > .hd h2{font-size:30px; font-weight:400; letter-spacing:-.015em; line-height:1.25; max-width:22ch}
+.sec > .hd .lede{grid-column:2; max-width:70ch; margin-top:12px; font-size:16px}
+.body{padding-left:128px; margin-top:38px}
+.tw{display:grid; grid-template-columns:1fr 1fr; gap:56px}
+.mt40{margin-top:40px} .mt28{margin-top:28px}
 
-/* label bar, straight from the deck */
-.bar{background:var(--saffron); color:var(--ink); font-size:11.5px; font-weight:700; letter-spacing:.06em;
-  padding:6px 14px; margin:30px 0 20px}
-.block{padding-left:20px; border-left:4px solid var(--orange); margin-bottom:22px}
-.block.g{border-left-color:var(--green)}
-.block h3{font-size:14px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--orange); margin-bottom:7px}
-.block.g h3{color:var(--green)}
-.block ul{list-style:none; margin-top:2px}
-.block li{font-size:14.5px; line-height:1.75; color:var(--ink-2); font-weight:300}
-.block li::before{content:"· "; color:var(--ink-3)}
+h3{font-size:15px; font-weight:500; margin-bottom:10px}
+.eyebrow{font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--light); margin-bottom:14px}
+ul{list-style:none}
+li{color:var(--grey); font-weight:300; padding-left:18px; position:relative; margin-bottom:7px}
+li::before{content:""; position:absolute; left:0; top:11px; width:6px; height:1px; background:var(--light)}
 
-/* framed statement, as on the solution slide */
-.stmt{border:1px solid var(--line); padding:18px 22px; margin-bottom:16px}
-.stmt h3{font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--orange); margin-bottom:6px}
-.stmt.g h3{color:var(--green)}
-.kicker{font-family:"Playfair Display",serif; font-size:13px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--ink); margin:28px 0 14px}
-.feats{display:grid; grid-template-columns:26px 1fr; gap:22px}
-.feats .rail{background:var(--saffron)}
-.feats ol{list-style:none; display:grid; gap:14px}
-.feats li b{display:block; font-size:15px; font-weight:700; color:var(--ink); margin-bottom:2px}
-.feats li span{font-size:14px; color:var(--ink-2); font-weight:300; line-height:1.65}
+/* ---------- masthead + hero ---------- */
+.top{display:flex; justify-content:space-between; align-items:center; padding:34px 90px 0}
+.top img{width:104px}
+.top span{font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--light)}
+.hero{padding:66px 90px 0}
+.hero .ar{font-size:30px; color:var(--orange); line-height:1; margin-bottom:22px}
+.hero h1{font-size:74px; font-weight:300; line-height:1.06; letter-spacing:-.03em; max-width:16ch}
+.hero h1 b{font-weight:500}
+.hero .sub{font-size:18px; max-width:60ch; margin-top:26px; line-height:1.65}
+.meta{display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin:46px 90px 0; border-top:1px solid var(--rule); padding-top:18px}
+.meta div{font-size:13px; color:var(--grey)}
+.meta b{display:block; font-size:10.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--light); margin-bottom:6px}
+.hero-img{margin:52px 0 0}
+.hero-img img{width:100%}
 
-/* ---------- cover ---------- */
-.cover{padding:0 0 0}
-.cover .in{display:grid; grid-template-columns:1fr 400px; gap:48px; align-items:center; padding:0 72px 40px}
-.cover h1{font-family:"Playfair Display",serif; font-weight:700; font-size:66px; line-height:1.08; color:var(--green); text-transform:uppercase; letter-spacing:.004em}
-.cover h1 em{font-style:italic; font-weight:400; text-transform:none; color:var(--orange)}
-.cover .arname{font-family:"Aref Ruqaa",serif; font-size:34px; color:var(--orange); margin-bottom:14px}
-.cover .base{font-size:11.5px; letter-spacing:.42em; text-transform:uppercase; color:var(--green-2); margin-top:18px}
-.cover .sub{max-width:52ch; margin-top:18px; font-size:15.5px}
-.cover .shot{border:1px solid var(--line); background:var(--cream); padding:24px}
-.credits{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; border-top:1px solid var(--green); margin:0 72px; padding:18px 0 0}
-.credits div b{display:block; font-size:9.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); margin-bottom:5px}
-.credits div{font-size:12.5px; color:var(--ink-2); font-weight:300; line-height:1.6}
+/* ---------- numbers ---------- */
+.figs{display:grid; grid-template-columns:repeat(5,1fr); gap:26px; margin-top:8px}
+.figs div{border-top:1px solid var(--rule); padding-top:16px}
+.figs .n{font-size:46px; font-weight:300; letter-spacing:-.03em; line-height:1; color:var(--ink)}
+.figs .n i{font-style:normal; font-size:22px; color:var(--orange); margin-left:2px}
+.figs p{font-size:13px; line-height:1.55; margin-top:10px}
 
-/* ---------- questionnaire, as on the deck slide ---------- */
-.qrows{display:grid; gap:12px; margin-top:24px}
-.qrow{background:var(--green); padding:18px 24px; display:grid; grid-template-columns:132px 1fr; gap:26px; align-items:center}
-.qrow .v{font-family:"Playfair Display",serif; font-size:40px; line-height:1; text-align:right}
-.qrow:nth-child(odd) .v{color:var(--saffron)}
-.qrow:nth-child(even) .v{color:var(--orange)}
-.qrow .t{color:#E8E4D6; font-size:14.5px; font-weight:300; border-left:1px solid rgba(232,228,214,.32); padding-left:26px; line-height:1.6}
-.qnote{font-size:12.5px; color:var(--ink-3); margin-top:14px; font-weight:300}
-
-/* ---------- personas, in the deck's persona layout ---------- */
-.persona{display:grid; grid-template-columns:250px 1fr; border:1px solid var(--line); margin-bottom:22px}
-.persona .id{background:var(--orange); color:#fff; padding:0 0 22px; display:flex; flex-direction:column}
-.persona .id img{width:100%; height:236px; object-fit:cover; object-position:center 22%}
-.persona .id .nm{font-family:"Playfair Display",serif; font-size:26px; font-weight:700; padding:20px 22px 0; line-height:1.15}
-.persona .id .meta{padding:12px 22px 0; font-size:12px; line-height:1.9; color:#FFE7D6}
-.persona .id .meta b{display:inline-block; width:58px; color:#fff; font-weight:500}
-.persona .cols{display:grid; grid-template-columns:1fr 1fr; gap:0}
-.persona .col{padding:22px 24px}
-.persona .col + .col{border-left:1px solid var(--line)}
-.persona h4{font-size:12.5px; font-weight:700; letter-spacing:.05em; color:var(--green); margin-bottom:9px}
-.persona ul{list-style:none; display:grid; gap:6px; margin-bottom:18px}
-.persona li{font-size:13.5px; line-height:1.55; color:var(--ink-2); font-weight:300; padding-left:12px; position:relative}
-.persona li::before{content:"·"; position:absolute; left:0; color:var(--orange)}
-.persona .q{grid-column:1/-1; border-top:1px solid var(--line); padding:16px 24px;
-  font-family:"Playfair Display",serif; font-style:italic; font-size:16px; color:var(--ink)}
+/* ---------- personas ---------- */
+.who{display:grid; grid-template-columns:1fr 1fr; gap:56px}
+.who .p .ph{width:96px; height:96px; object-fit:cover; margin-bottom:18px; filter:grayscale(1); opacity:.92}
+.who .nm{font-size:19px; font-weight:400}
+.who .rl{font-size:12.5px; color:var(--light); margin-top:2px; margin-bottom:16px}
+.who .q{font-size:16px; color:var(--ink); font-weight:300; font-style:italic; line-height:1.55;
+  border-left:1px solid var(--orange); padding-left:16px; margin-bottom:22px}
 
 /* ---------- charte ---------- */
-.charte{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px}
-.card{border:1px solid var(--line); padding:22px}
-.card h4{font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:16px}
-.locks{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
-.lock{height:96px; display:grid; place-items:center; padding:14px; border:1px solid var(--line)}
-.lock img{max-height:58px; width:auto}
-.lock.g{background:var(--green); border-color:var(--green)} .lock.o{background:var(--orange); border-color:var(--orange)}
-.lock.c{background:var(--cream)}
-.pal{display:grid; grid-template-columns:repeat(4,1fr); margin-top:18px; border:1px solid var(--line)}
-.pal div + div{border-left:1px solid var(--line)}
-.pal .sw{height:64px}
-.pal b{display:block; font-size:11px; font-weight:500; padding:8px 10px 1px}
-.pal small{display:block; font-size:10px; color:var(--ink-3); padding:0 10px 9px}
-.typel div{display:flex; align-items:baseline; gap:16px; padding:12px 0; border-bottom:1px solid var(--line)}
-.typel div:last-child{border-bottom:0}
-.typel .k{font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); width:112px; flex:none}
-.sense{border-left:4px solid var(--saffron); padding-left:18px; margin-top:20px}
-.sense .ar{font-size:34px; color:var(--orange); line-height:1.1; margin-bottom:6px}
+.pal{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:6px}
+.pal .sw{height:88px; margin-bottom:10px}
+.pal b{display:block; font-size:13px; font-weight:400}
+.pal small{display:block; font-size:11.5px; color:var(--light)}
+.typ div{display:flex; align-items:baseline; gap:20px; padding:11px 0; border-bottom:1px solid var(--rule)}
+.typ div:last-child{border-bottom:0}
+.typ .k{font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--light); width:120px; flex:none}
 
-/* ---------- maquettes ---------- */
-.shots{display:grid; gap:18px; margin-top:24px}
-.shot{border:1px solid var(--line); padding:20px}
-.shot img{width:100%}
-.shot .cap{font-size:13px; color:var(--ink-2); font-weight:300; margin-top:14px; line-height:1.6}
-.shot .cap b{color:var(--ink); font-weight:500}
-.pair{display:grid; grid-template-columns:1.3fr 1fr; gap:18px; align-items:start}
+/* ---------- images ---------- */
+figure{margin:0}
+figure img{width:100%}
+figcaption{font-size:12.5px; color:var(--light); margin-top:12px; line-height:1.6}
+figcaption b{color:var(--grey); font-weight:500}
+.stack{display:grid; gap:44px; margin-top:38px}
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start}
 
-/* ---------- suite ---------- */
-.next{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); margin-top:24px}
-.next div{padding:22px 24px}
-.next div + div{border-left:1px solid var(--line)}
-.next h4{font-family:"Playfair Display",serif; font-size:17px; font-weight:700; color:var(--green); margin-bottom:8px; line-height:1.3}
-.next p{font-size:13.5px}
-.end{background:var(--green); color:#F1EDE1; padding:34px 72px; display:flex; justify-content:space-between; align-items:flex-end; margin-top:34px}
-.end img{width:150px; filter:brightness(0) invert(1); opacity:.92}
-.end p{color:#A9B2A2; font-size:12.5px; margin-top:12px; line-height:1.7}
-.end .cr{text-align:right; font-size:12.5px; color:#A9B2A2; line-height:1.85}
-.end .cr b{color:#fff; font-weight:500}
+.end{margin-top:82px; border-top:1px solid var(--ink); padding:22px 90px 46px; display:flex; justify-content:space-between; align-items:flex-start}
+.end img{width:104px}
+.end p{font-size:12.5px; color:var(--light); margin-top:14px; line-height:1.7}
+.end .cr{text-align:right; font-size:12.5px; color:var(--light); line-height:1.8}
+.end .cr b{color:var(--grey); font-weight:500}
 @media print{ body{background:#fff} }
 
 /* ---- Figma build only ----
-   Aucune 3D dans ce poster. On fixe les hauteurs d'images que l'import
-   reproduit mal en object-fit. */
-.zband{height:26px}
-.zband img{height:26px}
-.persona .id img{height:236px}
+   Aucune 3D ni masque dans ce poster. Seules les images en object-fit ont
+   besoin d'une taille fixe pour l'import. */
+.who .p .ph{width:96px; height:96px}
 
 </style>
 
 <div id="scaler"><div class="poster">
-<div class="zband"><img src="assets/motif.png" alt=""></div>
 
-<!-- ======================= COUVERTURE ======================= -->
-<section class="sec cover">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="DADA — Taste of Home">
-      <span>Taste of Home</span>
-    </div>
+<div class="top">
+  <img src="assets/logo-lockup.png" alt="DADA — Taste of Home">
+  <span>Étude de cas UX/UI · 2025–2026</span>
+</div>
+
+<header class="hero">
+  <div class="ar">دادة</div>
+  <h1>Le goût de la maison, <b>en ligne</b>.</h1>
+  <p class="sub">Une plateforme qui permet aux femmes marocaines de vendre leurs plats faits maison depuis chez elles — et aux clients de retrouver une cuisine de confiance.</p>
+</header>
+
+<div class="meta">
+  <div><b>Projet</b>DADA — Taste of Home</div>
+  <div><b>Réalisé par</b>Aya Karim, Asmaa Nejmaoui,<br>Nissrine Amine, Hamza Zaydoune</div>
+  <div><b>Encadré par</b>M. Ounsy</div>
+  <div><b>Formation</b>Digital Design, option UI</div>
+</div>
+
+<div class="hero-img"><img src="assets/mockup-app.png" alt="Écrans de l'application DADA"></div>
+
+<!-- 01 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">01</span>
+    <h2>Un savoir-faire sans vitrine, une demande sans adresse</h2>
+    <p class="lede">Le projet part d'un déséquilibre. D'un côté un savoir-faire culinaire transmis mais invisible&nbsp;; de l'autre des clients qui cherchent du fait maison sans canal fiable pour y accéder.</p>
   </div>
-  <div class="in">
+  <div class="body tw">
     <div>
-      <div class="arname">دادة</div>
-      <h1>Le goût de la maison,<br><em>en ligne</em></h1>
-      <div class="base">Plateforme de cuisine à domicile</div>
-      <p class="sub">Une plateforme qui permet aux femmes marocaines de vendre leurs plats faits maison depuis chez elles — et aux clients de retrouver une cuisine de confiance.</p>
-    </div>
-    <div class="shot"><img src="assets/tile-pack.png" alt="Packaging DADA"></div>
-  </div>
-  <div class="credits">
-    <div><b>Étude de cas</b>Digital Design · Option UI</div>
-    <div><b>Réalisé par</b>Aya Karim · Asmaa Nejmaoui<br>Nissrine Amine · Hamza Zaydoune</div>
-    <div><b>Encadré par</b>M. Ounsy</div>
-    <div><b>Année</b>2025 / 2026</div>
-  </div>
-</section>
-
-<!-- ======================= 01 PROBLÉMATIQUE ======================= -->
-<section class="sec">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
-    </div>
-    <h2>La problématique</h2>
-    <p class="intro">Le projet part d'un déséquilibre : d'un côté un savoir-faire culinaire transmis mais invisible, de l'autre des clients qui cherchent du fait maison sans canal fiable pour y accéder.</p>
-
-    <div class="bar">Côté cuisinières</div>
-    <div class="block">
-      <h3>Problème central</h3>
-      <p>Les femmes marocaines possèdent un véritable savoir-faire culinaire ancestral, mais <b>n'ont pas les moyens d'ouvrir un commerce physique</b>. Elles ne peuvent pas valoriser leur talent sans un espace structuré.</p>
-    </div>
-    <div class="block">
-      <h3>Conséquences</h3>
-      <ul>
+      <div class="eyebrow">Côté cuisinières</div>
+      <h3>Le talent est là, l'espace manque.</h3>
+      <p>Les femmes marocaines possèdent un savoir-faire culinaire ancestral, mais n'ont ni les moyens ni l'espace d'ouvrir un commerce physique.</p>
+      <ul class="mt28">
         <li>Revenus limités au bouche-à-oreille informel</li>
-        <li>Absence de visibilité en dehors du cercle proche</li>
+        <li>Aucune visibilité en dehors du cercle proche</li>
         <li>Aucune gestion structurée des commandes</li>
-        <li>Dépendance financière persistante</li>
+        <li>Dépendance financière qui persiste</li>
       </ul>
     </div>
-
-    <div class="bar">Côté clients</div>
-    <div class="block g">
-      <h3>Problème central</h3>
-      <p>Les clients cherchent des <b>plats authentiques, faits maison, sains</b> mais n'ont aucun canal fiable pour y accéder. Les plateformes existantes ne proposent pas de cuisine traditionnelle marocaine de qualité.</p>
-    </div>
-    <div class="block g">
-      <h3>Conséquences</h3>
-      <ul>
+    <div>
+      <div class="eyebrow">Côté clients</div>
+      <h3>L'envie est là, le canal manque.</h3>
+      <p>Les clients cherchent des plats authentiques et sains, mais aucun canal fiable ne les propose. Les plateformes existantes ignorent la cuisine traditionnelle marocaine.</p>
+      <ul class="mt28">
         <li>Manque de confiance envers les cuisines inconnues</li>
         <li>Impossible de vérifier hygiène et ingrédients</li>
         <li>Plats industriels, sans authenticité</li>
         <li>Peu d'accès à une cuisine maison de qualité</li>
       </ul>
     </div>
-
-    <div class="foot-rule"><span class="ch">Découverte du projet et objectifs</span><span class="pg">01</span></div>
   </div>
 </section>
 
-<!-- ======================= 02 SOLUTION ======================= -->
-<section class="sec tint">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
+<!-- 02 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">02</span>
+    <h2>Ce que le questionnaire a fait remonter</h2>
+    <p class="lede">Dix questions posées à des consommateurs sur leurs habitudes de commande et leurs freins. Cinq réponses ont cadré le produit.</p>
+  </div>
+  <div class="body">
+    <div class="figs">
+      <div><div class="n">90<i>%</i></div><p>veulent être livrés en moins de 30 minutes</p></div>
+      <div><div class="n">85<i>%</i></div><p>préfèrent commander de la cuisine marocaine en ligne</p></div>
+      <div><div class="n">78<i>%</i></div><p>attendent un suivi de commande en temps réel</p></div>
+      <div><div class="n">72<i>%</i></div><p>préfèrent une application dédiée à WhatsApp</p></div>
+      <div><div class="n">68<i>%</i></div><p>lisent les avis clients avant de commander</p></div>
     </div>
-    <h2 class="o">La solution DADA</h2>
-    <div style="margin-top:22px"></div>
-    <div class="stmt">
-      <h3>La plateforme</h3>
-      <p>DADA est <b>un espace numérique sécurisé</b> qui permet aux femmes de créer un profil professionnel, présenter leurs plats, gérer leurs commandes et ventes — directement depuis leur domicile, sans investissement lourd.</p>
-    </div>
-    <div class="stmt g">
-      <h3>L'impact visé</h3>
-      <p>Transformer le savoir-faire culinaire ancestral des femmes marocaines en <b>levier d'autonomie financière</b> réelle, tout en offrant aux clients un accès simple à une cuisine fait maison, authentique et de confiance.</p>
-    </div>
-
-    <div class="kicker">Fonctionnalités clés</div>
-    <div class="feats">
-      <div class="rail"></div>
-      <ol>
-        <li><b>Profil cuisinière</b><span>Création d'un profil avec photo, spécialités, tarifs et disponibilités. Bio personnalisée et avis clients.</span></li>
-        <li><b>Catalogue de plats</b><span>Menu interactif avec photos, ingrédients, prix et options de personnalisation. Gestion des disponibilités en temps réel.</span></li>
-        <li><b>Système de commande</b><span>Commande en ligne avec suivi en temps réel, notifications et gestion des créneaux de livraison ou de retrait.</span></li>
-        <li><b>Paiement sécurisé</b><span>Paiement en ligne ou à la livraison, portefeuille digital intégré et transactions protégées pour les deux parties.</span></li>
-        <li><b>Système d'avis</b><span>Notation et commentaires vérifiés pour bâtir la confiance entre cuisinières et clients sur la plateforme.</span></li>
-      </ol>
-    </div>
-
-    <div class="foot-rule"><span class="ch">Découverte du projet et objectifs</span><span class="pg">02</span></div>
+    <p style="font-size:12.5px; color:var(--light); margin-top:26px">Résultats déclaratifs du questionnaire — la plateforme n'étant pas en ligne, ce ne sont pas des chiffres d'usage.</p>
   </div>
 </section>
 
-<!-- ======================= 03 QUESTIONNAIRE ======================= -->
-<section class="sec">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
+<!-- 03 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">03</span>
+    <h2>Deux profils, deux peurs opposées</h2>
+    <p class="lede">Elle a peur de ne pas y arriver. Lui a peur de mal tomber. Toute l'interface se construit sur ces deux craintes.</p>
+  </div>
+  <div class="body who">
+    <div class="p">
+      <img class="ph" src="assets/face-farah.png" alt="Portrait de Farah El Idrissi">
+      <div class="nm">Farah El Idrissi</div>
+      <div class="rl">42 ans · Casablanca · Cuisinière à domicile</div>
+      <div class="q">« Je veux gagner de l'argent depuis chez moi — mais puis-je vraiment faire cela ? »</div>
+      <div class="eyebrow">Besoins</div>
+      <ul>
+        <li>Un revenu depuis la maison, sans local ni capital</li>
+        <li>Une plateforme simple, utilisable sur un téléphone basique</li>
+        <li>Des repères clairs sur l'hygiène et les règles légales</li>
+      </ul>
+      <div class="eyebrow mt28">Peurs</div>
+      <ul>
+        <li>Peur de la technologie et du paiement en ligne</li>
+        <li>Peur des avis négatifs et de ne pas trouver de clients</li>
+        <li>Méconnaissance des procédures légales</li>
+      </ul>
     </div>
-    <h2>Questionnaire &amp; analyse</h2>
-    <p class="intro">Dix questions posées à des consommateurs sur leurs habitudes de commande, leur rapport au fait maison et leurs freins. Cinq réponses ont cadré le produit.</p>
-    <div class="qrows">
-      <div class="qrow"><div class="v">90%</div><div class="t">veulent être livrés en moins de 30 minutes</div></div>
-      <div class="qrow"><div class="v">85%</div><div class="t">préfèrent commander de la cuisine marocaine traditionnelle en ligne</div></div>
-      <div class="qrow"><div class="v">78%</div><div class="t">attendent un suivi de commande en temps réel</div></div>
-      <div class="qrow"><div class="v">72%</div><div class="t">préfèrent une application dédiée à une commande par WhatsApp</div></div>
-      <div class="qrow"><div class="v">68%</div><div class="t">lisent les avis clients avant de commander</div></div>
+    <div class="p">
+      <img class="ph" src="assets/face-youssef.png" alt="Portrait de Youssef Benali">
+      <div class="nm">Youssef Benali</div>
+      <div class="rl">Étudiant · Client · Commande sur mobile</div>
+      <div class="q">« Je veux de la bonne nourriture maison, pas de la restauration rapide. »</div>
+      <div class="eyebrow">Besoins</div>
+      <ul>
+        <li>Trouver facilement des plats marocains faits maison</li>
+        <li>Photos, avis et notes des cuisinières avant de commander</li>
+        <li>Un prix et un délai annoncés à l'avance</li>
+      </ul>
+      <div class="eyebrow mt28">Peurs</div>
+      <ul>
+        <li>Doute sur l'hygiène et les conditions de préparation</li>
+        <li>Peur que le plat ne corresponde pas aux photos</li>
+        <li>Livraisons en retard</li>
+      </ul>
     </div>
-    <p class="qnote">Résultats déclaratifs du questionnaire du projet — la plateforme n'étant pas en ligne, ce ne sont pas des chiffres d'usage.</p>
-    <div class="foot-rule"><span class="ch">Idéation</span><span class="pg">03</span></div>
   </div>
 </section>
 
-<!-- ======================= 04 PERSONAS ======================= -->
-<section class="sec tint">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
-    </div>
-    <h2>Personas</h2>
-    <p class="intro">Deux profils, deux peurs opposées : elle a peur de ne pas y arriver, lui a peur de mal tomber. Toute l'interface se construit sur ces deux craintes.</p>
-
-    <div class="persona" style="margin-top:24px">
-      <div class="id">
-        <img src="assets/face-farah.png" alt="Portrait de Farah El Idrissi">
-        <div class="nm">Farah<br>El Idrissi</div>
-        <div class="meta"><b>Âge</b>42 ans<br><b>Ville</b>Casablanca<br><b>Profil</b>Cuisinière à domicile</div>
+<!-- 04 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">04</span>
+    <h2>Cinq fonctions, une seule promesse : la confiance</h2>
+    <p class="lede">Chaque fonctionnalité répond à une peur nommée plus haut, côté cuisinière ou côté client.</p>
+  </div>
+  <div class="body">
+    <div class="tw">
+      <div>
+        <h3>Profil cuisinière</h3>
+        <p>Photo, spécialités, tarifs, disponibilités, bio et avis clients : la vitrine qui manquait.</p>
+        <h3 class="mt28">Catalogue de plats</h3>
+        <p>Menu interactif avec photos, ingrédients, prix et options — disponibilités en temps réel.</p>
+        <h3 class="mt28">Système de commande</h3>
+        <p>Commande en ligne, suivi en temps réel, notifications et créneaux de livraison ou de retrait.</p>
       </div>
-      <div class="cols">
-        <div class="col">
-          <h4>Besoins</h4>
-          <ul>
-            <li>Un revenu depuis la maison, sans local ni capital</li>
-            <li>Une plateforme simple, utilisable sur un téléphone basique</li>
-            <li>Des repères clairs sur l'hygiène et les règles légales</li>
-            <li>Recevoir les commandes et les paiements sans friction</li>
-          </ul>
-          <h4>Habitudes</h4>
-          <ul>
-            <li>Cuisine régulièrement pour sa famille</li>
-            <li>Utilise WhatsApp et les réseaux pour partager ses plats</li>
-            <li>Reçoit déjà des commandes informelles de voisins</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Peurs</h4>
-          <ul>
-            <li>Peur de la technologie et du paiement en ligne</li>
-            <li>Peur des avis négatifs et de ne pas trouver de clients</li>
-            <li>Méconnaissance des procédures légales</li>
-            <li>Crainte d'un problème d'hygiène ou de qualité</li>
-          </ul>
-          <h4>Comportement</h4>
-          <ul>
-            <li>Hésite avant d'essayer une nouvelle application</li>
-            <li>Prend elle-même les photos de ses plats</li>
-            <li>Répond vite aux demandes de ses clientes</li>
-          </ul>
-        </div>
-        <div class="q">« Je veux gagner de l'argent depuis chez moi — mais puis-je vraiment faire cela ? »</div>
+      <div>
+        <h3>Paiement sécurisé</h3>
+        <p>En ligne ou à la livraison, portefeuille intégré, transactions protégées des deux côtés.</p>
+        <h3 class="mt28">Système d'avis</h3>
+        <p>Notes et commentaires vérifiés : la confiance se construit publiquement, pas sur parole.</p>
+        <h3 class="mt28">Interface bilingue</h3>
+        <p>Français et arabe : la cuisinière et le client n'ont pas la même langue d'usage.</p>
       </div>
     </div>
-
-    <div class="persona">
-      <div class="id">
-        <img src="assets/face-youssef.png" alt="Portrait de Youssef Benali">
-        <div class="nm">Youssef<br>Benali</div>
-        <div class="meta"><b>Profil</b>Étudiant<br><b>Rôle</b>Client<br><b>Usage</b>Mobile</div>
-      </div>
-      <div class="cols">
-        <div class="col">
-          <h4>Besoins</h4>
-          <ul>
-            <li>Trouver facilement des plats marocains faits maison</li>
-            <li>Photos, avis et notes des cuisinières avant de commander</li>
-            <li>Commander vite, être livré ou récupérer à proximité</li>
-            <li>Un prix et un délai annoncés à l'avance</li>
-          </ul>
-          <h4>Habitudes</h4>
-          <ul>
-            <li>Commande depuis son téléphone</li>
-            <li>Vérifie les avis avant d'acheter</li>
-            <li>Repasse commande là où il a été satisfait</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4>Peurs</h4>
-          <ul>
-            <li>Doute sur l'hygiène et les conditions de préparation</li>
-            <li>Peur que le plat ne corresponde pas aux photos</li>
-            <li>Livraisons en retard</li>
-          </ul>
-          <h4>Comportement</h4>
-          <ul>
-            <li>Compare les prix et les options</li>
-            <li>Suit les contenus food sur Instagram et TikTok</li>
-            <li>Sensible aux promotions et aux réductions</li>
-          </ul>
-        </div>
-        <div class="q">« Je veux de la bonne nourriture maison, pas de la restauration rapide. »</div>
-      </div>
-    </div>
-
-    <div class="foot-rule"><span class="ch">Conception</span><span class="pg">04</span></div>
+    <p class="mt40" style="border-top:1px solid var(--rule); padding-top:22px; font-size:17px; color:var(--ink); max-width:72ch">
+      <b>L'impact visé —</b> transformer un savoir-faire culinaire ancestral en autonomie financière réelle, sans local, sans capital, sans intermédiaire.</p>
   </div>
 </section>
 
-<!-- ======================= 05 CHARTE ======================= -->
-<section class="sec">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
+<!-- 05 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">05</span>
+    <h2>Identité</h2>
+    <p class="lede">Un tagine stylisé, trois couleurs et trois alphabets — dont l'arabe, qui porte le nom de la marque.</p>
+  </div>
+  <div class="body">
+    <div class="pal">
+      <div><div class="sw" style="background:#E86A1F"></div><b>Orange</b><small>#E86A1F — chaleur, appétit</small></div>
+      <div><div class="sw" style="background:#1F3D2B"></div><b>Vert</b><small>#1F3D2B — confiance, naturel</small></div>
+      <div><div class="sw" style="background:#FDB515"></div><b>Jaune</b><small>#FDB515 — épices, générosité</small></div>
+      <div><div class="sw" style="background:#FCF9F0; outline:1px solid var(--rule); outline-offset:-1px"></div><b>Crème</b><small>#FCF9F0 — fond</small></div>
     </div>
-    <h2>Charte graphique</h2>
-    <p class="intro">Un logotype, trois couleurs et trois alphabets — dont l'arabe, qui porte le nom de la marque.</p>
-    <div class="charte">
-      <div class="card">
-        <h4>Logotype &amp; fonds admis</h4>
-        <div class="locks">
-          <div class="lock c"><img src="assets/logo-lockup.png" alt="Logotype sur crème"></div>
-          <div class="lock g"><img src="assets/logo-tagine.png" alt="Logotype sur vert"></div>
-          <div class="lock o"><img src="assets/logo-tagine.png" alt="Logotype sur orange"></div>
-        </div>
-        <div class="pal">
-          <div><div class="sw" style="background:#E86A1F"></div><b>Orange</b><small>#E86A1F</small></div>
-          <div><div class="sw" style="background:#1F3D2B"></div><b>Vert</b><small>#1F3D2B</small></div>
-          <div><div class="sw" style="background:#FDB515"></div><b>Jaune</b><small>#FDB515</small></div>
-          <div><div class="sw" style="background:#FCF9F0"></div><b>Crème</b><small>#FCF9F0</small></div>
-        </div>
-        <p style="font-size:13px; margin-top:14px">Orange : chaleur, convivialité, appétit. Vert : naturel, confiance, authenticité. Jaune : épices, générosité, lumière.</p>
+    <div class="tw mt40">
+      <div class="typ">
+        <div><span class="k">Playfair Display</span><span style="font-family:'Playfair Display',serif; font-size:22px">Le nom DADA</span></div>
+        <div><span class="k">Roboto</span><span>Baseline et textes secondaires</span></div>
+        <div><span class="k">Aref Ruqaa</span><span class="ar" style="font-size:22px">دادة</span></div>
       </div>
-      <div class="card">
-        <h4>Typographie</h4>
-        <div class="typel">
-          <div><span class="k">Playfair Display</span><span class="pf" style="font-size:24px; font-weight:700">Le nom DADA</span></div>
-          <div><span class="k">Roboto</span><span style="font-size:14.5px">Baseline et textes secondaires</span></div>
-          <div><span class="k">Aref Ruqaa</span><span class="ar" style="font-size:24px">دادة — الذوق</span></div>
-        </div>
-        <div class="sense">
-          <div class="ar">دادة</div>
-          <p><b>Le nom.</b> En darija, « dada » désigne affectueusement la femme qui cuisine pour les autres — une figure maternelle associée au savoir-faire et à la transmission des recettes.</p>
-          <p style="margin-top:8px"><b>La forme.</b> Le tagine stylisé porte la calligraphie ; le jaune à l'intérieur figure les épices et la richesse des plats.</p>
-        </div>
+      <div>
+        <p><b>Le nom.</b> En darija, « dada » désigne affectueusement la femme qui cuisine pour les autres — une figure maternelle associée au savoir-faire et à la transmission des recettes.</p>
+        <p class="mt28"><b>La forme.</b> Le tagine stylisé porte la calligraphie ; le jaune à l'intérieur figure les épices et la richesse des plats.</p>
       </div>
     </div>
-    <div class="card" style="margin-top:24px">
-      <h4>Moodboard</h4>
-      <img src="assets/moodboard.png" alt="Moodboard DADA" style="width:100%; margin-top:4px">
-    </div>
-    <div class="foot-rule"><span class="ch">Charte graphique</span><span class="pg">05</span></div>
   </div>
 </section>
 
-<!-- ======================= 06 MAQUETTES ======================= -->
-<section class="sec tint">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
-    </div>
-    <h2>Maquettes</h2>
-    <p class="intro">Une application pour les deux côtés du marché et un site qui sert de vitrine. Le vert accueille, l'orange déclenche l'action.</p>
-    <div class="shots">
-      <div class="shot">
-        <img src="assets/mockup-app.png" alt="Écrans de l'application DADA">
-        <div class="cap"><b>Application mobile</b> — onboarding, connexion, accueil personnalisé, catalogue de plats, fiche cuisinière, commande et suivi.</div>
-      </div>
-      <div class="pair">
-        <div class="shot">
-          <img src="assets/mockup-web.png" alt="Écrans du site DADA">
-          <div class="cap"><b>Site web</b> — découverte des plats, profils de cuisinières et parcours de commande sur grand écran.</div>
-        </div>
-        <div class="shot">
-          <img src="assets/mockup-detail.png" alt="Détail des écrans d'accueil et de connexion">
-          <div class="cap"><b>Le détail qui rassure</b> — sur l'accueil, la cuisinière est saluée par son prénom et son statut du jour s'affiche en arabe comme en français. Pour Farah, qui hésite devant une nouvelle application, cette première ligne fait la différence.</div>
-        </div>
+<!-- 06 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">06</span>
+    <h2>Le produit</h2>
+    <p class="lede">Une application pour les deux côtés du marché, et un site qui sert de vitrine. Le vert accueille, l'orange déclenche l'action.</p>
+  </div>
+  <div class="body stack">
+    <figure>
+      <img src="assets/mockup-web.png" alt="Écrans du site DADA">
+      <figcaption><b>Site web</b> — découverte des plats, profils de cuisinières et parcours de commande sur grand écran.</figcaption>
+    </figure>
+    <div class="pair">
+      <figure>
+        <img src="assets/mockup-detail.png" alt="Détail des écrans d'accueil et de connexion">
+        <figcaption><b>Accueil et connexion</b> — la cuisinière est saluée par son prénom, son statut du jour s'affiche en arabe comme en français.</figcaption>
+      </figure>
+      <div>
+        <h3>Le détail qui rassure</h3>
+        <p>Pour Farah, qui hésite devant une nouvelle application, cette première ligne fait la différence entre « c'est pour moi » et « ce n'est pas pour moi ». C'est le point où la peur de la technologie se joue — avant même la première commande.</p>
       </div>
     </div>
-    <div class="foot-rule"><span class="ch">Maquette</span><span class="pg">06</span></div>
   </div>
 </section>
 
-<!-- ======================= 07 SUITE ======================= -->
-<section class="sec">
-  <div class="sheet">
-    <div class="masthead">
-      <img src="assets/logo-lockup.png" alt="">
-      <span>Taste of Home</span>
-    </div>
+<!-- 07 -->
+<section class="sec wrap">
+  <div class="hd">
+    <span class="no">07</span>
     <h2>Ce qu'il reste à prouver</h2>
-    <p class="intro">Les pourcentages ci-dessus viennent du questionnaire, pas de l'usage : la plateforme n'est pas encore en ligne. Trois indicateurs diront si la promesse tient.</p>
-    <div class="next">
-      <div><h4>Les cuisinières vont-elles jusqu'au bout&nbsp;?</h4><p>Part des profils commencés qui sont publiés avec au moins un plat. C'est là que la peur de la technologie se mesure.</p></div>
-      <div><h4>La confiance se construit-elle&nbsp;?</h4><p>Part des commandes suivies d'un avis vérifié, et délai avant la première commande répétée chez la même cuisinière.</p></div>
-      <div><h4>La promesse de rapidité tient-elle&nbsp;?</h4><p>90 % des répondants attendent moins de 30 minutes : c'est l'engagement le plus exposé du produit.</p></div>
+    <p class="lede">Les pourcentages plus haut viennent du questionnaire, pas de l'usage : la plateforme n'est pas encore en ligne.</p>
+  </div>
+  <div class="body">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:44px">
+      <div><h3>Les cuisinières vont-elles jusqu'au bout&nbsp;?</h3><p>Part des profils commencés qui sont publiés avec au moins un plat.</p></div>
+      <div><h3>La confiance se construit-elle&nbsp;?</h3><p>Part des commandes suivies d'un avis vérifié, et délai avant la commande répétée.</p></div>
+      <div><h3>La rapidité tient-elle&nbsp;?</h3><p>90 % des répondants attendent moins de 30 minutes : l'engagement le plus exposé.</p></div>
     </div>
-    <div class="foot-rule"><span class="ch">Prototypage et tests utilisateurs</span><span class="pg">07</span></div>
   </div>
 </section>
 
@@ -478,7 +329,6 @@ h2.o{color:var(--orange)}
     <b>Encadré par</b> M. Ounsy · 2025 / 2026
   </div>
 </footer>
-<div class="zband"><img src="assets/motif.png" alt=""></div>
 
 </div></div>
 <script>/* scaler kept: harmless in Figma import */

@@ -9,22 +9,17 @@ encadré par M. Ounsy.
 
 ## La direction
 
-Le poster reprend le système de mise en page de la présentation elle-même, en continu :
+Minimal et typographique. Le contenu porte la page, la mise en forme s'efface :
 
-- **Bandeau de tête répété** — logotype à gauche, « Taste of Home » à droite, comme sur
-  chaque diapositive
-- **Titres en serif capitales**, vert (ou orange pour la solution), alignés à gauche
-- **Barres de libellé safran** pleine largeur (« Côté cuisinières », « Côté clients »)
-- **Blocs à filet vertical** orange ou vert pour les problèmes et conséquences
-- **Rail jaune** devant la liste des fonctionnalités clés
-- **Ligne de pied de page** à chaque fin de section : le nom du chapitre à gauche, le
-  numéro à droite sous un trait vert court — repris du gabarit des diapositives
-- **Questionnaire** en lignes vert foncé, pourcentages en serif alternant jaune et orange
-- **Personas** dans la disposition du deck : panneau orange avec portrait et fiche, puis
-  besoins, peurs, habitudes et comportement en colonnes
-- Bandeau de **zellige** en haut et en bas du poster, comme sur les diapositives
-
-Fond blanc et crème, filets 1 px, aucun arrondi et aucune ombre.
+- **Fond blanc partout**, aucune section colorée, aucun encadré, aucune ombre
+- **Une seule police**, Roboto, en trois graisses (300 / 400 / 500)
+- **Filets d'un pixel** pour séparer, jamais de bloc de couleur
+- **Marges larges** et texte indenté sous chaque titre de section
+- **Couleur réservée au sens** : l'orange de la charte n'apparaît que sur les
+  numéros de section, les signes % et le filet des citations
+- **Chiffres du questionnaire** posés à plat, sans graphique : cinq nombres et
+  leur légende
+- Portraits en noir et blanc, images sans cadre
 
 ## Fichiers
 
