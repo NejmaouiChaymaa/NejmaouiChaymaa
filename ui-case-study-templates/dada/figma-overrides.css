@@ -1,7 +1,7 @@
 
 /* ---- Figma build only ----
-   Aucune 3D dans ce poster. On fixe les tailles que l'import reproduit mal :
-   la grille de zellige de la couverture et les masques en arche. */
-.mosaic{grid-auto-rows:196px}
-.tile img{height:196px}
-.sign{width:596px}
+   Aucune 3D dans ce poster. On fixe les hauteurs d'images que l'import
+   reproduit mal en object-fit. */
+.zband{height:26px}
+.zband img{height:26px}
+.persona .id img{height:236px}

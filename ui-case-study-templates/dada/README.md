@@ -9,18 +9,22 @@ encadré par M. Ounsy.
 
 ## La direction
 
-Format court comme le poster OJO Nature, mais son propre univers :
+Le poster reprend le système de mise en page de la présentation elle-même, en continu :
 
-- **Couverture en mur de zellige** : une grille de 18 tuiles jointoyées — photos, aplats
-  de marque, motif du projet, packaging et le nom en arabe — sur laquelle est posée une
-  **plaque en céramique** (cadre double orange) qui porte le titre
-- **Numéros de chapitre en contour** : chiffres Playfair de 104 px, tracés et non pleins,
-  posés dans la marge de gauche
-- **Arches** : les portraits sont masqués en arche marocaine, pas en cercle
-- **Fond crème, vert profond, orange et safran** — les couleurs de la charte
-- **Playfair Display + Roboto + Aref Ruqaa** : les trois polices réelles de la charte,
-  toutes libres — c'est le seul des quatre posters sans substitution typographique
-- Le nom en arabe, **دادة**, et son sens sont traités comme un élément de marque
+- **Bandeau de tête répété** — logotype à gauche, « Taste of Home » à droite, comme sur
+  chaque diapositive
+- **Titres en serif capitales**, vert (ou orange pour la solution), alignés à gauche
+- **Barres de libellé safran** pleine largeur (« Côté cuisinières », « Côté clients »)
+- **Blocs à filet vertical** orange ou vert pour les problèmes et conséquences
+- **Rail jaune** devant la liste des fonctionnalités clés
+- **Ligne de pied de page** à chaque fin de section : le nom du chapitre à gauche, le
+  numéro à droite sous un trait vert court — repris du gabarit des diapositives
+- **Questionnaire** en lignes vert foncé, pourcentages en serif alternant jaune et orange
+- **Personas** dans la disposition du deck : panneau orange avec portrait et fiche, puis
+  besoins, peurs, habitudes et comportement en colonnes
+- Bandeau de **zellige** en haut et en bas du poster, comme sur les diapositives
+
+Fond blanc et crème, filets 1 px, aucun arrondi et aucune ombre.
 
 ## Fichiers
 
