@@ -1,0 +1,601 @@
+<meta charset="utf-8">
+<title>Packaging Case Study Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F4F0; --card:#FFFFFF; --ink:#191A17; --ink-2:#54574F; --ink-3:#8B8E85;
+  --rule:#DFDCD4; --rule-2:#C8C4BA;
+  --mark:#1B6FD4;           /* bleu technique : traits de coupe, repères, cotes */
+  --cut:#191A17; --fold:#B23A48;
+  --ok:#2F7A44; --warn:#B8860B;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{background:#E9E7E2}
+body{font-family:Archivo,"Helvetica Neue",Arial,sans-serif; color:var(--ink); font-size:15px; line-height:1.65; font-weight:400; -webkit-font-smoothing:antialiased}
+img{display:block; max-width:100%}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+p{color:var(--ink-2)}
+b,strong{font-weight:600; color:var(--ink)}
+
+/* ---------- barre d'outils ---------- */
+.bar{position:sticky; top:0; z-index:60; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  padding:11px max(20px,calc((100vw - 1180px)/2)); background:rgba(246,244,240,.92); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule)}
+.bar .brand{font-weight:700; font-size:14px; letter-spacing:-.01em; display:flex; align-items:center; gap:9px}
+.bar .brand .reg{width:14px; height:14px; position:relative; flex:none}
+.bar .brand .reg::before,.bar .brand .reg::after{content:""; position:absolute; background:var(--mark)}
+.bar .brand .reg::before{left:6px; top:0; width:1.5px; height:14px}
+.bar .brand .reg::after{top:6px; left:0; height:1.5px; width:14px}
+.bar .sp{flex:1}
+.sw{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+  padding:7px 13px; border:1px solid var(--rule-2); background:#fff; color:var(--ink-2); cursor:pointer; transition:.15s}
+.sw:hover{border-color:var(--mark); color:var(--ink)}
+.sw[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+
+main{max-width:1180px; margin:0 auto; padding:0 max(20px,3vw) 90px; background:var(--paper)}
+
+/* ---------- structure de section ---------- */
+section{padding:52px 0; border-top:1px solid var(--rule)}
+section:first-of-type{border-top:0}
+.hd{display:grid; grid-template-columns:120px 1fr; gap:28px; align-items:start}
+.hd .no{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.1em; color:var(--mark); padding-top:6px}
+h2{font-size:27px; font-weight:600; letter-spacing:-.02em; line-height:1.2}
+.hd .lede{margin-top:10px; max-width:72ch; color:var(--ink-2)}
+.body{margin-top:30px; margin-left:148px}
+h3{font-size:15px; font-weight:600; margin-bottom:7px}
+h4{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:11px}
+.grid{display:grid; gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card); border:1px solid var(--rule); padding:20px}
+.card p{font-size:14px}
+.mt24{margin-top:24px} .mt32{margin-top:32px}
+ul{list-style:none}
+li{color:var(--ink-2); padding-left:17px; position:relative; margin-bottom:6px; font-size:14.5px}
+li::before{content:""; position:absolute; left:0; top:10px; width:7px; height:1px; background:var(--rule-2)}
+
+/* ---------- couverture ---------- */
+.cover{padding:44px 0 52px; border-top:0}
+.cover .kicker{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--mark)}
+.cover h1{font-size:58px; font-weight:700; letter-spacing:-.035em; line-height:1.04; margin-top:16px; max-width:17ch}
+.cover .sub{font-size:18px; max-width:60ch; margin-top:18px}
+.specrow{display:grid; grid-template-columns:repeat(5,1fr); border:1px solid var(--rule); margin-top:34px; background:var(--card)}
+.specrow div{padding:15px 17px}
+.specrow div + div{border-left:1px solid var(--rule)}
+.specrow dt{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3); margin-bottom:5px}
+.specrow dd{font-size:14px; font-weight:500; line-height:1.4}
+
+/* ---------- tableaux de specs ---------- */
+.tab{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--rule); font-size:14px}
+.tab th,.tab td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--rule); vertical-align:top}
+.tab th{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; background:#FAF9F6; width:210px}
+.tab tr:last-child td,.tab tr:last-child th{border-bottom:0}
+.tab td{color:var(--ink-2)}
+
+/* ---------- schémas ---------- */
+figure{margin:0}
+.plan{background:var(--card); border:1px solid var(--rule); padding:22px}
+.plan svg{width:100%; height:auto; display:block}
+figcaption{font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3); margin-top:12px; line-height:1.6}
+.legend{display:flex; gap:22px; flex-wrap:wrap; margin-top:14px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3)}
+.legend span{display:flex; align-items:center; gap:7px}
+.legend i{width:22px; height:0; border-top:1.5px solid var(--cut); display:block}
+.legend i.f{border-top:1.5px dashed var(--fold)}
+.legend i.b{border-top:1.5px dotted var(--mark)}
+
+/* ---------- emplacements image ---------- */
+.slot{border:1px dashed var(--rule-2); background:repeating-linear-gradient(45deg,#FBFAF8,#FBFAF8 9px,#F4F2ED 9px,#F4F2ED 18px);
+  display:grid; place-items:center; text-align:center; padding:24px; min-height:190px;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); line-height:1.9; letter-spacing:.04em}
+.slot.tall{min-height:300px}
+
+/* ---------- checklist mentions ---------- */
+.checks{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px}
+.checks div{display:grid; grid-template-columns:auto 1fr; gap:12px; padding:9px 0; border-bottom:1px solid var(--rule); align-items:baseline}
+.checks div::before{content:"□"; color:var(--mark); font-size:15px; line-height:1}
+.checks b{font-weight:500; font-size:14px}
+.checks small{display:block; color:var(--ink-3); font-size:12.5px; line-height:1.5}
+
+/* ---------- gamme ---------- */
+.range{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.range .sw2{height:74px; border:1px solid var(--rule)}
+.range b{display:block; font-size:13.5px; font-weight:500; margin-top:9px}
+.range small{display:block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3)}
+
+/* ---------- guides ---------- */
+.tip{border-left:2px solid var(--mark); background:#F1F5FC; padding:11px 15px; font-size:13.5px; line-height:1.6;
+  color:var(--ink-2); margin-top:14px; max-width:78ch}
+.tip b{display:block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--mark); margin-bottom:3px; font-weight:500}
+body.no-tips .tip{display:none}
+
+/* ---------- mode vierge ---------- */
+.f{transition:background .15s}
+body.blank .f{background:repeating-linear-gradient(-45deg,#EFECE6,#EFECE6 6px,transparent 6px,transparent 12px);
+  box-shadow:inset 0 0 0 1px var(--rule-2); color:var(--ink-3); font-style:italic}
+body.blank .range .sw2{background:#EFECE6 !important}
+
+footer{border-top:1px solid var(--ink); margin-top:46px; padding-top:22px; display:flex; justify-content:space-between;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); letter-spacing:.04em}
+@media print{
+  body{background:#fff}
+  .bar,.tip{display:none}
+  /* les trames diagonales pèsent des dizaines de Mo en PDF : aplat en impression */
+  body.blank .f{background:#EFECE6}
+  .slot{background:#F4F2ED}
+}
+</style>
+
+<div class="bar">
+  <span class="brand"><span class="reg"></span>Modèle d'étude de cas — Packaging</span>
+  <span class="sp"></span>
+  <button class="sw" id="t-blank" aria-pressed="false">Modèle vierge</button>
+  <button class="sw" id="t-tips" aria-pressed="true">Guide de rédaction</button>
+  <button class="sw" id="t-print" aria-pressed="false">Imprimer / PDF</button>
+</div>
+
+<main>
+
+<!-- ============ COUVERTURE ============ -->
+<section class="cover">
+  <div class="kicker">Étude de cas · Design packaging</div>
+  <h1 class="f" data-b="Nom du produit — gamme, contenance">Nom du produit<br>et de la gamme</h1>
+  <p class="sub f" data-b="Une phrase : quel produit, pour quel rayon, et ce que l'emballage devait changer.">Une phrase : quel produit, pour quel rayon, et ce que l'emballage devait changer.</p>
+  <dl class="specrow">
+    <div><dt>Client</dt><dd class="f" data-b="Marque ou commanditaire">Marque / commanditaire</dd></div>
+    <div><dt>Catégorie</dt><dd class="f" data-b="Rayon : épicerie, cosmétique…">Rayon, segment</dd></div>
+    <div><dt>Type d'emballage</dt><dd class="f" data-b="Étui, sachet, pot, bouteille…">Étui carton, sachet, pot…</dd></div>
+    <div><dt>Mon rôle</dt><dd class="f" data-b="DA, exécution, gabarit, suivi impression">DA · exécution · suivi</dd></div>
+    <div><dt>Année</dt><dd class="f" data-b="AAAA">AAAA</dd></div>
+  </dl>
+  <div class="tip"><b>Guide</b>La couverture d'un dossier packaging se juge comme un linéaire : on doit lire en trois secondes de quel produit il s'agit et à quel rayon il appartient. Mettez le rendu 3D ou la photo en situation juste après.</div>
+  <div class="slot tall mt32">Rendu principal — packshot 3D ou photo en situation<br>format paysage, fond neutre</div>
+</section>
+
+<!-- ============ 01 BRIEF ============ -->
+<section>
+  <div class="hd">
+    <span class="no">01</span>
+    <div>
+      <h2>Le brief</h2>
+      <p class="lede f" data-b="Qui commande, pourquoi maintenant, et quelle décision l'emballage doit provoquer en rayon.">Qui commande, pourquoi maintenant, et quelle décision l'emballage doit provoquer en rayon.</p>
+    </div>
+  </div>
+  <div class="body grid g3">
+    <div class="card"><h4>Le produit</h4><p class="f" data-b="Ce qu'il y a dedans, contenance, format de vente, prix indicatif.">Ce qu'il y a dedans, contenance, format de vente, positionnement prix.</p></div>
+    <div class="card"><h4>Le problème</h4><p class="f" data-b="Ce qui ne va pas aujourd'hui : illisible en rayon, pas différenciant, coût, contrainte logistique…">Ce qui ne va pas aujourd'hui : lisibilité en rayon, différenciation, coût, contrainte logistique.</p></div>
+    <div class="card"><h4>Contraintes</h4><p class="f" data-b="Budget, procédé d'impression imposé, machine de conditionnement, délai, matière imposée.">Budget, procédé imposé, machine de conditionnement, délai, matière imposée.</p></div>
+  </div>
+  <div class="body tip" style="margin-top:18px"><b>Guide</b>Notez toujours la contrainte industrielle (largeur de bobine, machine de remplissage, nombre de couleurs disponibles) : c'est elle qui explique la moitié des décisions de design, et sa mention distingue un dossier professionnel d'un exercice d'école.</div>
+</section>
+
+<!-- ============ 02 RAYON ============ -->
+<section>
+  <div class="hd">
+    <span class="no">02</span>
+    <div>
+      <h2>Le rayon</h2>
+      <p class="lede f" data-b="Où le produit est vu, à côté de quoi, et à quelle distance.">Où le produit est vu, à côté de quoi, et à quelle distance il doit être identifiable.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="grid g2">
+      <div class="slot">Photo de linéaire — le rayon réel,<br>concurrents visibles</div>
+      <div>
+        <h4>Ce que dit le linéaire</h4>
+        <ul>
+          <li class="f" data-b="Code couleur dominant de la catégorie">Code couleur dominant de la catégorie</li>
+          <li class="f" data-b="Codes visuels récurrents : photo produit, illustration, fond blanc…">Codes visuels récurrents et attendus</li>
+          <li class="f" data-b="Ce que personne ne fait — l'espace libre">Ce que personne ne fait — l'espace laissé libre</li>
+          <li class="f" data-b="Distance de lecture réelle : 1 m ? 3 m ?">Distance de lecture réelle du rayon</li>
+        </ul>
+        <div class="tip"><b>Guide</b>Photographiez le rayon avant de dessiner. Un packaging ne se juge jamais seul : il se juge entouré de ses concurrents, souvent à trois mètres et en deux secondes.</div>
+      </div>
+    </div>
+    <h4 class="mt32">Concurrents analysés</h4>
+    <table class="tab">
+      <tr><th>Marque</th><td class="f" data-b="Nom du concurrent — son positionnement en une ligne, ce qui marche visuellement, ce qui manque.">Concurrent 1 — positionnement, force visuelle, faiblesse</td></tr>
+      <tr><th>Marque</th><td class="f" data-b="Concurrent 2">Concurrent 2 — positionnement, force visuelle, faiblesse</td></tr>
+      <tr><th>Marque</th><td class="f" data-b="Concurrent 3">Concurrent 3 — positionnement, force visuelle, faiblesse</td></tr>
+      <tr><th>Opportunité</th><td class="f" data-b="L'espace que personne n'occupe et que ce packaging va prendre.">L'espace que personne n'occupe, et que ce packaging va prendre</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 03 CIBLE ============ -->
+<section>
+  <div class="hd">
+    <span class="no">03</span>
+    <div>
+      <h2>L'acheteur</h2>
+      <p class="lede f" data-b="Qui prend le produit en main, dans quel contexte, et ce qu'il cherche à vérifier avant d'acheter.">Qui prend le produit en main, dans quel contexte, et ce qu'il cherche à vérifier avant d'acheter.</p>
+    </div>
+  </div>
+  <div class="body grid g3">
+    <div class="card"><h4>Profil</h4><p class="f" data-b="Âge, situation, habitude d'achat, budget.">Âge, situation, habitude d'achat, budget.</p></div>
+    <div class="card"><h4>Moment d'achat</h4><p class="f" data-b="Courses hebdomadaires, achat d'impulsion, cadeau, réassort…">Courses de la semaine, impulsion, cadeau, réassort.</p></div>
+    <div class="card"><h4>Ce qu'il vérifie</h4><p class="f" data-b="Les 3 informations qu'il cherche sur l'emballage avant de décider : prix, origine, allergènes, dosage…">Les trois informations cherchées avant de décider.</p></div>
+  </div>
+</section>
+
+<!-- ============ 04 PLATEFORME ============ -->
+<section>
+  <div class="hd">
+    <span class="no">04</span>
+    <div>
+      <h2>Positionnement &amp; territoire</h2>
+      <p class="lede f" data-b="La promesse en une phrase, puis les mots qui guident la direction artistique.">La promesse en une phrase, puis les mots qui guident la direction artistique.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="grid g2">
+      <div>
+        <h4>La promesse</h4>
+        <p class="f" data-b="Une phrase, du point de vue de l'acheteur." style="font-size:19px; color:var(--ink); line-height:1.45">Une phrase, du point de vue de l'acheteur.</p>
+        <h4 class="mt24">Trois mots directeurs</h4>
+        <p class="f mono" data-b="Ex. : généreux · artisanal · net" style="font-size:14px">Mot · mot · mot</p>
+        <h4 class="mt24">Ce que l'on refuse</h4>
+        <p class="f" data-b="Les codes de la catégorie que vous décidez de ne pas reprendre, et pourquoi.">Les codes de catégorie écartés, et pourquoi.</p>
+      </div>
+      <div class="slot">Moodboard — matières, couleurs,<br>références, textures</div>
+    </div>
+    <div class="tip"><b>Guide</b>« Ce que l'on refuse » est la partie la plus regardée d'un dossier packaging : elle prouve que la direction artistique est un choix, pas un goût.</div>
+  </div>
+</section>
+
+<!-- ============ 05 STRUCTURE ============ -->
+<section>
+  <div class="hd">
+    <span class="no">05</span>
+    <div>
+      <h2>Structure &amp; gabarit</h2>
+      <p class="lede f" data-b="Le format retenu, ses dimensions, et le plan à plat qui servira à l'impression.">Le format retenu, ses dimensions, et le plan à plat qui servira à l'impression.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="grid g2" style="grid-template-columns:1.35fr 1fr; align-items:start">
+      <figure class="plan">
+        <svg viewBox="0 0 620 360" role="img" aria-label="Plan à plat d'un étui à fermeture américaine : rabats supérieurs et inférieurs, quatre panneaux et patte de collage.">
+          <g fill="none" stroke="#191A17" stroke-width="1.6">
+            <path d="M60 120 h90 v120 h-90 z"/>
+            <path d="M150 120 h150 v120 h-150 z"/>
+            <path d="M300 120 h90 v120 h-90 z"/>
+            <path d="M390 120 h150 v120 h-150 z"/>
+            <path d="M540 120 h34 v120 h-34 z"/>
+            <path d="M150 120 v-52 h150 v52"/>
+            <path d="M390 120 v-52 h150 v52"/>
+            <path d="M150 240 v52 h150 v-52"/>
+            <path d="M390 240 v52 h150 v-52"/>
+            <path d="M60 120 v-34 h90 v34"/>
+            <path d="M300 120 v-34 h90 v34"/>
+            <path d="M60 240 v34 h90 v-34"/>
+            <path d="M300 240 v34 h90 v-34"/>
+          </g>
+          <g fill="none" stroke="#B23A48" stroke-width="1.4" stroke-dasharray="7 5">
+            <path d="M150 120 v120"/><path d="M300 120 v120"/><path d="M390 120 v120"/><path d="M540 120 v120"/>
+            <path d="M150 120 h150"/><path d="M390 120 h150"/>
+            <path d="M150 240 h150"/><path d="M390 240 h150"/>
+            <path d="M60 120 h90"/><path d="M300 120 h90"/>
+            <path d="M60 240 h90"/><path d="M300 240 h90"/>
+          </g>
+          <g fill="none" stroke="#1B6FD4" stroke-width="1" stroke-dasharray="3 3">
+            <path d="M52 112 h530 M52 248 h530 M68 78 v204 M532 78 v204"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#8B8E85">
+            <text x="196" y="186">FACE AVANT</text>
+            <text x="440" y="186">DOS</text>
+            <text x="82" y="186">CÔTÉ</text>
+            <text x="322" y="186">CÔTÉ</text>
+            <text x="546" y="186" transform="rotate(90 552 186)">COLLAGE</text>
+            <text x="196" y="100">RABAT SUP.</text>
+            <text x="436" y="100">RABAT SUP.</text>
+            <text x="196" y="272">RABAT INF.</text>
+            <text x="436" y="272">RABAT INF.</text>
+            <text x="196" y="330" fill="#1B6FD4">largeur totale — à coter</text>
+            <text x="20" y="186" fill="#1B6FD4" transform="rotate(-90 20 186)">hauteur — à coter</text>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i></i>Trait de coupe</span>
+          <span><i class="f"></i>Trait de pliage</span>
+          <span><i class="b"></i>Fond perdu / zone de sécurité</span>
+        </div>
+        <figcaption>Exemple de plan à plat — étui à rabats. Remplacez-le par votre gabarit réel, coté, fourni par l'imprimeur.</figcaption>
+      </figure>
+      <div>
+        <table class="tab">
+          <tr><th>Type d'emballage</th><td class="f" data-b="Étui à rabats, sachet doypack, pot, bouteille + étiquette…">Étui, sachet, pot, bouteille…</td></tr>
+          <tr><th>Dimensions</th><td class="f mono" data-b="L × l × H en mm">L × l × H mm</td></tr>
+          <tr><th>Contenance</th><td class="f mono" data-b="g / ml / nombre d'unités">— g / ml</td></tr>
+          <tr><th>Matériau</th><td class="f" data-b="Carton compact 350 g, kraft, PET recyclé, verre…">Support et grammage</td></tr>
+          <tr><th>Ouverture</th><td class="f" data-b="Ouverture facile, refermable, inviolabilité, dose.">Système d'ouverture et de refermeture</td></tr>
+          <tr><th>Conditionnement</th><td class="f" data-b="Nombre par carton, palettisation, contrainte de transport.">Unités par carton, palettisation</td></tr>
+        </table>
+        <div class="tip"><b>Guide</b>Donnez les dimensions en millimètres, jamais en pixels. Un dossier packaging se lit aussi par un imprimeur.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 FACE AVANT ============ -->
+<section>
+  <div class="hd">
+    <span class="no">06</span>
+    <div>
+      <h2>Hiérarchie de la face avant</h2>
+      <p class="lede f" data-b="L'ordre dans lequel l'œil doit lire la face avant, du plus loin au plus près.">L'ordre dans lequel l'œil doit lire la face avant, du plus loin au plus près.</p>
+    </div>
+  </div>
+  <div class="body grid g2" style="grid-template-columns:1fr 1.1fr; align-items:start">
+    <figure class="plan">
+      <svg viewBox="0 0 300 414" role="img" aria-label="Schéma de hiérarchie de la face avant : marque, gamme, variante, bénéfice, contenance.">
+        <rect x="20" y="16" width="260" height="368" fill="none" stroke="#191A17" stroke-width="1.6"/>
+        <rect x="34" y="30" width="232" height="340" fill="none" stroke="#1B6FD4" stroke-width="1" stroke-dasharray="3 3"/>
+        <g fill="#F1F5FC" stroke="#1B6FD4" stroke-width="1">
+          <rect x="52" y="52" width="196" height="52"/>
+          <rect x="52" y="120" width="196" height="30"/>
+          <rect x="52" y="166" width="140" height="120"/>
+          <rect x="52" y="302" width="120" height="24"/>
+          <rect x="180" y="302" width="68" height="24"/>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#1B6FD4">
+          <text x="62" y="82">1 · MARQUE</text>
+          <text x="62" y="139">2 · GAMME</text>
+          <text x="62" y="224">3 · VARIANTE</text>
+          <text x="62" y="318">4 · BÉNÉFICE</text>
+          <text x="188" y="318" font-size="9.5">5 · POIDS</text>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B8E85">
+          <text x="34" y="402">zone de sécurité — 6 mm mini</text>
+        </g>
+      </svg>
+      <figcaption>Gabarit de hiérarchie — à recouvrir de votre visuel réel.</figcaption>
+    </figure>
+    <div>
+      <table class="tab">
+        <tr><th>1 · Marque</th><td class="f" data-b="Taille, position, zone de protection. Lisible à quelle distance ?">Ce qui identifie la marque à 3 mètres</td></tr>
+        <tr><th>2 · Gamme</th><td class="f" data-b="Le nom de la ligne, s'il existe.">Le nom de la ligne de produits</td></tr>
+        <tr><th>3 · Variante</th><td class="f" data-b="Parfum, saveur, teinte, intensité — l'information qui fait choisir entre deux produits de la même marque.">Ce qui fait choisir entre deux références</td></tr>
+        <tr><th>4 · Bénéfice</th><td class="f" data-b="L'argument court : sans sucre ajouté, 100 % recyclable, fait main…">L'argument court, une ligne maximum</td></tr>
+        <tr><th>5 · Contenance</th><td class="f" data-b="Poids net ou volume — mention obligatoire, taille réglementée.">Poids net ou volume — mention obligatoire</td></tr>
+      </table>
+      <div class="tip"><b>Guide</b>Testez la hiérarchie en réduisant votre face avant à 3 cm de large, puis en la regardant en noir et blanc. Si l'ordre de lecture tient encore, elle est juste.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 SYSTÈME GRAPHIQUE ============ -->
+<section>
+  <div class="hd">
+    <span class="no">07</span>
+    <div>
+      <h2>Système graphique</h2>
+      <p class="lede f" data-b="Couleurs, typographies et iconographie — avec les références d'impression, pas seulement les valeurs écran.">Couleurs, typographies et iconographie — avec les références d'impression, pas seulement les valeurs écran.</p>
+    </div>
+  </div>
+  <div class="body">
+    <h4>Palette</h4>
+    <div class="range">
+      <div><div class="sw2 f" style="background:#D9D5CC"></div><b class="f" data-b="Rôle : couleur de marque">Couleur de marque</b><small class="f" data-b="PANTONE 000 C · CMJN 0/0/0/0">PANTONE — · CMJN —</small></div>
+      <div><div class="sw2 f" style="background:#C9CFC4"></div><b class="f" data-b="Rôle : variante 1">Variante</b><small class="f" data-b="PANTONE 000 C · CMJN 0/0/0/0">PANTONE — · CMJN —</small></div>
+      <div><div class="sw2 f" style="background:#D8CBBE"></div><b class="f" data-b="Rôle : variante 2">Variante</b><small class="f" data-b="PANTONE 000 C · CMJN 0/0/0/0">PANTONE — · CMJN —</small></div>
+      <div><div class="sw2 f" style="background:#2B2C28"></div><b class="f" data-b="Rôle : texte / contraste">Texte</b><small class="f" data-b="Noir 100 % ou CMJN riche">Noir —</small></div>
+    </div>
+    <div class="tip"><b>Guide</b>En packaging, une couleur se décide en Pantone ou en CMJN sur le support réel — pas en hexadécimal. Précisez toujours si la teinte est imprimée sur blanc, sur kraft ou sur métallisé : le rendu change complètement.</div>
+
+    <div class="grid g2 mt32" style="align-items:start">
+      <div>
+        <h4>Typographie</h4>
+        <table class="tab">
+          <tr><th>Titrage</th><td class="f" data-b="Police, graisse, corps mini en mm">Police, graisse, corps</td></tr>
+          <tr><th>Courante</th><td class="f" data-b="Police, corps, interlignage">Police, corps</td></tr>
+          <tr><th>Mentions légales</th><td class="f" data-b="Corps minimum réglementaire — souvent 1,2 mm de hauteur de x">Corps minimum réglementaire</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Iconographie &amp; motifs</h4>
+        <p class="f" data-b="Illustration, photo, pictogrammes, motif de fond : ce qui est utilisé, et à quelle fréquence.">Illustration, photo, pictogrammes, motif : ce qui est utilisé et où.</p>
+        <div class="slot" style="min-height:150px; margin-top:14px">Extraits du système —<br>pictogrammes, motif, illustration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 MENTIONS ============ -->
+<section>
+  <div class="hd">
+    <span class="no">08</span>
+    <div>
+      <h2>Mentions obligatoires</h2>
+      <p class="lede">Liste de contrôle avant tout envoi en production. Les mentions applicables dépendent du pays et de la catégorie de produit — faites-la valider par le client ou un service qualité.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="checks">
+      <div><span><b>Dénomination de vente</b><small>Le nom légal du produit, pas le nom commercial</small></span></div>
+      <div><span><b>Quantité nette</b><small>Poids ou volume, corps réglementé selon le format</small></span></div>
+      <div><span><b>Liste des ingrédients</b><small>Ordre décroissant de poids</small></span></div>
+      <div><span><b>Allergènes</b><small>Mis en évidence dans la liste</small></span></div>
+      <div><span><b>Date de durabilité</b><small>DDM ou DLC, et emplacement du marquage</small></span></div>
+      <div><span><b>Conditions de conservation</b><small>Avant et après ouverture</small></span></div>
+      <div><span><b>Coordonnées de l'exploitant</b><small>Nom et adresse</small></span></div>
+      <div><span><b>Origine ou provenance</b><small>Quand elle est requise ou revendiquée</small></span></div>
+      <div><span><b>Déclaration nutritionnelle</b><small>Tableau pour 100 g ou 100 ml</small></span></div>
+      <div><span><b>Numéro de lot</b><small>Emplacement prévu pour le marquage variable</small></span></div>
+      <div><span><b>Code-barres</b><small>Taille, sens, zone de silence, contraste</small></span></div>
+      <div><span><b>Consignes de tri</b><small>Symboles applicables et matériaux</small></span></div>
+    </div>
+    <div class="tip"><b>Guide</b>Réservez la place des mentions obligatoires <em>avant</em> de composer la face avant. C'est l'erreur la plus fréquente : un dos trop plein oblige à réduire le corps du texte sous le minimum réglementaire, et le fichier repart en correction.</div>
+  </div>
+</section>
+
+<!-- ============ 09 GAMME ============ -->
+<section>
+  <div class="hd">
+    <span class="no">09</span>
+    <div>
+      <h2>Déclinaisons de gamme</h2>
+      <p class="lede f" data-b="Comment le système tient sur plusieurs références, et ce qui change d'une variante à l'autre.">Comment le système tient sur plusieurs références, et ce qui change d'une variante à l'autre.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="grid g4">
+      <div class="slot" style="min-height:220px">Variante 01</div>
+      <div class="slot" style="min-height:220px">Variante 02</div>
+      <div class="slot" style="min-height:220px">Variante 03</div>
+      <div class="slot" style="min-height:220px">Variante 04</div>
+    </div>
+    <table class="tab mt24">
+      <tr><th>Ce qui reste fixe</th><td class="f" data-b="Logo, structure, position des blocs, typographie — l'ossature de la gamme.">Les éléments identiques sur toutes les références</td></tr>
+      <tr><th>Ce qui varie</th><td class="f" data-b="Couleur, nom de variante, visuel, picto — la seule chose qui distingue.">Le seul signe qui distingue une référence d'une autre</td></tr>
+      <tr><th>Extension</th><td class="f" data-b="Comment ajouter une 5e variante sans casser le système.">Comment ajouter une référence sans casser le système</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 10 FABRICATION ============ -->
+<section>
+  <div class="hd">
+    <span class="no">10</span>
+    <div>
+      <h2>Fabrication &amp; impression</h2>
+      <p class="lede f" data-b="Les spécifications que reçoit l'imprimeur : support, procédé, couleurs, finitions, tolérances.">Les spécifications que reçoit l'imprimeur : support, procédé, couleurs, finitions, tolérances.</p>
+    </div>
+  </div>
+  <div class="body grid g2" style="align-items:start">
+    <table class="tab">
+      <tr><th>Support</th><td class="f" data-b="Carton compact 350 g/m², kraft brun, film PP…">Matière et grammage</td></tr>
+      <tr><th>Procédé</th><td class="f" data-b="Offset, flexographie, hélio, numérique">Offset, flexo, hélio, numérique</td></tr>
+      <tr><th>Couleurs</th><td class="f" data-b="Ex. : CMJN + 1 Pantone + blanc de soutien">Nombre d'encres et références</td></tr>
+      <tr><th>Finitions</th><td class="f" data-b="Vernis mat/brillant, sélectif, dorure à chaud, gaufrage, soft-touch">Vernis, dorure, gaufrage…</td></tr>
+      <tr><th>Fond perdu</th><td class="f mono" data-b="3 mm minimum">3 mm</td></tr>
+      <tr><th>Zone de sécurité</th><td class="f mono" data-b="6 mm depuis le trait de coupe">6 mm</td></tr>
+      <tr><th>Tolérance de coupe</th><td class="f mono" data-b="± 1,5 mm — à valider avec l'imprimeur">± 1,5 mm</td></tr>
+      <tr><th>Fichiers fournis</th><td class="f" data-b="PDF X-4, gabarit sur calque séparé, polices vectorisées, profil colorimétrique.">PDF, gabarit sur calque séparé, polices vectorisées</td></tr>
+    </table>
+    <div>
+      <div class="slot tall">Bon à tirer, épreuve contractuelle<br>ou photo du prototype plié</div>
+      <div class="tip"><b>Guide</b>Montrez au moins une photo du prototype réel — plié, rempli, tenu en main. Un rendu 3D ne prouve pas qu'un emballage fonctionne ; un prototype plié le prouve.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 ÉCO-CONCEPTION ============ -->
+<section>
+  <div class="hd">
+    <span class="no">11</span>
+    <div>
+      <h2>Éco-conception</h2>
+      <p class="lede f" data-b="Les décisions qui réduisent l'impact — et celles que vous n'avez pas pu prendre, avec la raison.">Les décisions qui réduisent l'impact — et celles que vous n'avez pas pu prendre, avec la raison.</p>
+    </div>
+  </div>
+  <div class="body grid g4">
+    <div class="card"><h4>Matière</h4><p class="f" data-b="Monomatériau, recyclé, certifié, allègement de grammage.">Monomatériau, part de recyclé, grammage</p></div>
+    <div class="card"><h4>Recyclabilité</h4><p class="f" data-b="Filière de tri réelle, séparabilité des composants.">Filière de tri, séparabilité des composants</p></div>
+    <div class="card"><h4>Encres &amp; finitions</h4><p class="f" data-b="Encres à base végétale, suppression du pelliculage, vernis compatible recyclage.">Encres, suppression de pelliculage</p></div>
+    <div class="card"><h4>Non résolu</h4><p class="f" data-b="Ce qui reste problématique et pourquoi : contrainte de conservation, coût, machine.">Ce qui reste problématique, et pourquoi</p></div>
+  </div>
+  <div class="body tip" style="margin-top:16px"><b>Guide</b>N'annoncez « recyclable » que si la filière existe réellement dans le pays de vente. Une allégation environnementale non vérifiable est un risque juridique pour le client — et se repère immédiatement en jury.</div>
+</section>
+
+<!-- ============ 12 RENDUS ============ -->
+<section>
+  <div class="hd">
+    <span class="no">12</span>
+    <div>
+      <h2>Rendus &amp; mise en situation</h2>
+      <p class="lede f" data-b="Le packaging seul, puis en rayon, puis en main. Les trois échelles auxquelles il sera jugé.">Le packaging seul, puis en rayon, puis en main : les trois échelles auxquelles il sera jugé.</p>
+    </div>
+  </div>
+  <div class="body">
+    <div class="slot tall" style="min-height:340px">Packshot principal — face avant, fond neutre</div>
+    <div class="grid g3 mt24">
+      <div class="slot">En rayon, entre concurrents</div>
+      <div class="slot">Tenu en main — échelle réelle</div>
+      <div class="slot">Gamme complète alignée</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 MESURE ============ -->
+<section>
+  <div class="hd">
+    <span class="no">13</span>
+    <div>
+      <h2>Ce qu'il reste à prouver</h2>
+      <p class="lede">Un packaging se mesure en rayon, pas sur un écran. Ces indicateurs restent à remplir avec des chiffres réels — n'avancez jamais un résultat non mesuré.</p>
+    </div>
+  </div>
+  <div class="body grid g4">
+    <div class="card"><h4>Repérage</h4><p>Temps mis pour trouver le produit dans une photo de linéaire, en test à cinq personnes.</p><p class="mono f" data-b="à mesurer" style="margin-top:10px; font-size:12px; color:var(--mark)">à mesurer</p></div>
+    <div class="card"><h4>Compréhension</h4><p>Part des testeurs qui nomment correctement le produit et sa variante en trois secondes.</p><p class="mono f" data-b="à mesurer" style="margin-top:10px; font-size:12px; color:var(--mark)">à mesurer</p></div>
+    <div class="card"><h4>Lisibilité</h4><p>Mentions obligatoires lues sans effort à distance de bras, sur l'emballage imprimé.</p><p class="mono f" data-b="à mesurer" style="margin-top:10px; font-size:12px; color:var(--mark)">à mesurer</p></div>
+    <div class="card"><h4>Industrialisation</h4><p>Taux de rebut au pliage et au conditionnement sur le premier tirage.</p><p class="mono f" data-b="à mesurer" style="margin-top:10px; font-size:12px; color:var(--mark)">à mesurer</p></div>
+  </div>
+</section>
+
+<!-- ============ 14 MODE D'EMPLOI ============ -->
+<section>
+  <div class="hd">
+    <span class="no">14</span>
+    <div>
+      <h2>Utiliser ce modèle</h2>
+      <p class="lede">Trois boutons en haut de page : <b>Modèle vierge</b> remplace chaque texte par sa consigne, <b>Guide de rédaction</b> masque les encadrés bleus, <b>Imprimer / PDF</b> sort une version propre.</p>
+    </div>
+  </div>
+  <div class="body grid g2">
+    <div>
+      <h4>Avant de publier</h4>
+      <ul>
+        <li>Chaque dimension est en millimètres, chaque couleur en Pantone ou CMJN</li>
+        <li>Le gabarit à plat est celui de l'imprimeur, pas un schéma redessiné</li>
+        <li>Les mentions obligatoires ont été validées par le client</li>
+        <li>Au moins une photo du prototype réel, plié et rempli</li>
+        <li>Aucune allégation environnementale non vérifiable</li>
+        <li>Aucun chiffre de résultat qui n'ait pas été mesuré</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Les quatorze sections</h4>
+      <ol class="mono" style="font-size:12.5px; line-height:2; color:var(--ink-2); padding-left:20px">
+        <li>Couverture</li><li>Brief &amp; contraintes</li><li>Rayon &amp; concurrence</li><li>Acheteur</li>
+        <li>Positionnement &amp; territoire</li><li>Structure &amp; gabarit</li><li>Hiérarchie de face avant</li>
+        <li>Système graphique</li><li>Mentions obligatoires</li><li>Déclinaisons de gamme</li>
+        <li>Fabrication &amp; impression</li><li>Éco-conception</li><li>Rendus</li><li>Mesure</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Modèle d'étude de cas — Design packaging</span>
+  <span class="f" data-b="Votre nom · année">Nom · année</span>
+</footer>
+</main>
+
+<script>
+(function(){
+  var blank=false, tips=true;
+  var fills=[].slice.call(document.querySelectorAll('.f[data-b]'));
+  fills.forEach(function(el){ el.dataset.filled = el.innerHTML; });
+  var b=document.getElementById('t-blank'), t=document.getElementById('t-tips'), p=document.getElementById('t-print');
+  b.addEventListener('click', function(){
+    blank=!blank;
+    document.body.classList.toggle('blank', blank);
+    fills.forEach(function(el){ el.innerHTML = blank ? el.dataset.b : el.dataset.filled; });
+    b.setAttribute('aria-pressed', String(blank));
+    b.textContent = blank ? 'Exemple de rédaction' : 'Modèle vierge';
+  });
+  t.addEventListener('click', function(){
+    tips=!tips;
+    document.body.classList.toggle('no-tips', !tips);
+    t.setAttribute('aria-pressed', String(tips));
+  });
+  p.addEventListener('click', function(){ window.print(); });
+})();
+</script>

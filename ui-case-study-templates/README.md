@@ -98,3 +98,14 @@ Régénérer après modification de `infographic.html` :
 ```bash
 python3 tools/build-figma.py infographic.html figma/eyeon-poster-figma.html
 ```
+
+## Modèle packaging
+
+`packaging/` contient un modèle d'étude de cas pour un projet de **packaging**
+(ni app, ni site) : brief et contraintes industrielles, rayon et concurrence,
+positionnement, **structure et plan à plat**, hiérarchie de face avant, système
+graphique en Pantone/CMJN, **mentions obligatoires**, déclinaisons de gamme,
+**fabrication et impression**, éco-conception, rendus et mesure.
+
+Deux schémas SVG modifiables sont fournis : un plan à plat d'étui à rabats
+(coupe, pliage, zone de sécurité) et un gabarit de hiérarchie de face avant.
